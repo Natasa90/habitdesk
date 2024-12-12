@@ -12,7 +12,7 @@ export const Porch = () => {
             showUserForm={showUserForm}
             setShowUserForm={setShowUserForm}
           />
-          <Icon name="arrow-back" size={24} color="#4A4A4A" className="pl-2 pb-2" />
+          <Icon name="arrow-back" size={22} color="#4A4A4A" className="pl-2 pb-2" />
           <Text className="pl-2 pb-2 text-s mt-2">
             Check your{" "}
             <Text className="font-bold text-blue-700">stats</Text> and update your{" "}
