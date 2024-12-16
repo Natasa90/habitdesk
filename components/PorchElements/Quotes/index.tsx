@@ -1,24 +1,26 @@
-import { useEffect, useState } from 'react';
-import { View, Text, ActivityIndicator, Alert } from 'react-native';
-import { QUOTES_API_URL, NINJAS_API_KEY } from '@env';
+import { useEffect, useState } from "react";
+import { View, Text, ActivityIndicator, Alert } from "react-native";
+import { CONFIG } from "../../../lib/config";
 
 export const Quotes = () => {
   const [quote, setQuote] = useState<string | null>(null);
   const [author, setAuthor] = useState<string | null>(null);
-  const [loadingState, setLoadingState] = useState<'loading' | 'loaded' | null>(null);
+  const [loadingState, setLoadingState] = useState<"loading" | "loaded" | null>(
+    null
+  );
 
   const fetchQuote = async () => {
-    setLoadingState('loading');
+    setLoadingState("loading");
 
     try {
-      const response = await fetch(QUOTES_API_URL, {
+      const response = await fetch(CONFIG.ninjasApiUrl, {
         headers: {
-          'x-api-key': NINJAS_API_KEY,
+          "x-api-key": CONFIG.ninjasApiKey,
         },
       });
 
       if (!response.ok) {
-        throw new Error('Failed to fetch quote');
+        throw new Error("Failed to fetch quote");
       }
 
       const data = await response.json();
@@ -27,20 +29,23 @@ export const Quotes = () => {
         const { quote, author } = data[0];
         setQuote(quote);
         setAuthor(author);
-        setLoadingState('loaded');
+        setLoadingState("loaded");
       } else {
-        throw new Error('No quote found in the response');
+        throw new Error("No quote found in the response");
       }
     } catch (error) {
-      Alert.alert('Error', error instanceof Error ? error.message : 'An unknown error occurred');
-      setLoadingState('loaded');
+      Alert.alert(
+        "Error",
+        error instanceof Error ? error.message : "An unknown error occurred"
+      );
+      setLoadingState("loaded");
     }
   };
 
   useEffect(() => {
-    fetchQuote(); 
-  }, []); //need to refactor this for api that fetches arr of quotes 
-  
+    fetchQuote();
+  }, []); //need to refactor this for api that fetches arr of quotes
+
   /* useEffect(() => {
     getQuote();
 
@@ -53,11 +58,13 @@ export const Quotes = () => {
 
   return (
     <View className="mt-6 mb-12">
-      {loadingState === 'loading' ? (
+      {loadingState === "loading" ? (
         <ActivityIndicator size="large" color="#0000ff" />
-      ) : loadingState === 'loaded' && quote && author ? (
+      ) : loadingState === "loaded" && quote && author ? (
         <View className="text-center">
-          <Text className="font-extralight text-lg italic text-center">"{quote}"</Text>
+          <Text className="font-extralight text-lg italic text-center">
+            "{quote}"
+          </Text>
           <Text className="text-sm text-gray-600 text-center">- {author}</Text>
         </View>
       ) : (
@@ -66,5 +73,3 @@ export const Quotes = () => {
     </View>
   );
 };
-
-

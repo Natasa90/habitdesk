@@ -1,5 +1,7 @@
 declare module '@env' {
-    export const NINJAS_API_KEY: string;
-    export const QUOTES_API_URL: string;
+    export const NINJA_QUOTES_KEY: string;
+    export const NINJA_QUOTES_URL: string;
+    export const SUPABASE_KEY: string;
+    export const SUPABASE_URL: string;
   }
   
