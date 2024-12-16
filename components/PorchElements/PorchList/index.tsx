@@ -49,9 +49,9 @@ export const PorchList: FC = () => {
                   </Text>
                   <TouchableOpacity
                     onPress={() => {}}
-                    className="mt-3 w-48 bg-blue-500 rounded-lg"
+                    className="mt-3 w-48"
                   >
-                    <Text className="py-2.5 px-3 text-sm font-medium text-white">Track Your Daily Updates</Text>
+                   <Text className="bg-customBlue rounded-xl py-2.5 px-4 text-sm font-medium text-white self-start">Track Your Daily Updates</Text>
                   </TouchableOpacity>
                 </>
               {/*)*/} 

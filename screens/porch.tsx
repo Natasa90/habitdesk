@@ -5,7 +5,7 @@ import { PorchList } from "../components/PorchElements/PorchList";
 export const Porch = () => {
 
     return (
-        <View className="flex-1 bg-porch-bg p-10">
+        <View className="flex-1 bg-grayScreen p-10">
           <PorchHeader /> 
           <PorchList /> 
         </View>
