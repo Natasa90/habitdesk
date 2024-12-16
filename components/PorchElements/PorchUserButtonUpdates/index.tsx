@@ -22,10 +22,10 @@ export const PorchUserButtonUpdates: FC <PorchUserButtonProps> = ({ showForm, se
               }
             }}
           >
-           <View className="w-6 h-6 rounded-full border-2 border-black">
+           <View className="w-6 h-6 p-0.5 rounded-full border-[1.7px] border-black">
               <Icon
                 name="trending-up" 
-                size={18}
+                size={16}
                 color="black"
               />
             </View>

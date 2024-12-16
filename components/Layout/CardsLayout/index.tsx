@@ -54,7 +54,7 @@ export const CardLayout: FC<CardLayoutProps> = ({
 
         {/* Like Button Section */}
         <View className="p-2">
-          <Text className="text-sm text-black pl-1">
+          <Text className="text-sm text-black pl-1 mb-2">
             <Text className="font-bold">Likes: </Text> {porch.excellent}
           </Text>
           <GradientButton onPress={() => handleVote("excellent")}>
@@ -66,7 +66,7 @@ export const CardLayout: FC<CardLayoutProps> = ({
         </View>
 
         {/* Extra Content Section */}
-        {extraContent && <View className="py-5">{extraContent}</View>}
+        {extraContent && <View className="py-2">{extraContent}</View>}
   </View>
   );
 };

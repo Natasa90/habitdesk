@@ -30,3 +30,18 @@ export interface CategoryFilterProps {
     setCurrentCategory: (category: string) => void; 
     currentCategory: string;
 }
+
+interface Fact {
+    id: number;
+    like: number;
+    exelent: number;
+    false: number;
+    text: string;
+    source: string;
+    category?: string;  
+  }
+  export interface FreeSourceProps {
+    fact: Fact;  
+    setFacts: React.Dispatch<React.SetStateAction<Fact[]>>;  
+  }
+  
