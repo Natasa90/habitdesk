@@ -7,9 +7,9 @@ const supabaseKey: string = process.env.NEXT_PUBLIC_SUPPABASE_KEY || "";
 
 export const supabase = createClient(supabaseUrl, supabaseKey, {
   auth: {
-    storage: AsyncStorage, // Use AsyncStorage for React Native
+    storage: AsyncStorage, 
     autoRefreshToken: true,
     persistSession: true,
-    detectSessionInUrl: false, // Disable as React Native does not use URLs
+    detectSessionInUrl: false, 
   },
 });
