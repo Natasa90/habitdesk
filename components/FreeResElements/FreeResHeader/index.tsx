@@ -12,9 +12,8 @@ export const FreeResHeader = () => {
             <Title title="Learning Sources" /> 
             <FreeResCats 
                 setCurrentCategory={setCurrentCategory}
-                currentCategory={currentCategory}  // Pass currentCategory to FreeResCats
+                currentCategory={currentCategory}
             />  
-            {/* Free Resources List */}
         </View>
     )
 }

@@ -6,8 +6,8 @@ export const PorchScreen = () => {
 
     return (
         <View className="flex-1 bg-grayScreen p-10">
-          <PorchHeader /> 
-          <PorchList /> 
+            <PorchHeader /> 
+            <PorchList /> 
         </View>
-      );
-    };
+    );
+};

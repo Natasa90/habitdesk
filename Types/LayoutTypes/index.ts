@@ -16,9 +16,9 @@ export interface CardLayoutProps {
     isUpdating: boolean;
     formattedDate?: string;
     extraContent?: ReactNode;
-  }
+  };
   
   export interface GradientButtonProps {
     onPress: () => void;
     children: React.ReactNode; // Required to ensure the icon is passed
-  }
+  };

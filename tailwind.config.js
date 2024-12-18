@@ -18,3 +18,5 @@ module.exports = {
     plugins: [],
   };
   
+
+// UPDATE THE CONTENT PATHS to include the whole project! 

@@ -12,11 +12,11 @@ export interface Source {
     text: string;
     source: string;
     category?: string;
-  };
+};
 
 export type LearningSourcesProps = {
     sources: Source[];
-  };
+};
 
 export interface TitleProps {
     title: string
@@ -24,12 +24,12 @@ export interface TitleProps {
 
 export interface CategoryProps {
     name: string;
-}
+};
 
 export interface CategoryFilterProps {
     setCurrentCategory: (category: string) => void; 
     currentCategory: string;
-}
+};
 
 interface Fact {
     id: number;
@@ -39,9 +39,10 @@ interface Fact {
     text: string;
     source: string;
     category?: string;  
-  }
-  export interface FreeSourceProps {
+  };
+
+export interface FreeSourceProps {
     fact: Fact;  
     setFacts: React.Dispatch<React.SetStateAction<Fact[]>>;  
-  }
+};
   

@@ -1,4 +1,12 @@
 export interface LoginProps {
-    signIn: () => void
+    signUp: () => void
     resetPassword: () => void; 
-}
+};
+
+export interface CreateAccountProps {
+    signIn: () => void; 
+};
+
+export interface ResetPasswordProps {
+  resetPassword: () => void; 
+};

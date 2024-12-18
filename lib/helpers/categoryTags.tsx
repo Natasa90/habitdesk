@@ -17,7 +17,7 @@ export const CategoryTags: FC<CategoryTagsProps> = ({ categories, handleCategory
                             isActive(categoryName) ? "bg-blue-500 text-white" : "bg-indigo-50 text-indigo-600"
                         }`}
                     >
-                          <Text
+                        <Text
                             className={`text-xs font-semibold ${
                                 isActiveCategory ? "text-white" : "text-indigo-700"
                             }`}

@@ -6,9 +6,9 @@ export const FreeResourcesScreen = () => {
 
     return (
         <View className="flex-1 bg-grayScreen p-10">
-          <FreeResHeader />
-          <FreeResList />
-          <FreeResList /> 
+            <FreeResHeader />
+            <FreeResList />
+            <FreeResList /> 
         </View>
-      );
-    };
+    );
+};

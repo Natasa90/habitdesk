@@ -7,10 +7,12 @@ import {
 
 export const CONFIG = {
     supabase: {
-      url: SUPABASE_URL,
-      key: SUPABASE_KEY,
+        url: SUPABASE_URL,
+        key: SUPABASE_KEY,
     },
-    ninjasApiKey: NINJA_QUOTES_KEY,
-    ninjasApiUrl: NINJA_QUOTES_URL,
+    ninjaQuotes: {
+        url: NINJA_QUOTES_URL,
+        key: NINJA_QUOTES_KEY,
+    }
   };
   

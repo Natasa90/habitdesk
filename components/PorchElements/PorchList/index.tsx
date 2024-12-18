@@ -1,10 +1,9 @@
-import { FC, useState, useEffect, useContext, useMemo } from "react";
-import { View, Text, TouchableOpacity, FlatList, ScrollView } from "react-native";
-import UserInfoContext from "../../../context/UserInfoContext";
-import { PorchType, PorchListProps } from "../../../Types/PorchTypes";
+import { FC } from "react";
+import { View, Text, TouchableOpacity } from "react-native";
 import { PorchDailyUpdate } from "../PorchDailyUpdate";
 
 export const PorchList: FC = () => {
+
   /*  porchs = [], 
   setPorchs = () => {}, 
 }) => {
@@ -34,42 +33,38 @@ export const PorchList: FC = () => {
     });
   }; */
 
-  return (
-    <View className="py-1 sm:py-1 lg:py-1 border-y-4 border-[#e5e7eb]">
-      <View className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <View className="max-w-mx-auto overflow-hidden bg-gray-100 rounded-xl">
-          <View className="py-5 sm:p-6">
-            <View className="ml-2">
-              <Text className="text-lg font-bold text-gray-900">Daily Highlights</Text>
-              <Text className="mt-1 text-sm font-medium text-gray-500">Growth and Learning News</Text>
-              {/*userInfo?.email && ( */}
-                <>
-                  <Text className="mt-5 text-lg font-medium text-gray-800">
-                    You've been dedicated to learning for <Text className="font-bold">5</Text> days!
-                  </Text>
-                  <TouchableOpacity
-                    onPress={() => {}}
-                    className="mt-3 w-48"
-                  >
-                   <Text className="bg-customBlue rounded-xl py-2.5 px-4 text-sm font-medium text-white self-start">Track Your Daily Updates</Text>
-                  </TouchableOpacity>
-                </>
-              {/*)*/} 
+    return (
+        <View className="py-1 border-y-4 border-[#e5e7eb]">
+            <View className="mx-auto">
+                <View className="py-5 bg-gray-100 rounded-xl">  
+                    <View className="ml-2">
+                        <Text className="text-lg font-bold text-gray-900">Daily Highlights</Text>
+                        <Text className="mt-1 text-sm font-medium text-gray-500">Growth and Learning News</Text>
+                        <>
+                            <Text className="mt-5 text-lg font-medium text-gray-800">
+                                 You've been dedicated to learning for <Text className="font-bold">5</Text> days!
+                            </Text>
+                            <TouchableOpacity
+                                onPress={() => {}}
+                                className="mt-3 w-48"
+                            >
+                                <Text className="bg-customBlue rounded-xl py-2.5 px-4 text-sm font-medium text-white self-start">Track Your Daily Updates</Text>
+                            </TouchableOpacity>
+                        </>
+                    </View>
+                    <View className="mt-6 space-y-3">
+                        <PorchDailyUpdate />
+                        <PorchDailyUpdate />
+                        {/*filteringUpdatesPerUser.map((porch) => (
+                            <PorchDailyUpdate
+                                key={porch.id}
+                                porch={porch}
+                                setPorchs={setPorchs}
+                            />
+                        ))*/}
+                    </View>
+                </View>
             </View>
-            <View className="mt-6 space-y-3">
-            <PorchDailyUpdate />
-            <PorchDailyUpdate />
-              {/*filteringUpdatesPerUser.map((porch) => (
-                <PorchDailyUpdate
-                  key={porch.id}
-                  porch={porch}
-                  setPorchs={setPorchs}
-                />
-              ))*/}
-            </View>
-          </View>
         </View>
-      </View>
-    </View>
-  );
+    );
 };

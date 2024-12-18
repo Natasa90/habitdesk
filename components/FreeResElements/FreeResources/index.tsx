@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import { CardLayout } from "../../Layout/CardsLayout";// Assuming you have this component
+import { CardLayout } from "../../Layout/CardsLayout";
 
 export const FreeResList = () => {
 
@@ -14,31 +14,30 @@ export const FreeResList = () => {
         category: "Science",
       };
 
-  return (
-    <View>
-      <CardLayout
-        title={demoResource.category || "Unknown Category"}
-        porch={{
-          source: demoResource.source,
-          excellent: demoResource.exelent,
-        }}
-        displayComment={demoResource.text.slice(0, 90)}
-        commentText={demoResource.text}
-        showMore={false}
-        handleVote={() => {}
-        }
-        isUpdating={false}
-        extraContent={
-            <View className="py-5">
-              <TouchableOpacity
-                onPress={() => {}}
-              >
-                <Text className="self-start bg-gray-200 rounded-full px-8 py-2 text-sm font-semibold text-gray-700">Show Comments</Text>
-              </TouchableOpacity>
-            </View>
-          }
-        />
-      </View>
+    return (
+        <View>
+            <CardLayout
+                title={demoResource.category || "Unknown Category"}
+                porch={{
+                    source: demoResource.source,
+                    excellent: demoResource.exelent,
+                }}
+                displayComment={demoResource.text.slice(0, 90)}
+                commentText={demoResource.text}
+                showMore={false}
+                handleVote={() => {}}
+                isUpdating={false}
+                extraContent={
+                    <View className="py-5">
+                        <TouchableOpacity
+                            onPress={() => {}}
+                        >
+                            <Text className="self-start bg-gray-200 rounded-full px-8 py-2 text-sm font-semibold text-gray-700">Show Comments</Text>
+                        </TouchableOpacity>
+                    </View>
+                }
+            />
+        </View>
     );
   };
 
