@@ -10,6 +10,7 @@ import {
 import { supabase } from "../../../lib/supabase";
 import { CreateAccountProps } from "../../../Types/AuthTypes";
 import { TermsAgreement } from "../TermsAgreement";
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export const CreateAccount: FC<CreateAccountProps> = ({ signIn }) => {
 

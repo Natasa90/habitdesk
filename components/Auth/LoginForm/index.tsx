@@ -8,11 +8,13 @@ import {
 } from "react-native";
 import { supabase } from "../../../lib/supabase";
 import { LoginProps } from "../../../Types/AuthTypes";
+import { useTypedNavigation } from "../../../lib/hooks/useTypedNavigation";
 
 export const LoginForm: FC<LoginProps>= ( { signUp, resetPassword } ) => {
 
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
+    const navigation = useTypedNavigation(); 
 
     const signInWithEmail = async () => {
 	    try {
@@ -22,9 +24,10 @@ export const LoginForm: FC<LoginProps>= ( { signUp, resetPassword } ) => {
 			});
 			
 			if (error) {
-                Alert.alert("Demo login error! :)");
+                Alert.alert("Login failed!", error.message);
 			} else {
-                Alert.alert("Demo login success! :)");
+                Alert.alert("Login successful!");
+                navigation.navigate("UserProfile");
 			}
 		} catch (error) {
 		    console.log(error);
@@ -40,9 +43,10 @@ export const LoginForm: FC<LoginProps>= ( { signUp, resetPassword } ) => {
             elevation: 5, 
         }}>
             <View className="flex-row">
-                <Text className="text-xl font-bold text-gray-900 mb-4">Sign in</Text>
+                <Text className="text-xl font-bold text-gray-900 mb-6">Sign in</Text>
             </View>
             <View className="space-y-4">
+
                 <Text className="text-base font-medium text-gray-900">Email</Text>
                 <TextInput
                     placeholder="Email address"
@@ -71,14 +75,14 @@ export const LoginForm: FC<LoginProps>= ( { signUp, resetPassword } ) => {
                     <Text className="text-white text-center">Sign in</Text>
                 </TouchableOpacity>
             </View>
-            <Text className="text-center text-gray-500 mt-4">
-                Don’t have an account?{" "}
-                <TouchableOpacity onPress={signUp} className="mt-2">
-                    <Text className="font-bold text-gray-900">
+                <Text className="text-center text-gray-500 my-6">
+                    Don’t have an account?{" "} 
+                </Text>
+                <TouchableOpacity onPress={signUp}>
+                    <Text className="text-center font-bold text-xl text-[#0B65C2]">
                         Join now
                     </Text>
                 </TouchableOpacity>
-            </Text>
         </View>
       );
     };

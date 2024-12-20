@@ -52,7 +52,7 @@ export const ResetPassword: FC<ResetPasswordProps> = ( { resetPassword } ) => {
                             placeholder="Enter your email"
                             value={email}
                             onChangeText={setEmail}
-                            className="w-full py-4 pl-10 pr-4 text-black placeholder-gray-500 bg-white border border-gray-200 rounded-md"
+                            className="w-full py-4 pl-3 text-black placeholder-gray-500 bg-white border border-gray-200 rounded-md"
                         />
                     </View>
                 </View>

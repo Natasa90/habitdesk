@@ -22,3 +22,8 @@ export interface CardLayoutProps {
     onPress: () => void;
     children: React.ReactNode; // Required to ensure the icon is passed
   };
+
+export interface HeaderWithIconProps {
+    icon: string;
+    title: string; 
+}
