@@ -16,6 +16,7 @@ export const LoginForm: FC<LoginProps>= ( { signUp, resetPassword } ) => {
     const [password, setPassword] = useState<string>("");
     const navigation = useTypedNavigation(); 
 
+
     const signInWithEmail = async () => {
 	    try {
 			const { error } = await supabase.auth.signInWithPassword({
@@ -23,17 +24,18 @@ export const LoginForm: FC<LoginProps>= ( { signUp, resetPassword } ) => {
 			    password,
 			});
 			
-			if (error) {
-                Alert.alert("Login failed!", error.message);
-			} else {
-                Alert.alert("Login successful!");
-                navigation.navigate("UserProfile");
-			}
-		} catch (error) {
-		    console.log(error);
-		}
-	};
-
+		if (error) {
+            console.log('Login Error:', error.message); // Add logging
+            Alert.alert("Login failed!", error.message);
+        } else {
+            console.log('User logged in:', email);  // Log the user details for debugging
+            Alert.alert("Login successful!");
+            navigation.navigate("UserProfile");
+        }
+    } catch (error) {
+        console.log('Unexpected error:', error);  // Log any unexpected errors
+    }
+};
     return (
         <View className="p-6 bg-white rounded-xl shadow-md"style={{
             shadowColor: '#000', 
