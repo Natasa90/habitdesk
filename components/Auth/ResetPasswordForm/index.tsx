@@ -27,17 +27,26 @@ export const ResetPassword: FC<ResetPasswordProps> = ( { resetPassword } ) => {
     };
     
   return (
-    <View className="mx-auto">
-        <Text className="text-3xl font-bold">
+        <View
+            className="px-4 py-6 bg-gray-50 rounded-xl shadow-md"
+            style={{
+            shadowColor: "#000",
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.25,
+            shadowRadius: 3.5,
+            elevation: 5,
+            }}
+        >
+        <Text className="text-2xl text-center font-bold">
             Reset Your Password
         </Text>
-        <Text className="mx-auto mt-4 text-base text-gray-600">
+        <Text className="mx-auto text-center mt-3 text-base text-gray-600">
             Login to your account
         </Text>
         <View className="px-4 py-6">
             <View className="space-y-5">
                 <View>
-                    <Text className="text-base font-medium text-gray-900">Email</Text>
+                    <Text className="ml-1 text-base font-medium text-gray-900">Email</Text>
                     <View className="mt-2.5 text-gray-400">
                         <TextInput
                             placeholder="Enter your email"
