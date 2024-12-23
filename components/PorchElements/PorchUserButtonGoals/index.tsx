@@ -29,7 +29,7 @@ export const PorchUserButtonGoals : FC<PorchUserButtonProps> = ( { showForm, set
             <View className="pl-2 pb-2 pt-2">
                 <Icon name="arrow-back" size={18} color="#4A4A4A" />
             </View>
-            <Text className="pl-2 pb-2 pt-1.5 text-xs">
+            <Text className="pl-2 text-xs">
                 Check your{' '}
                 <Text className="font-bold text-blue-700">stats</Text> and update your{' '}
                 <Text className="font-bold text-blue-700">goals!</Text>

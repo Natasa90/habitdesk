@@ -3,13 +3,13 @@ import { createClient } from "@supabase/supabase-js";
 import "react-native-url-polyfill/auto";
 import { CONFIG } from "../config";
 
-const { url, key } = CONFIG.supabase;
+const SUPABASE_CONFIG = CONFIG.supabase;
 
-if (!url || !key) {
+if (!SUPABASE_CONFIG.url || !SUPABASE_CONFIG.key) {
   throw new Error("Supabase URL or Key is missing from the configuration.");
-};
+}
 
-export const supabase = createClient(url, key, {
+export const supabase = createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.key, {
   auth: {
     storage: AsyncStorage, 
     autoRefreshToken: true,
