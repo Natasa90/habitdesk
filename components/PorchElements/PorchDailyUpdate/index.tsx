@@ -1,50 +1,21 @@
 import { FC, useState, useContext } from "react";
 import { View } from "react-native";
 import { CardLayout } from "../../Layout/CardsLayout";
+import { PorchDailyUpdateProps } from "@/Types/PorchTypes";
 
-export const PorchDailyUpdate: FC = () => {
+export const PorchDailyUpdate: FC<PorchDailyUpdateProps> = ({porch, setPorchs}) => {
     
     const [isUpdating, setIsUpdating] = useState<boolean>(false);
     const [showMore, setShowMore] = useState<boolean>(false);
 
-  // FOR DEMO PURPOSE ONLY!  /////////////////////////////
+    const date = new Date(porch.created_at);
+    const formattedDate = `${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}-${date.getFullYear()}`;
 
-    const demoPorch = {
-        text: "This is a demo update to showcase how the PorchDailyUpdate component works in the UI. Additional content will be added later.",
-        email: "demo@example.com",
-        source: "Demo Source",
-        excellent: 5,
-    };
-
-    const formattedDate = "12-15-2024";
-
-    const handleVote = () => {
-        setIsUpdating(true);
-        setTimeout(() => {
-            setIsUpdating(false);
-            alert("Demo vote submitted!");
-        }, 1000);
-    };
-
-    const handleMore = () => {
-        setShowMore((prev) => !prev);
-    };
-
-    const commentText = demoPorch.text;
-    const displayComment = showMore ? commentText : commentText.slice(0, 90) + "...";
-  
-///////////////////////////////////////////////////////////////////////////////////////
-
-  /* const date = new Date(porch.created_at);
-  const formattedDate = `${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}-${date.getFullYear()}`;
-  const formattedTime = `${date.getHours().toString().padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}:${date.getSeconds().toString().padStart(2, "0")}`;
-
-  const handleVote = async (columnName: string) => {
-    if (userInfo?.email) {
-      setIsUpdating(true);
+   /*  const handleVote = async (columnName: string) => {
+      if (userInfo?.email) {
+        setIsUpdating(true); 
   
       try {
-        // Fetch the current value of the column (e.g., 'excellent')
         const { data, error: fetchError } = await supabase
           .from("porch")
           .select(columnName)
@@ -80,19 +51,21 @@ export const PorchDailyUpdate: FC = () => {
       }
     }
   };
-
+ */
   const commentText = porch.text;
   const displayComment = showMore ? commentText : commentText.slice(0, 90);
 
   const handleMore = () => {
     setShowMore(true);
-  }; */
+  }; 
+
+ const handleVote = () => {}; 
 
     return (
         <View>
             <CardLayout
                 title="Daily Update"
-                porch={demoPorch}
+                porch={porch}
                 displayComment={displayComment}
                 commentText={commentText}
                 showMore={showMore}

@@ -1,27 +1,16 @@
-import { FC } from "react";
+import { FC, useState, useMemo } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { PorchDailyUpdate } from "../PorchDailyUpdate";
+import { PorchListProps } from "@/Types/PorchTypes";
 
-export const PorchList: FC = () => {
+export const PorchList: FC<PorchListProps> = ({porchs, setPorchs}) => {
 
-  /*  porchs = [], 
-  setPorchs = () => {}, 
-}) => {
-  const { userInfo } = useContext(UserInfoContext);
   const [filtered, setFiltered] = useState<boolean>(false);
-  const [dailyUpdates, setDailyUpdates] = useState<PorchType[]>(porchs);
   const [buttonTitle, setButtonTitle] = useState<string>("Track Your Daily Updates");
 
-  useEffect(() => {
-    setDailyUpdates(porchs);
+   const sortedUpdates = useMemo(() => {
+    return porchs.slice().sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
   }, [porchs]);
-
-  const filteringUpdatesPerUser = useMemo(() => {
-    const updates = filtered
-      ? dailyUpdates.filter((porch) => porch.email === userInfo?.email)
-      : dailyUpdates;
-    return updates.slice().sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
-  }, [dailyUpdates, userInfo?.email, filtered]);
 
   const handleFiltering = () => {
     setFiltered((prevState) => {
@@ -31,7 +20,7 @@ export const PorchList: FC = () => {
       );
       return newFiltered;
     });
-  }; */
+  }; 
 
     return (
         <View className="py-1 border-y-4 border-[#e5e7eb]">
@@ -53,15 +42,13 @@ export const PorchList: FC = () => {
                         </>
                     </View>
                     <View className="mt-6 space-y-3">
-                        <PorchDailyUpdate />
-                        <PorchDailyUpdate />
-                        {/*filteringUpdatesPerUser.map((porch) => (
+                        {sortedUpdates.map((porch, index) => (
                             <PorchDailyUpdate
-                                key={porch.id}
-                                porch={porch}
-                                setPorchs={setPorchs}
+                            key={porch.id || index}
+                            porch={porch}
+                            setPorchs={setPorchs}
                             />
-                        ))*/}
+                        ))}
                     </View>
                 </View>
             </View>

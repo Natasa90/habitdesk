@@ -14,8 +14,8 @@ export type PorchType = {
 };
 
 export interface PorchListProps {
-    porchs?: PorchType[];
-    setPorchs?: React.Dispatch<React.SetStateAction<PorchType[]>>;
+    porchs: PorchType[];
+    setPorchs: React.Dispatch<React.SetStateAction<PorchType[]>>;
 };
 
 export interface PorchDailyUpdateProps {

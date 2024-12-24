@@ -7,10 +7,8 @@ import {
     Alert 
 } from "react-native";
 import { supabase } from "@/lib/supabase";
-import { SUPABASE_KEY, SUPABASE_URL } from "@env";
 import { LoginProps } from "../../../Types/AuthTypes";
 import { useTypedNavigation } from "../../../lib/hooks/useTypedNavigation";
-import axios from "axios";
 
 export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
 
