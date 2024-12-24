@@ -6,9 +6,11 @@ import {
     TouchableOpacity, 
     Alert 
 } from "react-native";
-import { supabase } from "../../../lib/supabase";
+import { supabase } from "@/lib/supabase";
+import { SUPABASE_KEY, SUPABASE_URL } from "@env";
 import { LoginProps } from "../../../Types/AuthTypes";
 import { useTypedNavigation } from "../../../lib/hooks/useTypedNavigation";
+import axios from "axios";
 
 export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
 
@@ -16,36 +18,38 @@ export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
     const [password, setPassword] = useState<string>("");
     const navigation = useTypedNavigation(); 
 
-    function signInWithEmail (){
-        navigation.navigate("UserProfile");
-}
-
-    /*const signInWithEmail = async () => {
+     const signInWithEmail = async () => {
         try {
-            const { error } = await supabase.auth.signInWithPassword({
+            const { data, error } = await supabase.auth.signInWithPassword({
                 email,
                 password,
             });
+
             if (error) {
                 console.log('Login Error:', error.message); 
                 Alert.alert("Login failed!", error.message);
             } else {
-                Alert.alert("Login successful!");
+                const user = data?.user;
+                const session = data?.session;
 
-                // After successful login, check the session
-                const { data, error: sessionError } = await supabase.auth.getSession();
-                if (sessionError) {
-                    console.error('Error getting session:', sessionError);
+                if (user) {
+                    Alert.alert("Login successful!");
+
+                    console.log("User:", user);
+                    console.log("Session:", session);
+
+                    // Handle session persistence if necessary
+                    // Navigate to UserProfile or other protected pages
+                    navigation.navigate("UserProfile");
                 } else {
-                    console.log('Session data:', data);
+                    console.log("No user data found.");
                 }
-
-                navigation.navigate("UserProfile");
             }
         } catch (error) {
             console.log('Unexpected error:', error);  
         }
-    }; */ 
+    };
+
 
     return (
         <View className="p-6 bg-white rounded-xl shadow-md" style={{
