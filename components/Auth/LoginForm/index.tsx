@@ -1,4 +1,4 @@
-import { useState, FC } from "react";
+import { useState, FC, useContext } from "react";
 import { 
     View, 
     Text, 
@@ -9,6 +9,7 @@ import {
 import { supabase } from "@/lib/supabase";
 import { LoginProps } from "../../../Types/AuthTypes";
 import { useTypedNavigation } from "../../../lib/hooks/useTypedNavigation";
+import { UserInfoContext } from "@/context/UserInfoContext";
 
 export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
 
@@ -16,7 +17,9 @@ export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
     const [password, setPassword] = useState<string>("");
     const navigation = useTypedNavigation(); 
 
-     const signInWithEmail = async () => {
+    const { setUserInfo } = useContext(UserInfoContext);
+
+       const signInWithEmail = async () => {
         try {
             const { data, error } = await supabase.auth.signInWithPassword({
                 email,
@@ -36,7 +39,9 @@ export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
                     console.log("User:", user);
                     console.log("Session:", session);
 
-                    // Handle session persistence if necessary
+                    // Update userInfo context
+                    setUserInfo({ email: user.email });
+
                     // Navigate to UserProfile or other protected pages
                     navigation.navigate("UserProfile");
                 } else {
@@ -47,7 +52,6 @@ export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
             console.log('Unexpected error:', error);  
         }
     };
-
 
     return (
         <View className="p-6 bg-white rounded-xl shadow-md" style={{

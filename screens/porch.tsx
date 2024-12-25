@@ -12,31 +12,31 @@ export const PorchScreen = () => {
     const [loading, setLoading] = useState<boolean>(true);
     const [page, setPage] = useState<number>(1);
     const [hasMore, setHasMore] = useState<boolean>(true);
+    const [ showUpdateForm, setShowUpdateForm ] = useState( false );
+	const [ showUserForm, setShowUserForm ] = useState( false );
 
    const loadPorchs = async () => {
-  try {
-    // Fetch the first 10 posts from the 'porch' table
-    const { data: newPorchs, error } = await supabase
-      .from('porch')
-      .select('*')
-      .order('created_at', { ascending: false })
-      .range((page - 1) * 10, page * 10 - 1); 
+        try {
+            const { data: newPorchs, error } = await supabase
+                .from('porch')
+                .select('*')
+                .order('created_at', { ascending: false })
+                .range((page - 1) * 10, page * 10 - 1); 
+        if (error) {
+            throw new Error(error.message); 
+        }
+        setPorchs((prevPorchs) => [...prevPorchs, ...newPorchs]);
+        setHasMore(newPorchs.length === 10); 
+        } catch (err) {
+            console.error('Failed to load porchs:', err);
+        } finally {
+            setLoading(false);
+        }
+    };
 
-    if (error) {
-      throw new Error(error.message); // Handle Supabase error
-    }
-
-    setPorchs(newPorchs);  // Set the fetched posts
-    setHasMore(newPorchs.length === 10);  // Check if more posts are available
-  } catch (err) {
-    console.error('Failed to load porchs:', err);
-  } finally {
-    setLoading(false);
-  }
-};
   useEffect(() => {
     loadPorchs();
-  }, []);
+  }, [page]);
 
     return (
         <ScrollView className="flex-1 bg-grayScreen p-10">

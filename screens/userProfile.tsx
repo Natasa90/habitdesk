@@ -1,11 +1,14 @@
+import { useContext } from "react";
 import { ScrollView, TouchableOpacity, View, Text } from "react-native";
 import { LogoutButton } from "../components/Auth/LogoutButton";
 import { useTypedNavigation } from "../lib/hooks/useTypedNavigation";
 import { Ionicons } from '@expo/vector-icons';
+import { UserInfoContext } from "@/context/UserInfoContext";
 
 export const UserProfileScreen = () => {
 
     const navigation = useTypedNavigation(); 
+    const { userInfo } = useContext(UserInfoContext)
 
      return (
         <ScrollView className="flex-1 space-y-6 p-6">
@@ -25,6 +28,9 @@ export const UserProfileScreen = () => {
                 <Ionicons name="arrow-forward" size={18} color="black" style={{marginLeft: 5, marginTop: 3}} />
             </TouchableOpacity>
             <LogoutButton />
+            <View>
+                <Text className="text-gray-500 text-center">{userInfo?.email}</Text>
+            </View>
         </ScrollView>
     );
 };

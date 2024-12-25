@@ -2,7 +2,7 @@ import { FC, useContext } from 'react';
 import { View, TouchableOpacity, Alert, Text } from 'react-native';
 import { PorchUserButtonProps } from '../../../Types/PorchTypes';
 import Icon from 'react-native-vector-icons/Ionicons';
-import UserInfoContext from '../../../context/UserInfoContext';
+import { UserInfoContext } from '@/context/UserInfoContext';
 
 export const PorchUserButtonGoals : FC<PorchUserButtonProps> = ( { showForm, setShowForm} ) => {
     

@@ -22,3 +22,8 @@ export interface PorchDailyUpdateProps {
     porch: PorchType;
     setPorchs: React.Dispatch<React.SetStateAction<PorchType[]>>;
 };
+
+export interface PorchFormProps {
+  setPorchs: React.Dispatch<React.SetStateAction<PorchType[]>>;
+  setShowForm: React.Dispatch<React.SetStateAction<boolean>>;
+}
