@@ -31,7 +31,7 @@ export interface CategoryFilterProps {
     currentCategory: string;
 };
 
-interface Fact {
+export interface Fact {
     id: number;
     like: number;
     exelent: number;

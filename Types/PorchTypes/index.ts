@@ -27,3 +27,7 @@ export interface PorchFormProps {
   setPorchs: React.Dispatch<React.SetStateAction<PorchType[]>>;
   setShowForm: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+export interface PorchCalendarProps {
+    learningDates: { date: string; count: number; }[];
+}

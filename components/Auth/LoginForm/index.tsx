@@ -92,6 +92,12 @@ export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
                 >
                     <Text className="text-white text-center">Sign in</Text>
                 </TouchableOpacity>
+                <TouchableOpacity
+                    onPress={() => {}}
+                    className="py-3 mt-4 bg-[#24292e] rounded-md"
+                >
+                    <Text className="text-white text-center">Sign in with GitHub</Text>
+                </TouchableOpacity>
             </View>
             <Text className="text-center text-gray-500 my-6">
                 Don’t have an account?{" "}

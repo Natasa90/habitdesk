@@ -12,8 +12,6 @@ export const PorchScreen = () => {
     const [loading, setLoading] = useState<boolean>(true);
     const [page, setPage] = useState<number>(1);
     const [hasMore, setHasMore] = useState<boolean>(true);
-    const [ showUpdateForm, setShowUpdateForm ] = useState( false );
-	const [ showUserForm, setShowUserForm ] = useState( false );
 
    const loadPorchs = async () => {
         try {
