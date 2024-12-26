@@ -1,26 +1,53 @@
-import { FC, useState, useMemo } from "react";
+import { FC, useState, useEffect, useMemo, useContext } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import { PorchDailyUpdate } from "../PorchDailyUpdate";
 import { PorchListProps } from "@/Types/PorchTypes";
+import { supabase } from "@/lib/supabase";
+import { UserInfoContext } from "@/context/UserInfoContext";
+import { PorchType } from "@/Types/PorchTypes";
+import { PorchDailyUpdate } from "../PorchDailyUpdate";
 
 export const PorchList: FC<PorchListProps> = ({porchs, setPorchs}) => {
 
-  const [filtered, setFiltered] = useState<boolean>(false);
-  const [buttonTitle, setButtonTitle] = useState<string>("Track Your Daily Updates");
+    const { userInfo } = useContext(UserInfoContext); 
+    const [filtered, setFiltered] = useState<boolean>(false);
+    const [dailyUpdates, setDailyUpdates] = useState<PorchType[]>(porchs);
+    const [buttonTitle, setButtonTitle] = useState<string>("Track Your Daily Updates");
+    const [learningDays, setLearningDays] = useState<number>(0);
 
-   const sortedUpdates = useMemo(() => {
-    return porchs.slice().sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
-  }, [porchs]);
+    useEffect(() => {
+        setDailyUpdates(porchs);        
+    }, [porchs]);
 
-  const handleFiltering = () => {
-    setFiltered((prevState) => {
-      const newFiltered = !prevState;
-      setButtonTitle(
-        newFiltered ? "All Daily Updates" : "Track Your Daily Updates"
-      );
-      return newFiltered;
-    });
-  }; 
+    const filteringUpdatesPerUser = useMemo(() => {
+        const updates = filtered
+            ? dailyUpdates.filter((porch) => porch.email === userInfo?.email)
+            : dailyUpdates;
+        return updates.slice().sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+    }, [dailyUpdates, userInfo?.email, filtered]);
+
+    useEffect(() => {
+        const fetchLearningDays = async () => {
+            if (userInfo?.email) {
+                const { count, error } = await supabase
+                    .from("porch")
+                    .select("*", { count: "exact" })
+                    .eq("email", userInfo.email);
+            if (error) {
+                console.error("Error fetching learning days from Supabase:", error);
+            } else {
+                setLearningDays(count || 0);
+                };
+            };
+        };
+    fetchLearningDays()}, [userInfo?.email]);
+
+    const handleFiltering = () => {
+        setFiltered((prevState) => {
+            const newFiltered = !prevState;
+            setButtonTitle(newFiltered ? "All Daily Updates" : "Track Your Daily Updates");
+            return newFiltered;
+        });
+    };
 
     return (
         <View className="py-1 border-y-4 border-[#e5e7eb]">
@@ -29,20 +56,22 @@ export const PorchList: FC<PorchListProps> = ({porchs, setPorchs}) => {
                     <View className="ml-2">
                         <Text className="text-lg font-bold text-gray-900">Daily Highlights</Text>
                         <Text className="mt-1 text-sm font-medium text-gray-500">Growth and Learning News</Text>
+                        {userInfo?.email && (
                         <>
                             <Text className="mt-5 text-lg font-medium text-gray-800">
-                                 You've been dedicated to learning for <Text className="font-bold">5</Text> days!
+                                 You've been dedicated to learning for <Text className="font-bold">{learningDays}</Text> days!
                             </Text>
                             <TouchableOpacity
-                                onPress={() => {}}
+                                onPress={handleFiltering}
                                 className="mt-3 w-48"
                             >
-                                <Text className="bg-customBlue rounded-xl py-2.5 px-4 text-sm font-medium text-white self-start">Track Your Daily Updates</Text>
+                                <Text className="bg-customBlue rounded-xl py-2.5 px-4 text-sm font-medium text-white self-start">{buttonTitle}</Text>
                             </TouchableOpacity>
                         </>
+                        )}
                     </View>
                     <View className="mt-6 space-y-3">
-                        {sortedUpdates.map((porch, index) => (
+                        {filteringUpdatesPerUser.map((porch, index) => (
                             <PorchDailyUpdate
                             key={porch.id || index}
                             porch={porch}

@@ -1,40 +1,17 @@
-import React, { useState, useContext } from "react";
-import { View, Text, TouchableOpacity, Modal } from "react-native";
-import { UserInfoContext } from "@/context/UserInfoContext";
+import { FC, useState } from "react";
 import { CardLayout } from "@/components/Layout/CardsLayout";
+import { PorchDailyUpdateProps } from "@/Types/PorchTypes";
 import { supabase } from "@/lib/supabase";
-import { LoginForm } from "@/components/Auth/LoginForm";
 
-interface PorchType {
-  id: string;
-  created_at: string;
-  email: string;
-  text: string;
-  source: string;
-  excellent: number;
-  [key: string]: any;
-}
+export const PorchDailyUpdate: FC<PorchDailyUpdateProps> = ({ porch, setPorchs }) => {
 
-interface PorchDailyUpdateProps {
-  porch: PorchType;
-  setPorchs: React.Dispatch<React.SetStateAction<PorchType[]>>;
-}
-
-export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPorchs }) => {
   const [isUpdating, setIsUpdating] = useState<boolean>(false);
-  const { userInfo } = useContext(UserInfoContext);
-  const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
-  const toggleLoginModal = () => setShowLoginModal((prev) => !prev);
 
   const date = new Date(porch.created_at);
   const formattedDate = `${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}-${date.getFullYear()}`;
-  const formattedTime = `${date.getHours().toString().padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}:${date.getSeconds().toString().padStart(2, "0")}`;
 
-   const handleVote = async(columnName: string) => {
-    if (userInfo?.email) {
+   const handleVote = async() => {
       setIsUpdating(true);
-console.log('Porch ID:', porch.new_id); // Check if the porch.id is valid
-    console.log('Column Name:', columnName);
       try {
         // Fetch the current value of the "excellent" column
         const { data, error: fetchError } = await supabase
@@ -71,10 +48,6 @@ console.log('Porch ID:', porch.new_id); // Check if the porch.id is valid
       } finally {
         setIsUpdating(false);
       }
-    } else {
-      setIsUpdating(false);
-      toggleLoginModal(); // Show login modal if the user is not logged in
-    }
   };
 
   const commentText = porch.text;

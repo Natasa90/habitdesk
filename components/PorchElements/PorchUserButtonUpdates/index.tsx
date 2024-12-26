@@ -1,19 +1,12 @@
-import { FC, useContext } from "react";
-import { Alert, View, Text, TouchableOpacity } from "react-native";
-import { UserInfoContext } from "@/context/UserInfoContext";
+import { FC } from "react";
+import { View, Text, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { PorchUserButtonProps } from "../../../Types/PorchTypes";
 
 export const PorchUserButtonUpdates: FC<PorchUserButtonProps> = ({ showForm, setShowForm }) => {
-  const { userInfo } = useContext(UserInfoContext);
-  const isAuth = Boolean(userInfo?.email); // Checking if user is authenticated
 
   const handlePress = () => {
-    if (isAuth) {
-      setShowForm((prevState: boolean) => !prevState); // Toggle form visibility
-    } else {
-      Alert.alert("Access Denied", "Please log in or verify your email address.");
-    }
+      setShowForm((prevState: boolean) => !prevState); 
   };
 
   return (

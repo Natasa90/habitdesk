@@ -1,23 +1,15 @@
-import { FC, useContext } from 'react';
+import { FC } from 'react';
 import { View, TouchableOpacity, Alert, Text } from 'react-native';
 import { PorchUserButtonProps } from '../../../Types/PorchTypes';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { UserInfoContext } from '@/context/UserInfoContext';
 
 export const PorchUserButtonGoals : FC<PorchUserButtonProps> = ( { showForm, setShowForm} ) => {
-    
-    const { userInfo } = useContext(UserInfoContext);
-    const isAuth = userInfo?.email;
 
     return (
         <View className="flex-row items-center">
             <TouchableOpacity
                 onPress={() => {
-                if (isAuth) {
                     setShowForm((show: boolean) => !show);
-                } else {
-                    Alert.alert('Access Denied', 'Please log in or verify your email address.');
-              }
                 }}
             >
                 <Icon
