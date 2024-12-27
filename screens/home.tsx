@@ -1,11 +1,11 @@
-import { View } from "react-native";
+import { ScrollView } from "react-native";
 import { HomeIntroduction } from "@/components/HomePageElements/HomeIntroduction";
 
 export const HomeScreen = () => {
 
   return (
-    <View className="bg-grayScreen p-10">
+    <ScrollView className="bg-grayScreen p-9">
       <HomeIntroduction />      
-    </View>
+    </ScrollView>
    );
 };

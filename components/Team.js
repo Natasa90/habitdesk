@@ -1,6 +1,5 @@
 import * as React from "react";
 import Svg, { Path, Ellipse, Circle } from "react-native-svg";
-import { Team } from ".";
 
 const SvgTeam = (props) => (
   <Svg

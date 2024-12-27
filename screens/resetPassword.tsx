@@ -11,7 +11,7 @@ export const ResetPasswordScreen = () => {
     };
 
     return (
-        <View className="bg-grayScreen p-10">
+        <View className="bg-grayScreen p-9">
             <ResetPassword resetPassword={handleCancelReset} />
         </View>
     );

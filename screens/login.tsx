@@ -15,7 +15,7 @@ export const LoginScreen = () => {
     };
 
     return (
-        <View className="bg-grayScreen p-10">
+        <View className="bg-grayScreen p-9">
             <LoginForm 
                 signUp={handleSignUp}
                 resetPassword={handleResetPassword}

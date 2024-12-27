@@ -37,7 +37,7 @@ export const PorchScreen = () => {
   }, [page]);
 
     return (
-        <ScrollView className="flex-1 bg-grayScreen p-10">
+        <ScrollView className="flex-1 bg-grayScreen p-9">
       <PorchHeader />
       {loading ? (
         <View className="flex items-center justify-center mt-10">

@@ -14,29 +14,43 @@ import { ResetPasswordScreen } from './screens/resetPassword';
 import { HeaderWithIcon } from './components/HeaderWithIcon';
 import { UserInfoContext } from './context/UserInfoContext';
 import { UserContextProps } from './Types/User';
+import { Footer } from './components/Footer';
 
 const Stack = createNativeStackNavigator(); 
 
 export default function App() {
 
-    const [loading, setLoading] = useState<boolean>(true);
-    const [session, setSession] = useState<{} | null>(null);
-     const [userInfo, setUserInfo] = useState<UserContextProps["userInfo"]>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [session, setSession] = useState<{} | null>(null);
+  const [userInfo, setUserInfo] = useState<UserContextProps["userInfo"]>(null);
 
-    useEffect(() => {
-        supabase.auth.getSession().then(({ data }) => {
-            setSession(data.session);
-            setLoading(false);
-        });
+  useEffect(() => {
+    const initializeSession = async () => {
+    try {
+      const { data, error } = await supabase.auth.getSession();
+      if (error) {
+        console.error("Error fetching session:", error.message);
+        setSession(null);
+      } else {
+        setSession(data.session);
+      }
+    } catch (err) {
+      console.error("Unexpected error fetching session:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-        const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
-            setSession(session);
-        });
+  initializeSession();
 
-        return () => {
-            authListener.subscription.unsubscribe();
-        };
-    }, []);
+  const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
+    setSession(session);
+  });
+
+  return () => {
+    authListener.subscription.unsubscribe();
+    };
+  }, []);
 
     if (loading) {
         return (
@@ -69,7 +83,7 @@ export default function App() {
                             backgroundColor: '#f8f8f8',
                             },
                             headerTitle: () => (
-                                <HeaderWithIcon icon="user" title="Sign In" />
+                                <HeaderWithIcon icon="" title="" />
                             ),
                         }}
                     />
@@ -117,7 +131,7 @@ export default function App() {
                                 backgroundColor: '#f8f8f8',
                                 },
                             headerTitle: () => (
-                                <HeaderWithIcon icon="user-plus" title="Create Account" />
+                                <HeaderWithIcon icon="" title="" />
                                 ),
                             }}
                         />
@@ -129,12 +143,13 @@ export default function App() {
                                 backgroundColor: '#f8f8f8',
                                 },
                                 headerTitle: () => (
-                                    <HeaderWithIcon icon="lock" title="Reset Password" />
+                                    <HeaderWithIcon icon="" title="" />
                                 ),
                             }}
                         />
                 </Stack.Navigator>
                 <StatusBar style="dark" />
+                <Footer />
             </NavigationContainer>
        </UserInfoContext.Provider>
     );

@@ -2,7 +2,7 @@ import { TouchableOpacity, View } from "react-native";
 import Svg, { Defs, LinearGradient, Stop, Rect } from "react-native-svg";
 import { ButtonProps } from "@/Types/LayoutTypes";
 
-export const SignInButton = ({ onPress, children }: ButtonProps) => {
+export const AccountButton = ({ onPress, children }: ButtonProps) => {
 
     return (
         <TouchableOpacity
@@ -20,7 +20,7 @@ export const SignInButton = ({ onPress, children }: ButtonProps) => {
                 </Defs>
                 <Rect x="0" y="0" width="280" height="40" fill="url(#gradient)" rx="12" />
             </Svg>
-            <View className="absolute mt-2">
+            <View className="absolute mt-3">
                 {children}
             </View>
         </TouchableOpacity>

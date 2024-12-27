@@ -11,7 +11,7 @@ export const CreateAccountScreen = () => {
     };
 
     return (
-        <View className="bg-grayScreen p-10">
+        <View className="bg-grayScreen p-9">
             <CreateAccount signIn={handleLogin} />
         </View>
     );
