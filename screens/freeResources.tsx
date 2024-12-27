@@ -29,7 +29,7 @@ export const FreeResourcesScreen = () => {
       {noContent ? (
         <View className="flex-1 justify-center items-center mt-4">
           <Text className="text-gray-500 text-center">
-            No Content for this category yet! Create the first one ✌️
+            No Content for this category yet! ✌️
           </Text>
         </View>
       ) : (

@@ -10,6 +10,7 @@ import { supabase } from "@/lib/supabase";
 import { LoginProps } from "../../../Types/AuthTypes";
 import { useTypedNavigation } from "../../../lib/hooks/useTypedNavigation";
 import { UserInfoContext } from "@/context/UserInfoContext";
+import { SignInButton } from "../LoginButton";
 
 export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
 
@@ -86,18 +87,12 @@ export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
                         Forgot Password?
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity
-                    onPress={signInWithEmail}
-                    className="py-3 mt-4 bg-gray-900 rounded-md"
-                >
-                    <Text className="text-white text-center">Sign in</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    onPress={() => {}}
-                    className="py-3 mt-4 bg-[#24292e] rounded-md"
-                >
-                    <Text className="text-white text-center">Sign in with GitHub</Text>
-                </TouchableOpacity>
+                 <SignInButton onPress={signInWithEmail}>
+                    <Text className="text-white">Sign In</Text>
+                </SignInButton>
+                 <SignInButton onPress={() => {}}>
+                    <Text className="text-white">Sign In with GitHub</Text>
+                </SignInButton>
             </View>
             <Text className="text-center text-gray-500 my-6">
                 Don’t have an account?{" "}

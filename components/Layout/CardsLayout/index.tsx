@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, Linking } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { CardLayoutProps } from '../../../Types/LayoutTypes';
 import { GradientText } from '../../GradientText';
-import { GradientButton } from '../../GradientButton';
+import { LikeButton } from '@/components/LikeButton';
 
 export const CardLayout: FC<CardLayoutProps> = ({
     title,
@@ -58,11 +58,11 @@ export const CardLayout: FC<CardLayoutProps> = ({
                 <Text className="text-sm text-black pl-1 mb-2">
                     <Text className="font-bold">Likes: </Text> {porch.excellent}
                 </Text>
-                <GradientButton onPress={() => handleVote("excellent")}>
+                <LikeButton onPress={() => handleVote("excellent")}>
                     <View className='px-9 py-1'>
                         <Icon name="thumbs-up-outline" size={18} color="white"/>
                     </View>
-                </GradientButton>
+                </LikeButton>
                 <Text className="pt-2 pl-0.5 text-sm">{formattedDate}</Text>
             </View>
             {extraContent && <View className="py-2">{extraContent}</View>}

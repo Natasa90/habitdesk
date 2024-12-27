@@ -18,9 +18,10 @@ export interface CardLayoutProps {
     extraContent?: ReactNode;
   };
   
-  export interface GradientButtonProps {
+  export interface ButtonProps {
     onPress: () => void;
-    children: React.ReactNode; // Required to ensure the icon is passed
+    children: React.ReactNode; 
+    className?: string;
   };
 
 export interface HeaderWithIconProps {

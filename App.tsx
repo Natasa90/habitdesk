@@ -4,6 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { supabase } from './lib/supabase';
+import { HomeScreen } from './screens/home';
 import { UserProfileScreen } from './screens/userProfile';
 import { PorchScreen } from './screens/porch';
 import { FreeResourcesScreen } from './screens/freeResources';
@@ -47,7 +48,19 @@ export default function App() {
     return (
         <UserInfoContext.Provider value={{ userInfo, setUserInfo }}>
             <NavigationContainer>
-                <Stack.Navigator initialRouteName={session ? "UserProfile" : "Login"}>
+                <Stack.Navigator initialRouteName={session ? "UserProfile" : "Home"}>
+                    <Stack.Screen 
+                        name="Home" 
+                        component={HomeScreen}
+                        options={{
+                            headerStyle: {
+                            backgroundColor: '#f8f8f8',
+                            },
+                            headerTitle: () => (
+                                <HeaderWithIcon icon="people-group" title="Habit Desk" />
+                            ),
+                        }}
+                    />
                     <Stack.Screen 
                         name="Login" 
                         component={LoginScreen}
@@ -121,7 +134,7 @@ export default function App() {
                             }}
                         />
                 </Stack.Navigator>
-                <StatusBar style="light" />
+                <StatusBar style="dark" />
             </NavigationContainer>
        </UserInfoContext.Provider>
     );

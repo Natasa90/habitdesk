@@ -1,13 +1,13 @@
 import { TouchableOpacity, View } from "react-native";
 import Svg, { Defs, LinearGradient, Stop, Rect } from "react-native-svg";
-import { GradientButtonProps } from "../../Types/LayoutTypes";
+import { ButtonProps } from "@/Types/LayoutTypes";
 
-export const GradientButton = ({ onPress, children }: GradientButtonProps) => {
+export const LikeButton = ({ onPress, children }: ButtonProps) => {
 
     return (
         <TouchableOpacity
             onPress={onPress}
-            activeOpacity={0.75} // For hover-like opacity effect
+            activeOpacity={0.75} 
         >
             <Svg height="30" width="90">
                 <Defs>
