@@ -41,8 +41,10 @@ export interface Fact {
     category?: string;  
   };
 
-export interface FreeSourceProps {
-    fact: Fact;  
-    setFacts: React.Dispatch<React.SetStateAction<Fact[]>>;  
-};
-  
+export interface FreeResListProps {
+    resources: Fact[]; // List of resources to render
+    isLoading: boolean; // Indicates if data is being fetched
+    handleVote: (columnName: keyof Fact, fact: Fact) => void; // Function to handle voting
+    handleShowComments: (resourceId: number) => void; // Function to handle showing comments
+    loadMore: () => void; // Function to load more resources
+}

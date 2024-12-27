@@ -2,7 +2,7 @@ import { FC } from "react";
 import { View, Text } from "react-native";
 import { TitleProps } from "../../../Types/FreeResourcesTypes";
 
-export const Title: FC<TitleProps> = ( { title } ) => {
+export const FreeResTitle: FC<TitleProps> = ( { title } ) => {
 
     return (
 		<View>
