@@ -4,7 +4,8 @@ import { supabase } from "@/lib/supabase";
 import { LoginProps } from "../../../Types/AuthTypes";
 import { useTypedNavigation } from "../../../lib/hooks/useTypedNavigation";
 import { UserInfoContext } from "@/context/UserInfoContext";
-import { AccountButton } from "../AccountButton";
+import { AccountButton } from "@/components/AccountButton";
+import { GitHubButton } from "../GitHubLoginButton";
 import { FontAwesome } from "@expo/vector-icons";
 
 export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
@@ -86,9 +87,7 @@ export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
     <AccountButton onPress={signInWithEmail}>
      <Text className="text-white">Sign In</Text>
     </AccountButton>
-    <AccountButton onPress={() => {}}>
-     <Text className="text-white">Sign In with GitHub</Text>
-    </AccountButton>
+    <GitHubButton />
    </View>
    <Text className="text-center text-gray-500 my-6">
     Don’t have an account?{" "}

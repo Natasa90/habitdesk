@@ -6,6 +6,7 @@ import { supabase } from "@/lib/supabase";
 export const PorchDailyUpdate: FC<PorchDailyUpdateProps> = ({ porch, setPorchs }) => {
 
   const [isUpdating, setIsUpdating] = useState<boolean>(false);
+  const [showMore, setShowMore] = useState<boolean>(false);
 
   const date = new Date(porch.created_at);
   const formattedDate = `${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}-${date.getFullYear()}`;
@@ -51,7 +52,6 @@ export const PorchDailyUpdate: FC<PorchDailyUpdateProps> = ({ porch, setPorchs }
   };
 
   const commentText = porch.text;
-  const [showMore, setShowMore] = useState<boolean>(false);
 
   const displayComment = showMore ? commentText : commentText.slice(0, 90);
 

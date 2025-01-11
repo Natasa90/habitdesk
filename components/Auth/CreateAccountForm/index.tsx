@@ -10,7 +10,7 @@ import {
 import { supabase } from "../../../lib/supabase";
 import { CreateAccountProps } from "../../../Types/AuthTypes";
 import { TermsAgreement } from "../TermsAgreement";
-import { AccountButton } from "../AccountButton";
+import { AccountButton } from "@/components/AccountButton";
 import { FontAwesome } from "@expo/vector-icons";
 
 export const CreateAccount: FC<CreateAccountProps> = ({ signIn }) => {
@@ -73,10 +73,10 @@ export const CreateAccount: FC<CreateAccountProps> = ({ signIn }) => {
    ) : (
     <ScrollView>
      <View className="flex-row gap-2">
-     <FontAwesome name="user-plus" size={24} color="#000" />
-     <Text className="text-xl text-center font-semibold text-gray-900 mb-4">
-      Create free account
-     </Text>
+      <FontAwesome name="user-plus" size={24} color="#000" />
+      <Text className="text-xl text-center font-semibold text-gray-900 mb-4">
+       Create free account
+      </Text>
      </View>
      <Text className="text-center pb-8 text-gray-500 italic">
       You can create a free Celebration account in 2 minutes

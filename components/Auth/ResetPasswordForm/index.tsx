@@ -9,8 +9,7 @@ import {
 } from "react-native";
 import { supabase } from "../../../lib/supabase";
 import { ResetPasswordProps } from "../../../Types/AuthTypes";
-import { AccountButton } from "../AccountButton";
-import { FontAwesome } from "@expo/vector-icons";
+import { AccountButton } from "@/components/AccountButton";
 
 export const ResetPassword: FC<ResetPasswordProps> = ({ resetPassword }) => {
  const [email, setEmail] = useState("");
@@ -39,7 +38,9 @@ export const ResetPassword: FC<ResetPasswordProps> = ({ resetPassword }) => {
    }}
   >
    <View className="flex-row gap-2 justify-center">
-   <Text className="text-2xl text-center font-bold mt-1">Reset Your Password</Text>
+    <Text className="text-2xl text-center font-bold mt-1">
+     Reset Your Password
+    </Text>
    </View>
    <Text className="mx-auto text-center mt-3 text-base text-gray-600">
     Login to your account

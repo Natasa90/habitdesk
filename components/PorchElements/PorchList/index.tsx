@@ -18,13 +18,15 @@ export const PorchList: FC<PorchListProps> = ({porchs, setPorchs}) => {
         setDailyUpdates(porchs);        
     }, [porchs]);
 
-    const filteringUpdatesPerUser = useMemo(() => {
-        const updates = filtered
-            ? dailyUpdates.filter((porch) => porch.email === userInfo?.email)
-            : dailyUpdates;
-        return updates.slice().sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
-    }, [dailyUpdates, userInfo?.email, filtered]);
+const filteringUpdatesPerUser = useMemo(() => {
+    const updates = filtered
+        ? dailyUpdates.filter((porch) => {
+            return porch.email?.toLowerCase().trim() === userInfo?.email?.toLowerCase().trim();
+        })
+        : dailyUpdates;
 
+    return updates.slice().sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+}, [dailyUpdates, userInfo?.email, filtered]);
     useEffect(() => {
         const fetchLearningDays = async () => {
             if (userInfo?.email) {

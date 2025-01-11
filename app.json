@@ -20,6 +20,8 @@
         "foregroundImage": "./assets/images/slavoio-logo.png",
         "backgroundColor": "#ffffff"
       }
-    }
+    },
+    "scheme": "habitdesk",
+    "platforms": ["ios", "android", "web"]
   }
 }

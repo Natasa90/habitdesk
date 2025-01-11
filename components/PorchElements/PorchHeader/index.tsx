@@ -8,7 +8,7 @@ import { PorchUpdateForm } from "../PorchUpdateForm";
 
 export const PorchHeader = () => {
   const [showForm, setShowForm] = useState(false);
-    const [showUserForm, setShowUserForm] = useState(false);
+  const [showUserForm, setShowUserForm] = useState(false);
 
   const { userInfo } = useContext(UserInfoContext);
   const isUserLoggedIn = Boolean(userInfo?.email);

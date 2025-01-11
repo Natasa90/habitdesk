@@ -13,6 +13,13 @@ export type PorchType = {
     [key: string]: any;
 };
 
+export interface UseFilteredUpdatesProps {
+  porchs: PorchType[];
+  filtered: boolean;
+  userEmail: string | undefined;
+}
+
+
 export interface PorchListProps {
     porchs: PorchType[];
     setPorchs: React.Dispatch<React.SetStateAction<PorchType[]>>;

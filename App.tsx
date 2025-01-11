@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { View, ActivityIndicator, TouchableOpacity, Text } from 'react-native';
+import { View, ActivityIndicator } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -16,7 +16,7 @@ import { UserInfoContext } from './context/UserInfoContext';
 import { UserContextProps } from './Types/User';
 import { Footer } from './components/Footer';
 
-const Stack = createNativeStackNavigator(); 
+const Stack = createNativeStackNavigator();
 
 export default function App() {
 
@@ -26,40 +26,53 @@ export default function App() {
 
   useEffect(() => {
     const initializeSession = async () => {
-    try {
-      const { data, error } = await supabase.auth.getSession();
-      if (error) {
-        console.error("Error fetching session:", error.message);
+      try {
+        setLoading(true); 
+        const { data, error } = await supabase.auth.getSession();
+        if (error) {
+          console.error("Error fetching session:", error.message);
+          setSession(null);
+        } else {
+          setSession(data.session);
+
+          if (data.session) {
+            const { data: user, error: userError } = await supabase.auth.getUser();
+            if (userError) {
+              console.error("Error fetching user:", userError.message);
+            } else {
+              setUserInfo({ email: user?.user?.email || undefined }); 
+            }
+          }
+        }
+      } catch (err) {
+        console.error("Unexpected error fetching session:", err);
         setSession(null);
-      } else {
-        setSession(data.session);
+      } finally {
+        setLoading(false);
       }
-    } catch (err) {
-      console.error("Unexpected error fetching session:", err);
-    } finally {
-      setLoading(false);
-    }
-  };
+    };
 
-  initializeSession();
+    initializeSession();
 
-  const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
-    setSession(session);
-  });
+    const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
+      console.log("Auth state changed:", event);
+      setSession(session);
+    });
 
-  return () => {
-    authListener.subscription.unsubscribe();
+    return () => {
+      authListener.subscription.unsubscribe();
     };
   }, []);
 
-    if (loading) {
-        return (
-            <View className="flex-1 justify-center items-center bg-gray-100">
-                <ActivityIndicator size="large" color="#000" />
-            </View>
-        );
-    }
+  if (loading) {
     return (
+      <View className="flex-1 justify-center items-center bg-gray-100">
+        <ActivityIndicator size="large" color="#000" />
+      </View>
+    );
+  }
+
+     return (
         <UserInfoContext.Provider value={{ userInfo, setUserInfo }}>
             <NavigationContainer>
                 <Stack.Navigator initialRouteName={session ? "UserProfile" : "Home"}>
@@ -154,4 +167,3 @@ export default function App() {
        </UserInfoContext.Provider>
     );
 }
-

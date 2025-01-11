@@ -1,6 +1,7 @@
 import { View, Text, TouchableOpacity } from "react-native"
 import { Team } from '../../index'
 import { useTypedNavigation } from "@/lib/hooks/useTypedNavigation"
+import { HomeButton } from "../HomeButton";
 
 export const HomeIntroduction = () => {
   const navigation = useTypedNavigation(); 
@@ -19,14 +20,9 @@ export const HomeIntroduction = () => {
         Whether you're looking for study materials, tracking your growth, or reading insightful blogs, we’ve got you covered!
       </Text>
 
-      <TouchableOpacity
-        className="bg-blue-600 py-4 px-8 rounded-xl mt-5"
-        onPress={() => navigation.navigate('Login')} // Navigate to login screen
-      >
-        <Text className="text-center text-white text-lg font-semibold">
-          Get Started
-        </Text>
-      </TouchableOpacity>
+      <HomeButton onPress={() => navigation.navigate('Login')}>
+     <Text className="text-white">Get Started</Text>
+    </HomeButton>
     </View>
   )
 }

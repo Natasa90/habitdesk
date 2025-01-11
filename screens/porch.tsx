@@ -19,12 +19,12 @@ export const PorchScreen = () => {
                 .from('porch')
                 .select('*')
                 .order('created_at', { ascending: false })
-                .range((page - 1) * 10, page * 10 - 1); 
+                .range((page - 1) * 100, page * 100 - 1); 
         if (error) {
             throw new Error(error.message); 
         }
         setPorchs((prevPorchs) => [...prevPorchs, ...newPorchs]);
-        setHasMore(newPorchs.length === 10); 
+        setHasMore(newPorchs.length === 100); 
         } catch (err) {
             console.error('Failed to load porchs:', err);
         } finally {

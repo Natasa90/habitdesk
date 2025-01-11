@@ -31,7 +31,7 @@ export const Footer = () => {
         </TouchableOpacity>
       </View>
       <Text className="text-gray-500 text-xs">
-        © 2024. All rights reserved. Designed by Prototype.NEXT.
+        © 2024. All rights reserved. Designed by Prototype.NEXT
       </Text>
     </View>
   );
