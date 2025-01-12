@@ -32,13 +32,7 @@ export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
     if (user) {
      Alert.alert("Login successful!");
 
-     console.log("User:", user);
-     console.log("Session:", session);
-
-     // Update userInfo context
      setUserInfo({ email: user.email });
-
-     // Navigate to UserProfile or other protected pages
      navigation.navigate("UserProfile");
     } else {
      console.log("No user data found.");

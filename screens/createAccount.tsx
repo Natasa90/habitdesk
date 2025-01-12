@@ -4,15 +4,15 @@ import { useTypedNavigation } from "../lib/hooks/useTypedNavigation";
 
 export const CreateAccountScreen = () => {
 
-    const navigation = useTypedNavigation(); 
+ const navigation = useTypedNavigation();
 
-    const handleLogin = () => {
-        navigation.navigate("Login");
-    };
+ const handleLogin = () => {
+  navigation.navigate("Login");
+ };
 
-    return (
-        <View className="bg-grayScreen p-9">
-            <CreateAccount signIn={handleLogin} />
-        </View>
-    );
+ return (
+  <View className="bg-grayScreen p-9">
+   <CreateAccount signIn={handleLogin} />
+  </View>
+ );
 };

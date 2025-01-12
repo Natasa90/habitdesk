@@ -63,5 +63,4 @@ const WeeklyGoalForm = () => {
         <Text className="pl-2 pt-3 text-xs italic">days learned per week</Text>
       </View>
       
-      <View className="flex-row justify-between mt-8 space-x-5"> */ 
-    
+      <View className="flex-row justify-between mt-8 space-x-5"> */

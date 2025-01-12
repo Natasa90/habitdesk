@@ -4,21 +4,23 @@ import { CategoryTags } from "../../../lib/helpers/categoryTags";
 import { FreeResCategories } from "../../../lib/constants";
 import { CategoryFilterProps } from "../../../Types/FreeResourcesTypes";
 
-export const FreeResCats: FC<CategoryFilterProps> = ({ currentCategory, setCurrentCategory }) => {
-    
-    const handleCategoryClick = (category: string) => {
-        setCurrentCategory(category);
-    };
+export const FreeResCats: FC<CategoryFilterProps> = ({
+ currentCategory,
+ setCurrentCategory,
+}) => {
+ const handleCategoryClick = (category: string) => {
+  setCurrentCategory(category);
+ };
 
-    const isActive = (category: string) => currentCategory === category;
+ const isActive = (category: string) => currentCategory === category;
 
-    return (
-        <View className="mt-4">
-            <CategoryTags
-                categories={FreeResCategories}
-                handleCategoryClick={handleCategoryClick}
-                isActive={isActive}
-            />
-        </View>
-    );
+ return (
+  <View className="mt-4">
+   <CategoryTags
+    categories={FreeResCategories}
+    handleCategoryClick={handleCategoryClick}
+    isActive={isActive}
+   />
+  </View>
+ );
 };

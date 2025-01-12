@@ -4,15 +4,15 @@ import { useTypedNavigation } from "../lib/hooks/useTypedNavigation";
 
 export const ResetPasswordScreen = () => {
 
-    const navigation = useTypedNavigation(); 
+ const navigation = useTypedNavigation();
 
-    const handleCancelReset = () => {
-        navigation.navigate("Login");
-    };
+ const handleCancelReset = () => {
+  navigation.navigate("Login");
+ };
 
-    return (
-        <View className="bg-grayScreen p-9">
-            <ResetPassword resetPassword={handleCancelReset} />
-        </View>
-    );
+ return (
+  <View className="bg-grayScreen p-9">
+   <ResetPassword resetPassword={handleCancelReset} />
+  </View>
+ );
 };
