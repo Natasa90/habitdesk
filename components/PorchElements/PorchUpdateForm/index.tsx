@@ -77,10 +77,19 @@ export const PorchUpdateForm: FC<PorchFormProps> = ({
    <View className="flex-1 items-center justify-center bg-opacity-70">
     <BlurView
      style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0 }}
-     intensity={80} // Use intensity prop for controlling blur amount
+     intensity={80}
      tint="dark"
     />
-    <View className="bg-white px-5 pt-4 pb-10 rounded-xl w-4/5 ">
+    <View
+     className="bg-gray-200 px-5 pt-4 pb-10 rounded-xl w-4/5 "
+     style={{
+      shadowColor: "#000",
+      shadowOffset: { width: 0, height: 4 },
+      shadowOpacity: 0.25,
+      shadowRadius: 10,
+      elevation: 20,
+     }}
+    >
      {responseUpdate ? (
       <ActivityIndicator size="large" color="#0000ff" />
      ) : (
@@ -89,12 +98,13 @@ export const PorchUpdateForm: FC<PorchFormProps> = ({
         onPress={() => setShowForm(false)}
         className="absolute right-2 z-10"
        >
-        <Icon name="close" size={30} color="#555" />
+        <Icon name="close" size={20} color="#555" />
        </TouchableOpacity>
        <Text className="text-lg mb-10">Progress Update</Text>
        <TextInput
-        className="bg-gray-200 p-3 rounded-md mb-8 text-base"
+        className="bg-white p-3 rounded-md mb-8 text-base text-sm"
         placeholder="Share your update with the world..."
+        placeholderTextColor="gray"
         value={text}
         onChangeText={setText}
         editable={!isUploading}
@@ -104,10 +114,11 @@ export const PorchUpdateForm: FC<PorchFormProps> = ({
         className={`${
          !isValidHttpUrl(source) && source.length > 0
           ? "bg-red-100"
-          : "bg-gray-200"
-        } p-3 rounded-md mb-8 text-base`}
+          : "bg-white"
+        } p-3 rounded-md mb-8 text-base text-sm`}
         value={source}
         placeholder="Share your learning source"
+        placeholderTextColor="gray"
         onChangeText={setSource}
         editable={!isUploading}
        />

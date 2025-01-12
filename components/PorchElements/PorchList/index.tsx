@@ -80,7 +80,7 @@ export const PorchList: FC<PorchListProps> = ({ porchs, setPorchs }) => {
          <Text className="font-bold">{learningDays}</Text> days!
         </Text>
         <TouchableOpacity onPress={handleFiltering} className="mt-3 w-48">
-         <Text className="bg-customBlue rounded-xl py-2.5 px-4 text-sm font-medium text-white self-start">
+         <Text className="bg-customBlue rounded-xl py-2.5 px-3 text-sm font-medium text-white self-start">
           {buttonTitle}
          </Text>
         </TouchableOpacity>

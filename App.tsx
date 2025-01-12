@@ -81,7 +81,6 @@ export default function App() {
       name="Home"
       component={HomeScreen}
       options={{
-       headerLeft: () => null,
        headerStyle: {
         backgroundColor: "#f8f8f8",
        },
@@ -104,12 +103,11 @@ export default function App() {
       name="UserProfile"
       component={UserProfileScreen}
       options={{
-       headerStyle: {
+        headerLeft: () => null,
+        headerStyle: {
         backgroundColor: "#f8f8f8",
        },
-       headerTitle: () => (
-        <HeaderWithIcon icon="user-circle" title="Welcome!" />
-       ),
+        headerTitle: "",
       }}
      />
      <Stack.Screen

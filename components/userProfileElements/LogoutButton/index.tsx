@@ -33,7 +33,7 @@ export const LogoutButton = () => {
  };
 
  return (
-  <View className="flex-1 justify-center items-center">
+  <View className="ml-6">
    {loading ? (
     <ActivityIndicator size="large" color="#0B65C2" />
    ) : (
