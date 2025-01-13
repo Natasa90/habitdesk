@@ -11,11 +11,31 @@ import { FontAwesome } from "@expo/vector-icons";
 export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
  const [email, setEmail] = useState<string>("");
  const [password, setPassword] = useState<string>("");
+ const [isEmailValid, setIsEmailValid] = useState(true);
+ const [isPasswordValid, setIsPasswordValid] = useState(true);
  const navigation = useTypedNavigation();
 
  const { setUserInfo } = useContext(UserInfoContext);
 
+ const handleEmailChange = (text: string) => {
+  setEmail(text);
+  setIsEmailValid(true);
+ };
+
+ const handlePasswordChange = (text: string) => {
+  setPassword(text);
+  setIsPasswordValid(true);
+ };
+
  const signInWithEmail = async () => {
+  if (!email.trim()) {
+   setIsEmailValid(false);
+  }
+
+  if (password.length < 8) {
+   setIsPasswordValid(false);
+  }
+
   try {
    const { data, error } = await supabase.auth.signInWithPassword({
     email,
@@ -25,6 +45,8 @@ export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
    if (error) {
     console.log("Login Error:", error.message);
     Alert.alert("Login failed!", error.message);
+     setIsEmailValid(false)
+     setIsPasswordValid(false);
    } else {
     const user = data?.user;
     const session = data?.session;
@@ -54,35 +76,53 @@ export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
     elevation: 5,
    }}
   >
-   <View className="flex-row gap-2">
+   <View className="flex-row gap-2 mb-5">
     <FontAwesome name="user-circle" size={24} color="#000" />
     <Text className="text-xl font-bold text-gray-900 mb-6">Sign in</Text>
    </View>
-   <View className="space-y-4">
-    <Text className="text-base font-medium text-gray-900">Email</Text>
-    <TextInput
-     placeholder="Email address"
-     keyboardType="email-address"
-     value={email}
-     onChangeText={setEmail}
-     className="px-3 py-3 mt-2 border border-gray-300 rounded-md text-gray-900"
+   <View className="flex-row">
+    <FontAwesome
+     name="envelope-o"
+     size={24}
+     color="gray"
+     style={{ paddingLeft: 3 }}
     />
-    <Text className="text-base font-medium text-gray-900">Password</Text>
-    <TextInput
-     placeholder="Password (min. 8 characters)"
-     secureTextEntry
-     value={password}
-     onChangeText={setPassword}
-     className="px-3 py-3 mt-2 border border-gray-300 rounded-md text-gray-900"
-    />
-    <TouchableOpacity onPress={resetPassword}>
-     <Text className="text-sm text-gray-500 pb-3">Forgot Password?</Text>
-    </TouchableOpacity>
-    <AccountButton onPress={signInWithEmail}>
-     <Text className="text-white">Sign In</Text>
-    </AccountButton>
-    <GitHubButton />
+    <Text className="text-base font-medium text-gray-900 pl-2">Email</Text>
    </View>
+   <TextInput
+    placeholder="Email address"
+    keyboardType="email-address"
+    value={email}
+    onChangeText={handleEmailChange}
+    className={`px-3 py-3 border ${
+     isEmailValid ? "border-gray-300" : "border-red-500"
+    } rounded-md text-gray-900 mt-2 mb-5`}
+   />
+   <View className="flex-row">
+    <FontAwesome
+     name="lock"
+     size={26}
+     color="gray"
+     style={{ paddingLeft: 3 }}
+    />
+    <Text className="text-base font-medium text-gray-900 pl-2">Password</Text>
+   </View>
+   <TextInput
+    placeholder="Password (min. 8 characters)"
+    secureTextEntry
+    value={password}
+    onChangeText={handlePasswordChange}
+    className={`px-3 py-3 mt-1 mb-5 border ${
+     isPasswordValid ? "border-gray-300" : "border-red-500"
+    } rounded-md text-gray-900`}
+   />
+   <TouchableOpacity onPress={resetPassword}>
+    <Text className="text-sm text-gray-500 pb-3">Forgot Password?</Text>
+   </TouchableOpacity>
+   <AccountButton onPress={signInWithEmail}>
+    <Text className="text-white">Sign In</Text>
+   </AccountButton>
+   <GitHubButton />
    <Text className="text-center text-gray-500 my-6">
     Don’t have an account?{" "}
    </Text>

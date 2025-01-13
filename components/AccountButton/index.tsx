@@ -20,7 +20,7 @@ export const AccountButton = ({ onPress, children }: ButtonProps) => {
     </Defs>
     <Rect x="0" y="0" width="280" height="40" fill="url(#gradient)" rx="12" />
    </Svg>
-   <View className="absolute mt-3">{children}</View>
+   <View className="absolute mt-2.5">{children}</View>
   </TouchableOpacity>
  );
 };
