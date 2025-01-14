@@ -127,7 +127,7 @@ export default function App() {
        headerStyle: {
         backgroundColor: "#f8f8f8",
        },
-       headerTitle: () => <HeaderWithIcon icon="book" title="Free Resources" />,
+       headerTitle: () => <HeaderWithIcon icon="computer" title="Free Resources" />,
       }}
      />
      <Stack.Screen

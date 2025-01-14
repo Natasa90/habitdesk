@@ -13,9 +13,11 @@ export const ResetPassword: FC<ResetPasswordProps> = ({ resetPassword }) => {
 
  const handlePasswordReset = async () => {
   if (!email.trim()) {
-   setIsEmailValid(false); 
-    Alert.alert("Resseting password failed!/n Please enter your email address to reset the password.");
-    return;
+   setIsEmailValid(false);
+   Alert.alert(
+    "Please add an email."
+   );
+   return;
   }
 
   try {

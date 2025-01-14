@@ -20,6 +20,7 @@ export type LearningSourcesProps = {
 
 export interface TitleProps {
     title: string
+    description: string;
 };
 
 export interface CategoryProps {

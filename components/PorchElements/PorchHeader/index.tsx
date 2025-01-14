@@ -15,30 +15,26 @@ export const PorchHeader = () => {
 
  const handleButtonClick = () => {
   if (isUserLoggedIn) {
-   setShowForm(true); // Show the form if logged in
+   setShowForm(true);
   } else {
-   Alert.alert("Please log in to submit an update!"); // Alert if not logged in
+   Alert.alert("Please log in to submit an update!");
   }
  };
 
  return (
   <View>
-   {/* Button for Goals */}
    <PorchUserButtonGoals
     showForm={showUserForm}
     setShowForm={setShowUserForm}
    />
 
-   {/* Button for Posting Updates */}
    <PorchUserButtonUpdates
     showForm={showForm}
-    setShowForm={handleButtonClick} // Passing the function to handle button click
+    setShowForm={handleButtonClick}
    />
 
-   {/* Display Quotes */}
    <Quotes />
 
-   {/* Display the form when showForm is true */}
    {showForm && (
     <PorchUpdateForm setShowForm={setShowForm} setPorchs={() => {}} />
    )}

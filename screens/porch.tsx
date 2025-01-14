@@ -4,6 +4,7 @@ import { supabase } from "@/lib/supabase";
 import { PorchHeader } from "../components/PorchElements/PorchHeader";
 import { PorchList } from "../components/PorchElements/PorchList";
 import { PorchType } from "@/Types/PorchTypes";
+import { ScreenTitle } from "@/components/ScreenTitle";
 
 export const PorchScreen = () => {
 
@@ -37,6 +38,7 @@ export const PorchScreen = () => {
 
  return (
   <ScrollView className="flex-1 bg-grayScreen p-9">
+    <ScreenTitle title="Porch - Your Growth Dashboard" description="" />
    <PorchHeader />
    {loading ? (
     <View className="flex items-center justify-center mt-10">

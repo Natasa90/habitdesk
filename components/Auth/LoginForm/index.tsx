@@ -45,15 +45,13 @@ export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
    if (error) {
     console.log("Login Error:", error.message);
     Alert.alert("Login failed!", error.message);
-     setIsEmailValid(false)
-     setIsPasswordValid(false);
+    setIsEmailValid(false);
+    setIsPasswordValid(false);
    } else {
     const user = data?.user;
     const session = data?.session;
 
     if (user) {
-     Alert.alert("Login successful!");
-
      setUserInfo({ email: user.email });
      navigation.navigate("UserProfile");
     } else {
@@ -76,10 +74,7 @@ export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
     elevation: 5,
    }}
   >
-   <View className="flex-row gap-2 mb-5">
-    <FontAwesome name="user-circle" size={24} color="#000" />
-    <Text className="text-xl font-bold text-gray-900 mb-6">Sign in</Text>
-   </View>
+   <Text className="text-2xl font-bold text-gray-700 mb-12">Sign In</Text>
    <View className="flex-row">
     <FontAwesome
      name="envelope-o"
