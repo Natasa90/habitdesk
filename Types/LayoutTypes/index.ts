@@ -1,26 +1,23 @@
 import { ReactNode } from "react";
 
 export interface CardLayoutProps {
-    title: string | number;
-    porch: {
-      text?: string;
-      email?: string;
-      source: string;
-      excellent?: number;
-    };
+    title: string;
+    porch: any;
     displayComment: string;
     commentText: string;
-    showMore?: boolean;
-    handleMore?: () => void;
-    handleVote: (type: string) => void;
+    showMore: boolean;
+    handleMore: () => void;
+    handleVote: () => void;
     isUpdating: boolean;
-    formattedDate?: string;
+    formattedDate: string;
+    isVoteDisabled: boolean;
+    hasVoted: boolean;
     extraContent?: ReactNode;
   };
   
   export interface ButtonProps {
     onPress: () => void;
-    children: React.ReactNode; 
+    children: any; 
     className?: string;
   };
 

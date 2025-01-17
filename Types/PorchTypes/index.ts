@@ -4,12 +4,12 @@ export interface PorchUserButtonProps {
 };
 
 export type PorchType = {
-    id: string;
+    new_id: string;
     created_at: string;
     email: string;
     text: string;
     source: string;
-    excellent: number;
+    likes: string[];
     [key: string]: any;
 };
 

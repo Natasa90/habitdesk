@@ -1,7 +1,8 @@
-import { FC, useState } from "react";
+import { FC, useState, useContext, useEffect } from "react";
 import { CardLayout } from "@/components/Layout/CardsLayout";
 import { PorchDailyUpdateProps } from "@/Types/PorchTypes";
 import { supabase } from "@/lib/supabase";
+import { UserInfoContext } from "@/context/UserInfoContext";
 
 export const PorchDailyUpdate: FC<PorchDailyUpdateProps> = ({
  porch,
@@ -9,6 +10,15 @@ export const PorchDailyUpdate: FC<PorchDailyUpdateProps> = ({
 }) => {
  const [isUpdating, setIsUpdating] = useState<boolean>(false);
  const [showMore, setShowMore] = useState<boolean>(false);
+ const [hasVoted, setHasVoted] = useState<boolean>(false);
+ const { userInfo } = useContext(UserInfoContext);
+
+ useEffect(() => {
+  if (userInfo?.email) {
+   const userHasVoted = porch.likes.includes(userInfo.email);
+   setHasVoted(userHasVoted);
+  }
+ }, [userInfo, porch.likes]);
 
  const date = new Date(porch.created_at);
  const formattedDate = `${(date.getMonth() + 1)
@@ -20,55 +30,46 @@ export const PorchDailyUpdate: FC<PorchDailyUpdateProps> = ({
 
  const handleVote = async () => {
   setIsUpdating(true);
-  try {
-   // Fetch the current value of the "excellent" column
-   const { data, error: fetchError } = await supabase
+   try {
+    if (!userInfo?.email) {
+      console.error('User not logged in');
+      return;
+    } 
+   let updatedLikes = [...porch.likes];
+   if (hasVoted) {
+    updatedLikes = updatedLikes.filter((email) => email !== userInfo.email);
+   } else {
+    updatedLikes.push(userInfo.email);
+   }
+   const { error } = await supabase
     .from("porch")
-    .select("excellent")
-    .eq("new_id", porch.new_id)
-    .single();
+    .update({ likes: updatedLikes })
+    .eq("new_id", porch.new_id);
 
-   if (fetchError) {
-    console.error("Error fetching current value:", fetchError.message);
+   if (error) {
+    console.error("Error fetching current value:", error);
+    setIsUpdating(false);
     return;
    }
 
-   // Increment the value of the "excellent" column
-   const newValue = data.excellent + 1;
+   setPorchs((porchs) =>
+    porchs.map((p) =>
+     p.new_id === porch.new_id ? { ...p, likes: updatedLikes } : p
+    )
+   );
 
-   // Update the value in the database
-   const { data: updatedData, error: updateError } = await supabase
-    .from("porch")
-    .update({ excellent: newValue })
-    .eq("new_id", porch.new_id)
-    .select();
-
-   if (updateError) {
-    console.error("Error updating vote:", updateError.message);
-   } else {
-    // Update the porch state with the new "excellent" value
-    setPorchs((porchs) =>
-     porchs.map((f) =>
-      f.new_id === porch.new_id
-       ? { ...f, excellent: updatedData[0]?.excellent }
-       : f
-     )
-    );
-   }
-  } catch (error) {
-   console.error("Error voting:", error);
-  } finally {
+   setHasVoted(!hasVoted);
+   setIsUpdating(false);
+  } catch (err) {
+   console.error("Unexpected error:", err);
+   alert("An unexpected error occurred. Please try again.");
    setIsUpdating(false);
   }
  };
 
  const commentText = porch.text;
-
  const displayComment = showMore ? commentText : commentText.slice(0, 90);
-
- const handleMore = () => {
-  setShowMore(true);
- };
+ const handleMore = () => setShowMore(true);
 
  return (
   <>
@@ -82,6 +83,8 @@ export const PorchDailyUpdate: FC<PorchDailyUpdateProps> = ({
     handleVote={handleVote}
     isUpdating={isUpdating}
     formattedDate={formattedDate}
+    isVoteDisabled={false}
+    hasVoted={hasVoted}
    />
   </>
  );

@@ -107,7 +107,7 @@ export default function App() {
         headerStyle: {
         backgroundColor: "#f8f8f8",
        },
-        headerTitle: "",
+        headerTitle: "User Profile",
       }}
      />
      <Stack.Screen
@@ -117,7 +117,7 @@ export default function App() {
        headerStyle: {
         backgroundColor: "#f8f8f8",
        },
-       headerTitle: () => <HeaderWithIcon icon="bar-chart" title="Porch" />,
+       headerTitle: "",
       }}
      />
      <Stack.Screen
@@ -127,7 +127,7 @@ export default function App() {
        headerStyle: {
         backgroundColor: "#f8f8f8",
        },
-       headerTitle: () => <HeaderWithIcon icon="computer" title="Free Resources" />,
+       headerTitle: "",
       }}
      />
      <Stack.Screen
@@ -137,7 +137,7 @@ export default function App() {
        headerStyle: {
         backgroundColor: "#f8f8f8",
        },
-       headerTitle: () => <HeaderWithIcon icon="" title="" />,
+       headerTitle:"",
       }}
      />
      <Stack.Screen
@@ -147,7 +147,7 @@ export default function App() {
        headerStyle: {
         backgroundColor: "#f8f8f8",
        },
-       headerTitle: () => <HeaderWithIcon icon="" title="" />,
+       headerTitle: "",
       }}
      />
     </Stack.Navigator>

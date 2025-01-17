@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react';
+
 export interface CategoryTagsProps { 
     categories: string [] | { name: string } []; 
     handleCategoryClick: (category: string) => void;
@@ -6,12 +8,10 @@ export interface CategoryTagsProps {
 
 export interface Source {
     id: number;
-    like: number;
-    exelent: number;
-    false: number;
+    likes: string[];
     text: string;
     source: string;
-    category?: string;
+    category?: string; 
 };
 
 export type LearningSourcesProps = {
@@ -34,18 +34,18 @@ export interface CategoryFilterProps {
 
 export interface Fact {
     id: number;
-    like: number;
-    exelent: number;
-    false: number;
+    likes: string[];
     text: string;
     source: string;
     category?: string;  
   };
 
-export interface FreeResListProps {
-    resources: Fact[]; // List of resources to render
-    isLoading: boolean; // Indicates if data is being fetched
-    handleVote: (columnName: keyof Fact, fact: Fact) => void; // Function to handle voting
-    handleShowComments: (resourceId: number) => void; // Function to handle showing comments
-    loadMore: () => void; // Function to load more resources
+export interface FreeSourcesListProps {
+  facts: Fact[];
+  setFacts: Dispatch<SetStateAction<Fact[]>>; 
+}
+
+export interface FreeSourceProps {
+  fact: Fact;
+  setFacts: React.Dispatch<React.SetStateAction<Fact[]>>;
 }
