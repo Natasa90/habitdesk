@@ -74,7 +74,6 @@ export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
     elevation: 5,
    }}
   >
-   <Text className="text-2xl font-bold text-gray-700 mb-12">Sign In</Text>
    <View className="flex-row">
     <FontAwesome
      name="envelope-o"
@@ -115,7 +114,7 @@ export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
     <Text className="text-sm text-gray-500 pb-3">Forgot Password?</Text>
    </TouchableOpacity>
    <AccountButton onPress={signInWithEmail}>
-    <Text className="text-white">Sign In</Text>
+    <Text className="text-white">Log In</Text>
    </AccountButton>
    <GitHubButton />
    <Text className="text-center text-gray-500 my-6">

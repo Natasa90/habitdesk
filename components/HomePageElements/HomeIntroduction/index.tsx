@@ -1,4 +1,6 @@
-import { View, Text, TouchableOpacity } from "react-native"
+import { useState, useEffect } from "react";
+import { View, Text } from "react-native"
+import * as Font from "expo-font"; 
 import { Team } from '../../index'
 import { useTypedNavigation } from "@/lib/hooks/useTypedNavigation"
 import { HomeButton } from "../HomeButton";
@@ -8,8 +10,8 @@ export const HomeIntroduction = () => {
 
   return (
     <View className="p-2">
-      <Text className="text-3xl">Welcome to HabitDesk!</Text>
-      <Text className="text-center mt-2 italic">
+      <Text className="text-3xl color-customBlue" style={{ fontFamily: "Kanit" }}>Welcome to HabitDesk!</Text>
+      <Text className="text-center mt-2 italic"style={{ fontFamily: "Kanit" }}>
         Your personal space for tracking and improving your learning habits.
       </Text>
       <Team />
@@ -21,7 +23,7 @@ export const HomeIntroduction = () => {
       </Text>
 
       <HomeButton onPress={() => navigation.navigate('Login')}>
-     <Text className="text-white">Get Started</Text>
+     <Text className="text-white text-xl">Get Started</Text>
     </HomeButton>
     </View>
   )

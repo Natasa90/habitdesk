@@ -18,7 +18,7 @@ export const Footer = () => {
   }
  };
  return (
-  <View className="items-center justify-center bg-gray-100 py-4 border-t border-gray-300 mb-2">
+  <View className="items-center justify-center bg-footerBlue py-4 border-t border-gray-300 mb-2">
    <View className="flex-row items-center space-x-6 mb-2">
     <TouchableOpacity onPress={() => handleOpenUrl("https://www.facebook.com")}>
      <FontAwesome

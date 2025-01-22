@@ -10,3 +10,7 @@ export interface CreateAccountProps {
 export interface ResetPasswordProps {
   resetPassword: () => void; 
 };
+
+export interface FormTitleProps {
+  title: string
+};

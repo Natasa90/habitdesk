@@ -91,7 +91,7 @@ export const GitHubButton = () => {
  return (
   <View>
    <AccountButton onPress={signInWithGitHub}>
-    <Text className="text-white">Sign In with GitHub</Text>
+    <Text className="text-white">Log In with GitHub</Text>
    </AccountButton>
 
    {signinError && <Text className="text-red-500">{signinError}</Text>}

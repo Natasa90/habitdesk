@@ -3,7 +3,6 @@ import Svg, { Defs, LinearGradient, Stop, Rect } from "react-native-svg";
 import { ButtonProps } from "@/Types/LayoutTypes";
 
 export const AccountButton = ({ onPress, children }: ButtonProps) => {
-
  return (
   <TouchableOpacity
    onPress={onPress}
@@ -13,9 +12,9 @@ export const AccountButton = ({ onPress, children }: ButtonProps) => {
    <Svg height="40" width="280">
     <Defs>
      <LinearGradient id="gradient" x1="0" y1="0" x2="1" y2="1">
-      <Stop offset="0" stopColor="#003153" />
-      <Stop offset="0.5" stopColor="#000080" />
-      <Stop offset="1" stopColor="#003153" />
+      <Stop offset="0" stopColor="rgb(6, 140, 180)" />
+      <Stop offset="0.5" stopColor="rgb(6, 167, 180)" />
+      <Stop offset="1" stopColor="rgb(6, 140, 180)" />
      </LinearGradient>
     </Defs>
     <Rect x="0" y="0" width="280" height="40" fill="url(#gradient)" rx="12" />

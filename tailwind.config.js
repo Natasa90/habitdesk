@@ -11,7 +11,11 @@ module.exports = {
       extend: {
         colors: {
           'grayScreen': 'rgb(239, 244, 249)',
-          'customBlue': 'rgb(36, 99, 235)',
+          'customBlue': 'rgb(6, 140, 180)',
+          'footerBlue': 'rgb(246, 250, 251)',
+        },
+        fontFamily: {
+          custom: ['Kanit', 'sans-serif'], 
         },
       },
     },
