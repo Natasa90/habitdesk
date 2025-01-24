@@ -1,5 +1,6 @@
 import { useTypedNavigation } from "@/lib/hooks/useTypedNavigation";
-import { TouchableOpacity, Text, View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
+import TextWrapper from "@/components/TextWrapper";
 import { LogoutButton } from "../LogoutButton";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -12,7 +13,7 @@ export const UserProfileButtons = () => {
     onPress={() => navigation.navigate("Porch")}
     className="bg-gray-300 p-6 rounded-xl shadow-md flex-row justify-center items-center"
    >
-    <Text className="text-lg text-gray-900">Go to Porch Screen</Text>
+    <TextWrapper className="text-lg text-gray-900">Go to Porch Screen</TextWrapper>
     <Ionicons
      name="arrow-forward"
      size={18}
@@ -24,7 +25,7 @@ export const UserProfileButtons = () => {
     onPress={() => navigation.navigate("FreeResources")}
     className="bg-gray-300 p-6 rounded-xl shadow-md flex-row justify-center items-center mb-6"
    >
-    <Text className="text-lg text-gray-900">Go to Free Resources</Text>
+    <TextWrapper className="text-lg text-gray-900">Go to Free Resources</TextWrapper>
     <Ionicons
      name="arrow-forward"
      size={18}

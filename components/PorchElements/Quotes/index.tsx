@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { View, Text, ActivityIndicator, Alert } from "react-native";
+import { View, ActivityIndicator, Alert } from "react-native";
+import TextWrapper from "@/components/TextWrapper";
 import quotesData from "../../../data/quotes.json";
 
 export const Quotes = () => {
@@ -21,20 +22,20 @@ export const Quotes = () => {
  const currentQuote = quotesData[currentIndex];
 
  return (
-  <View className="mt-6 mb-12">
+  <View className="mt-6 mb-10">
    {loadingState === "loading" ? (
     <ActivityIndicator size="large" color="#0000ff" />
    ) : loadingState === "loaded" && currentQuote ? (
     <View className="text-center">
-     <Text className="font-extralight text-lg italic text-center">
+     <TextWrapper className="font-IBM_italic text-lg text-center">
       "{currentQuote.quote}"
-     </Text>
-     <Text className="text-sm text-gray-600 text-center">
+     </TextWrapper>
+     <TextWrapper className="text-sm font-IBM_extraLight text-center">
       - {currentQuote.author}
-     </Text>
+     </TextWrapper>
     </View>
    ) : (
-    <Text className="text-center text-red-500">Failed to load quote</Text>
+    <TextWrapper className="text-center text-red-500">Failed to load quote</TextWrapper>
    )}
   </View>
  );

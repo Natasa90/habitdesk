@@ -1,26 +1,39 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: [
-      "./App.{js,jsx,ts,tsx}",
-      "./src/**/*.{js,jsx,ts,tsx}",
-      "./screens/**/*.{js,tsx,ts}",
-      "./components/**/*.{js,tsx,ts}",
-      "./lib/**/*.{js,tsx,ts}",
-    ],
-    theme: {
-      extend: {
-        colors: {
-          'grayScreen': 'rgb(239, 244, 249)',
-          'customBlue': 'rgb(6, 140, 180)',
-          'footerBlue': 'rgb(246, 250, 251)',
-        },
-        fontFamily: {
-          custom: ['Kanit', 'sans-serif'], 
-        },
+  content: [
+    "./App.{js,jsx,ts,tsx}",
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "./screens/**/*.{js,jsx,ts,tsx}",
+    "./components/**/*.{js,jsx,ts,tsx}",
+    "./lib/**/*.{js,jsx,ts,tsx}",
+    "./assets/**/*.{js,jsx,ts,tsx}", 
+  ],
+  theme: {
+    extend: {
+      colors: {
+        grayScreen: "rgb(239, 244, 249)",
+        customBlue: "rgb(6, 140, 180)",
+        footerBlue: "rgb(246, 250, 251)",
+        lionBlue: "rgb(11, 66, 107)"
       },
+      fontFamily: {
+        sans: ["IBMPlexSerif-Regular", "sans-serif"], 
+        IBM_regular: ["IBMPlexSerif-Regular", "sans-serif"],
+        IBM_bold: ["IBMPlexSerif-Bold", "sans-serif"],
+        IBM_boldItalic: ["IBMPlexSerif-BoldItalic", "sans-serif"],
+        IBM_extraLight: ["IBMPlexSerif-ExtraLight", "sans-serif"],
+        IBM_extraLightItalic: ["IBMPlexSerif-ExtraLightItalic", "sans-serif"],
+        IBM_italic: ["IBMPlexSerif-Italic", "sans-serif"],
+        IBM_light: ["IBMPlexSerif-Light", "sans-serif"],
+        IBM_lightItalic: ["IBMPlexSerif-LightItalic", "sans-serif"],
+        IBM_medium: ["IBMPlexSerif-Medium", "sans-serif"],
+        IBM_mediumItalic: ["IBMPlexSerif-MediumItalic", "sans-serif"],
+        IBM_semibold: ["IBMPlexSerif-SemiBold", "sans-serif"],
+        IBM_semiboldItalic: ["IBMPlexSerif-SemiBoldItalic", "sans-serif"],
+        IBM_thin: ["IBMPlexSerif-Thin", "sans-serif"],
+        IBM_thinItalic: ["IBMPlexSerif-ThinItalic", "sans-serif"],
+},
     },
-    plugins: [],
-  };
-  
-
-// UPDATE THE CONTENT PATHS to include the whole project! 
+  },
+  plugins: [],
+};

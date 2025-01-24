@@ -1,14 +1,13 @@
-import { FC } from 'react'; 
-import { View, Text } from "react-native";
-import { FormTitleProps } from "@/Types/AuthTypes";
+import { FC } from "react";
+import { View, Image } from "react-native";
 
-export const FormTitle: FC <FormTitleProps> = ({ title }) => {
-
+export const FormTitle: FC = () => {
  return (
-   <View className="mt-10 mb-6">
-   <Text className="text-2xl text-customBlue text-center">
-    {title}
-   </Text>
+  <View className="mt-2">
+   <Image
+    source={require("../../../assets/images/habitdesk.png")} 
+    className="w-[110px] h-[110px]"
+   />
   </View>
  );
 };

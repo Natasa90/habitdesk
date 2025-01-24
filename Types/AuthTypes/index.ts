@@ -1,3 +1,5 @@
+import { ImageSourcePropType } from "react-native";
+
 export interface LoginProps {
     signUp: () => void
     resetPassword: () => void; 
@@ -13,4 +15,5 @@ export interface ResetPasswordProps {
 
 export interface FormTitleProps {
   title: string
+  logo: ImageSourcePropType; 
 };

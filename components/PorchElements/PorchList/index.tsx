@@ -1,12 +1,13 @@
 import { FC, useState, useEffect, useMemo, useContext } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, TouchableOpacity } from "react-native";
+import TextWrapper from "@/components/TextWrapper";
 import { PorchListProps } from "@/Types/PorchTypes";
 import { supabase } from "@/lib/supabase";
 import { UserInfoContext } from "@/context/UserInfoContext";
 import { PorchType } from "@/Types/PorchTypes";
 import { PorchDailyUpdate } from "../PorchDailyUpdate";
 
-export const PorchList: FC<PorchListProps> = ({ porchs, setPorchs }) => {
+export const  PorchList: FC<PorchListProps> = ({ porchs, setPorchs }) => {
 
  const { userInfo } = useContext(UserInfoContext);
  const [filtered, setFiltered] = useState<boolean>(false);
@@ -69,20 +70,20 @@ export const PorchList: FC<PorchListProps> = ({ porchs, setPorchs }) => {
    <View className="mx-auto">
     <View className="py-5 bg-gray-100 rounded-xl">
      <View className="ml-2">
-      <Text className="text-lg font-bold text-gray-900">Daily Highlights</Text>
-      <Text className="mt-1 text-sm font-medium text-gray-500">
+      <TextWrapper className="text-lg font-IBM_semibold">Daily Highlights</TextWrapper>
+      <TextWrapper className="mt-1 font-IBM_light">
        Growth and Learning News
-      </Text>
+      </TextWrapper>
       {userInfo?.email && (
        <>
-        <Text className="mt-5 text-lg font-medium text-gray-800">
+        <TextWrapper className="mt-5 text-lg">
          You've been dedicated to learning for{" "}
-         <Text className="font-bold">{learningDays}</Text> days!
-        </Text>
+         <TextWrapper className="font-IBM_semibold">{learningDays}</TextWrapper> days!
+        </TextWrapper>
         <TouchableOpacity onPress={handleFiltering} className="mt-3 w-48">
-         <Text className="bg-customBlue rounded-xl py-2.5 px-3 text-sm font-medium text-white self-start">
+         <TextWrapper className="bg-customBlue rounded-xl py-2.5 px-2 text-sm font-IBM_medium text-white self-start">
           {buttonTitle}
-         </Text>
+         </TextWrapper>
         </TouchableOpacity>
        </>
       )}

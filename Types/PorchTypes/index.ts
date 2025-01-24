@@ -1,5 +1,4 @@
 export interface PorchUserButtonProps {
-    showForm: boolean;
     setShowForm: React.Dispatch<React.SetStateAction<boolean>>;
 };
 

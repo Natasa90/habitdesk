@@ -12,7 +12,7 @@ if (!SUPABASE_CONFIG.url || !SUPABASE_CONFIG.key) {
 export const supabase = createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.key, {
     auth: {
         storage: AsyncStorage, 
-        autoRefreshToken: false,
+        autoRefreshToken: true,
         persistSession: true,
         detectSessionInUrl: false, 
         },

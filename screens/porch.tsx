@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { ScrollView, View, Text, ActivityIndicator } from "react-native";
+import { ScrollView, View, ActivityIndicator } from "react-native";
+import TextWrapper from "@/components/TextWrapper";
 import { supabase } from "@/lib/supabase";
 import { PorchHeader } from "../components/PorchElements/PorchHeader";
 import { PorchList } from "../components/PorchElements/PorchList";
 import { PorchType } from "@/Types/PorchTypes";
-import { ScreenTitle } from "@/components/ScreenTitle";
 
 export const PorchScreen = () => {
 
@@ -19,12 +19,12 @@ export const PorchScreen = () => {
     .from("porch")
     .select("*")
     .order("created_at", { ascending: false })
-    .range((page - 1) * 100, page * 100 - 1);
+    .range((page - 1) * 10, page * 10 - 1);
    if (error) {
     throw new Error(error.message);
    }
    setPorchs((prevPorchs) => [...prevPorchs, ...newPorchs]);
-   setHasMore(newPorchs.length === 100);
+   setHasMore(newPorchs.length === 10);
   } catch (err) {
    console.error("Failed to load porchs:", err);
   } finally {
@@ -38,26 +38,25 @@ export const PorchScreen = () => {
 
  return (
   <ScrollView className="flex-1 bg-grayScreen p-9">
-    <ScreenTitle title="Porch - Your Growth Dashboard" description="" />
    <PorchHeader />
    {loading ? (
     <View className="flex items-center justify-center mt-10">
      <ActivityIndicator size="large" color="#3b82f6" />
-     <Text className="mt-4 text-gray-600">Loading updates...</Text>
+     <TextWrapper className="mt-4 text-gray-600">Loading updates...</TextWrapper>
     </View>
    ) : (
     <PorchList porchs={porchs} setPorchs={setPorchs} />
    )}
    {hasMore && !loading && (
     <View className="mt-4">
-     <Text className="text-blue-600 underline text-center" onPress={loadPorchs}>
+     <TextWrapper className="text-blue-600 underline text-center" onPress={loadPorchs}>
       Load More Updates
-     </Text>
+     </TextWrapper>
     </View>
    )}
    {!hasMore && (
     <View className="mt-4">
-     <Text className="text-center text-gray-500">You have seen it all!</Text>
+     <TextWrapper className="text-center text-gray-500">You have seen it all!</TextWrapper>
     </View>
    )}
   </ScrollView>

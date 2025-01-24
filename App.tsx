@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import * as Font from "expo-font"; 
+import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -14,21 +13,15 @@ import { ResetPasswordScreen } from "./screens/resetPassword";
 import { UserInfoContext } from "./context/UserInfoContext";
 import { UserContextProps } from "./Types/User";
 import { Footer } from "./components/Footer";
+import { useFonts } from "./lib/hooks/useFonts";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
 
  const [userInfo, setUserInfo] = useState<UserContextProps["userInfo"]>(null);
- useEffect(() => {
-    async function loadFonts() {
-      await Font.loadAsync({
-        "Raleway": require("./assets/fonts/Kanit-Regular.ttf"), 
-      });
-    }
 
-    loadFonts();
-  }, []);
+ const fonts = useFonts(); 
 
  return (
   <UserInfoContext.Provider value={{ userInfo, setUserInfo }}>
@@ -62,12 +55,8 @@ export default function App() {
       name="UserProfile"
       component={UserProfileScreen}
       options={{
-       headerLeft: () => null,
-       headerStyle: {
-        backgroundColor: "#f8f8f8",
-       },
-       headerTitle: "User Profile",
-      }}
+      headerShown: false, // This removes the header completely
+  }}
      />
      <Stack.Screen
       name="Porch"

@@ -16,10 +16,10 @@ export const LoginScreen = () => {
 
  return (
   <ImageBackground
-   source={require("../assets/images/home-bg.jpeg")} // Update the path to your background image
-   style={{ flex: 1, alignItems: "center" }} // Make the background fill the screen
+   source={require("../assets/images/home-bg.jpeg")} 
+   style={{ flex: 1, alignItems: "center" }} 
   >
-  <FormTitle title="Log In To HabitDesk"/>
+   <FormTitle/>
    <LoginForm signUp={handleSignUp} resetPassword={handleResetPassword} />
   </ImageBackground>
  );

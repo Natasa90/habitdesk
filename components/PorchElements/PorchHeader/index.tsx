@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import { View, Alert } from "react-native";
+import TextWrapper from "@/components/TextWrapper";
 import { PorchUserButtonGoals } from "../PorchUserButtonGoals";
 import { PorchUserButtonUpdates } from "../PorchUserButtonUpdates";
 import { Quotes } from "../Quotes";
@@ -10,29 +11,24 @@ export const PorchHeader = () => {
  const [showForm, setShowForm] = useState(false);
  const [showUserForm, setShowUserForm] = useState(false);
 
- const { userInfo } = useContext(UserInfoContext);
- const isUserLoggedIn = Boolean(userInfo?.email);
-
  const handleButtonClick = () => {
-  if (isUserLoggedIn) {
-   setShowForm(true);
-  } else {
-   Alert.alert("Please log in to submit an update!");
-  }
+  setShowForm(true);
+  setShowUserForm(true);
  };
 
  return (
   <View>
-   <PorchUserButtonGoals
-    showForm={showUserForm}
-    setShowForm={setShowUserForm}
-   />
+   <View className="items-center mb-4">
+    <TextWrapper className="text-3xl font-IBM_semibold">Porch</TextWrapper>
+    <TextWrapper className="text-lg font-IBM_mediumc color-blue-700">
+     - Your Growth Dashboard -
+    </TextWrapper>
+   </View>
+   <View className="gap-2 mt-4">
+    <PorchUserButtonGoals setShowForm={setShowUserForm} />
 
-   <PorchUserButtonUpdates
-    showForm={showForm}
-    setShowForm={handleButtonClick}
-   />
-
+    <PorchUserButtonUpdates setShowForm={handleButtonClick} />
+   </View>
    <Quotes />
 
    {showForm && (

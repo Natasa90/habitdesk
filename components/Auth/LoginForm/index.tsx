@@ -1,5 +1,6 @@
 import { useState, FC, useContext } from "react";
-import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
+import TextWrapper from "@/components/TextWrapper";
+import { View, TextInput, TouchableOpacity, Alert } from "react-native";
 import { supabase } from "@/lib/supabase";
 import { LoginProps } from "../../../Types/AuthTypes";
 import { useTypedNavigation } from "../../../lib/hooks/useTypedNavigation";
@@ -81,14 +82,14 @@ export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
      color="gray"
      style={{ paddingLeft: 3 }}
     />
-    <Text className="text-base font-medium text-gray-900 pl-2">Email</Text>
+    <TextWrapper className="text-base font-medium text-gray-900 pl-2">Email</TextWrapper>
    </View>
    <TextInput
     placeholder="Email address"
     keyboardType="email-address"
     value={email}
     onChangeText={handleEmailChange}
-    className={`px-3 py-3 border ${
+    className={`px-3 py-3 border font-IBM_italic ${
      isEmailValid ? "border-gray-300" : "border-red-500"
     } rounded-md text-gray-900 mt-2 mb-5`}
    />
@@ -99,31 +100,31 @@ export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
      color="gray"
      style={{ paddingLeft: 3 }}
     />
-    <Text className="text-base font-medium text-gray-900 pl-2">Password</Text>
+    <TextWrapper className="text-base font-medium text-gray-900 pl-2">Password</TextWrapper>
    </View>
    <TextInput
     placeholder="Password (min. 8 characters)"
     secureTextEntry
     value={password}
     onChangeText={handlePasswordChange}
-    className={`px-3 py-3 mt-1 mb-5 border ${
+    className={`px-3 py-3 mt-1 mb-5 border font-IBM_italic ${
      isPasswordValid ? "border-gray-300" : "border-red-500"
     } rounded-md text-gray-900`}
    />
    <TouchableOpacity onPress={resetPassword}>
-    <Text className="text-sm text-gray-500 pb-3">Forgot Password?</Text>
+    <TextWrapper className="text-sm text-gray-500 pb-3">Forgot Password?</TextWrapper>
    </TouchableOpacity>
    <AccountButton onPress={signInWithEmail}>
-    <Text className="text-white">Log In</Text>
+    <TextWrapper className="text-white font-IBM_semibold">Log In</TextWrapper>
    </AccountButton>
    <GitHubButton />
-   <Text className="text-center text-gray-500 my-6">
+   <TextWrapper className="text-center text-gray-500 my-6">
     Don’t have an account?{" "}
-   </Text>
+   </TextWrapper>
    <TouchableOpacity onPress={signUp}>
-    <Text className="text-center font-bold text-xl text-[#0B65C2]">
+    <TextWrapper className="text-center font-bold text-xl text-[#0B65C2]">
      Join now
-    </Text>
+    </TextWrapper>
    </TouchableOpacity>
   </View>
  );

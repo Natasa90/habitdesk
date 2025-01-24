@@ -1,5 +1,6 @@
 import { FC, useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
+import { View, TextInput, TouchableOpacity, Alert } from "react-native";
+import TextWrapper from "@/components/TextWrapper";
 import { supabase } from "../../../lib/supabase";
 import { ResetPasswordProps } from "../../../Types/AuthTypes";
 import { AccountButton } from "@/components/AccountButton";
@@ -14,9 +15,7 @@ export const ResetPassword: FC<ResetPasswordProps> = ({ resetPassword }) => {
  const handlePasswordReset = async () => {
   if (!email.trim()) {
    setIsEmailValid(false);
-   Alert.alert(
-    "Please add an email."
-   );
+   Alert.alert("Please add an email.");
    return;
   }
 
@@ -47,27 +46,28 @@ export const ResetPassword: FC<ResetPasswordProps> = ({ resetPassword }) => {
  };
 
  return (
-  <View
-   className="px-4 py-6 bg-gray-50 rounded-xl shadow-md"
-   style={{
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.5,
-    elevation: 5,
-   }}
-  >
-   <View className="flex-row gap-2 justify-center">
-    <Text className="text-2xl text-center font-bold mt-1">
-     Reset Your Password
-    </Text>
-   </View>
-   <Text className="mx-4 text-center mt-3 mb-2 italic text-sm text-gray-600">
+  <View className="items-center">
+   <TextWrapper className="text-xl font-IBM_semibold mb-1">
+    Reset Your Password
+   </TextWrapper>
+   <TextWrapper className="text-center pb-8 text-gray-500 italic">
     Enter your email address below, and we'll send you a link to reset your
     password.
-   </Text>
-   <View className="px-4 py-6">
+   </TextWrapper>
+
+   {/* Form Section */}
+   <View
+    className="px-4 py-6 bg-gray-50 rounded-xl shadow-md"
+    style={{
+     shadowColor: "#000",
+     shadowOffset: { width: 0, height: 2 },
+     shadowOpacity: 0.25,
+     shadowRadius: 3.5,
+     elevation: 5,
+    }}
+   >
     <View className="space-y-5">
+     {/* Email Input */}
      <View>
       <View className="flex-row items-center">
        <FontAwesome
@@ -76,7 +76,9 @@ export const ResetPassword: FC<ResetPasswordProps> = ({ resetPassword }) => {
         color="gray"
         style={{ paddingLeft: 3 }}
        />
-       <Text className="text-base font-medium text-gray-900 pl-2">Email</Text>
+       <TextWrapper className="text-base font-medium text-gray-900 pl-2">
+        Email
+       </TextWrapper>
       </View>
       <View className="mt-2.5">
        <TextInput
@@ -84,10 +86,9 @@ export const ResetPassword: FC<ResetPasswordProps> = ({ resetPassword }) => {
         value={email}
         onChangeText={(text) => {
          setEmail(text);
-         if (!text.trim()) setIsEmailValid(false);
-         else setIsEmailValid(true);
+         setIsEmailValid(!!text.trim());
         }}
-        className="w-full py-4 pl-3 text-black placeholder-gray-500 bg-white border rounded-md"
+        className="w-full py-4 pl-3 text-black placeholder-gray-500 bg-white border rounded-md font-IBM_italic"
         style={{
          borderColor: isEmailValid ? "gray" : "red",
          borderWidth: 1,
@@ -95,14 +96,20 @@ export const ResetPassword: FC<ResetPasswordProps> = ({ resetPassword }) => {
        />
       </View>
      </View>
+
+     {/* Cancel and Reset Password Buttons */}
      <View className="flex items-center justify-between">
       <TouchableOpacity onPress={() => resetPassword()}>
-       <Text className="text-base font-medium text-orange-500">Cancel</Text>
+       <TextWrapper className="text-base font-medium text-orange-500">
+        Cancel
+       </TextWrapper>
       </TouchableOpacity>
      </View>
      <View>
       <AccountButton onPress={handlePasswordReset}>
-       <Text className="text-white">Reset Password</Text>
+       <TextWrapper className="text-white font-IBM_semibold">
+        Reset Password
+       </TextWrapper>
       </AccountButton>
      </View>
     </View>

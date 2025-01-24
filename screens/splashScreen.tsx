@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useContext } from "react";
-import { View, Image, Animated, StatusBar } from "react-native";
+import { View, Image, Animated, StatusBar, ImageBackground } from "react-native";
 import { useTypedNavigation } from "@/lib/hooks/useTypedNavigation";
 import { UserInfoContext } from "@/context/UserInfoContext";
 import { supabase } from "@/lib/supabase";
@@ -64,7 +64,10 @@ export const SplashScreen = () => {
   }, [logoBounce, navigation, setUserInfo]);
 
   return (
-    <View className="flex-1 justify-center items-center bg-white">
+    <ImageBackground
+   source={require("../assets/images/home-bg.jpeg")} 
+   style={{ flex: 1, justifyContent: "center", alignItems: "center" }} 
+  >
       <StatusBar barStyle="light-content" />
       <Animated.View
         className="flex justify-center items-center"
@@ -75,6 +78,6 @@ export const SplashScreen = () => {
           className="w-48 h-48"
         />
       </Animated.View>
-    </View>
+    </ImageBackground>
   );
 };

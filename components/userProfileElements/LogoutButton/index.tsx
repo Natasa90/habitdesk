@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
 import {
- Text,
  Alert,
  View,
  ActivityIndicator,
 } from "react-native";
+import TextWrapper from "@/components/TextWrapper";
 import { supabase } from "../../../lib/supabase";
 import { useTypedNavigation } from "../../../lib/hooks/useTypedNavigation";
 import { UserInfoContext } from "@/context/UserInfoContext";
@@ -38,7 +38,7 @@ export const LogoutButton = () => {
     <ActivityIndicator size="large" color="#0B65C2" />
    ) : (
     <AccountButton onPress={handleLogout}>
-     <Text className="text-white text-center">Logout</Text>
+     <TextWrapper className="text-white text-center font-IBM_semibold">Logout</TextWrapper>
     </AccountButton>
    )}
   </View>

@@ -1,9 +1,9 @@
 import { FC } from "react";
-import { View, Text, TouchableOpacity, Linking } from "react-native";
+import { View, TouchableOpacity, Linking } from "react-native";
+import TextWrapper from "@/components/TextWrapper";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { CardLayoutProps } from "../../../Types/LayoutTypes";
 import { GradientText } from "../../GradientText";
-import { LikeButton } from "@/components/LikeButton";
 
 export const CardLayout: FC<CardLayoutProps> = ({
  title,
@@ -35,10 +35,10 @@ export const CardLayout: FC<CardLayoutProps> = ({
    <View className="border-4 border-gray-200 rounded-xl bg-gray-200">
     {porch.email && (
      <TouchableOpacity onPress={() => Linking.openURL(`mailto:${porch.email}`)}>
-      <Text className="pl-2 text-sm font-medium">
-       <Text className="font-bold">User Email: </Text>
-       <Text className="whitespace-normal">{porch.email}</Text>
-      </Text>
+      <TextWrapper className="pl-2 text-sm font-medium">
+       <TextWrapper className="font-IBM_semibold">User Email: </TextWrapper>
+       <TextWrapper className="whitespace-normal">{porch.email}</TextWrapper>
+      </TextWrapper>
      </TouchableOpacity>
     )}
     <TouchableOpacity
@@ -48,26 +48,26 @@ export const CardLayout: FC<CardLayoutProps> = ({
       )
      }
     >
-     <Text className="pl-2 text-gray-900 text-sm font-medium">
-      <Text className="font-bold">Source: </Text>
-      <Text className="whitespace-normal">{porch.source}</Text>
-     </Text>
+     <TextWrapper className="pl-2 text-gray-900 text-sm font-medium">
+      <TextWrapper className="font-IBM_semibold">Source: </TextWrapper>
+      <TextWrapper className="whitespace-normal">{porch.source}</TextWrapper>
+     </TextWrapper>
     </TouchableOpacity>
    </View>
    <View className="py-6 px-1 mt-auto">
-    <Text className="pl-1 text-base font-medium text-gray-900">
+    <TextWrapper className="pl-1 text-base font-medium text-gray-900">
      {displayComment}
      {!showMore && commentText.length > 90 && (
       <TouchableOpacity onPress={handleMore}>
-       <Text>... read more</Text>
+       <TextWrapper>... read more</TextWrapper>
       </TouchableOpacity>
      )}
-    </Text>
+    </TextWrapper>
    </View>
    <View className="p-2">
-    <Text className="text-sm text-black pl-1 mb-2">
-     <Text className="font-bold">Likes: </Text> {porch.likes.length}
-    </Text>
+    <TextWrapper className="text-sm text-black pl-1 mb-2">
+     <TextWrapper className="font-IBM_semibold">Likes: </TextWrapper> {porch.likes.length}
+    </TextWrapper>
     <TouchableOpacity 
       onPress={handleVote} 
       disabled={isUpdating}
@@ -82,7 +82,7 @@ export const CardLayout: FC<CardLayoutProps> = ({
                 )}
               </View>
     </TouchableOpacity>
-    <Text className="pt-2 pl-0.5 text-sm">{formattedDate}</Text>
+    <TextWrapper className="pt-2 pl-0.5 text-sm">{formattedDate}</TextWrapper>
    </View>
    {extraContent && <View className="py-2">{extraContent}</View>}
   </View>

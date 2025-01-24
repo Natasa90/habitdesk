@@ -1,9 +1,8 @@
-import { View } from "react-native";
+import { ImageBackground, View } from "react-native";
 import { ResetPassword } from "../components/Auth/ResetPasswordForm";
 import { useTypedNavigation } from "../lib/hooks/useTypedNavigation";
 
 export const ResetPasswordScreen = () => {
-
  const navigation = useTypedNavigation();
 
  const handleCancelReset = () => {
@@ -11,8 +10,13 @@ export const ResetPasswordScreen = () => {
  };
 
  return (
-  <View className="bg-grayScreen p-9">
-   <ResetPassword resetPassword={handleCancelReset} />
-  </View>
+  <ImageBackground
+   source={require("../assets/images/home-bg.jpeg")}
+   style={{ flex: 1, alignItems: "center" }}
+  >
+   <View className="p-9">
+    <ResetPassword resetPassword={handleCancelReset} />
+   </View>
+  </ImageBackground>
  );
 };
