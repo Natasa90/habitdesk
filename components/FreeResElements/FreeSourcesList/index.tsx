@@ -1,5 +1,6 @@
 import { FC } from "react";
-import { View, Text, ScrollView } from "react-native";
+import { View, ScrollView } from "react-native";
+import TextWrapper from "@/components/TextWrapper";
 import { FreeSource } from "./FreeSources";
 import { FreeSourcesListProps } from "@/Types/FreeResourcesTypes";
 
@@ -10,19 +11,19 @@ export const FreeSourcesList: FC<FreeSourcesListProps> = ({
  if (!facts || facts.length === 0)
   return (
    <View>
-    <Text>No Content for this category yet!</Text>
+    <TextWrapper>No Content for this category yet!</TextWrapper>
    </View>
   );
  return (
-  <View className="border-y-4">
+  <View className="border-y-4 border-[#e5e7eb]">
    <ScrollView className="mt-8">
     {facts.map((fact) => (
      <FreeSource key={fact.id} fact={fact} setFacts={setFacts} />
     ))}
     <View className="px-4">
-     <Text className="mt-5 text-lg font-medium text-gray-800 text-center">
+     <TextWrapper className="mt-5 text-lg font-medium text-gray-800 text-center">
       There are {facts.length} sources. Add your own source!
-     </Text>
+     </TextWrapper>
     </View>
    </ScrollView>
   </View>

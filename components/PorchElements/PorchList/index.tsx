@@ -68,7 +68,7 @@ export const  PorchList: FC<PorchListProps> = ({ porchs, setPorchs }) => {
  return (
   <View className="py-1 border-y-4 border-[#e5e7eb]">
    <View className="mx-auto">
-    <View className="py-5 bg-gray-100 rounded-xl">
+    <View className="py-5">
      <View className="ml-2">
       <TextWrapper className="text-lg font-IBM_semibold">Daily Highlights</TextWrapper>
       <TextWrapper className="mt-1 font-IBM_light">

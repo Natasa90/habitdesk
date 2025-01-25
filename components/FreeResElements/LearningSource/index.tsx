@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { FC, useMemo, useEffect, useState, useContext } from "react";
-import { View, Text, ScrollView } from "react-native";
+import { View, ScrollView } from "react-native";
 import { FreeSourcesList } from "../FreeSourcesList";
 import { FreeResCats } from "../CategoryFilter";
 import { UserInfoContext } from "@/context/UserInfoContext";

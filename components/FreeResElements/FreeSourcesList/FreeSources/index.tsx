@@ -1,5 +1,4 @@
 import { FC, useContext, useEffect, useState } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
 import { CardLayout } from "@/components/Layout/CardsLayout";
 import { FreeSourceProps } from "@/Types/FreeResourcesTypes";
 import { UserInfoContext } from "@/context/UserInfoContext";

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ScrollView, View, ActivityIndicator } from "react-native";
+import { ScrollView, View, ActivityIndicator, ImageBackground } from "react-native";
 import TextWrapper from "@/components/TextWrapper";
 import { supabase } from "@/lib/supabase";
 import { PorchHeader } from "../components/PorchElements/PorchHeader";
@@ -37,7 +37,11 @@ export const PorchScreen = () => {
  }, [page]);
 
  return (
-  <ScrollView className="flex-1 bg-grayScreen p-9">
+<ImageBackground
+   source={require("../assets/images/home-bg.jpeg")}
+   style={{ flex: 1, alignItems: "center" }}
+  >
+  <ScrollView className="flex-1 p-9">
    <PorchHeader />
    {loading ? (
     <View className="flex items-center justify-center mt-10">
@@ -60,5 +64,6 @@ export const PorchScreen = () => {
     </View>
    )}
   </ScrollView>
+</ImageBackground>
  );
 };
