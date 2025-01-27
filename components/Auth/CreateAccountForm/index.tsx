@@ -85,7 +85,7 @@ export const CreateAccount: FC<CreateAccountProps> = ({ signIn }) => {
       <TextWrapper className="p-1">Email address</TextWrapper>
       <TextInput
        placeholder="Enter email to get started"
-       className="border border-gray-300 rounded-md p-4 mb-4 font-IBM_italic"
+       className="border border-gray-300 rounded-md p-3 mb-4 font-IBM_italic"
        autoCapitalize="none"
        keyboardType="email-address"
        value={newUserEmail}
@@ -94,7 +94,7 @@ export const CreateAccount: FC<CreateAccountProps> = ({ signIn }) => {
       <TextWrapper className="p-1">Password</TextWrapper>
       <TextInput
        placeholder="Enter your password"
-       className="border border-gray-300 rounded-md p-4 mb-4 font-IBM_italic"
+       className="border border-gray-300 rounded-md p-3 mb-4 font-IBM_italic"
        secureTextEntry
        value={newUserPassword}
        onChangeText={setNewUserPassword}
@@ -102,7 +102,7 @@ export const CreateAccount: FC<CreateAccountProps> = ({ signIn }) => {
       <TextWrapper className="p-1">Confirm Password</TextWrapper>
       <TextInput
        placeholder="Confirm Password"
-       className="border border-gray-300 rounded-md p-4 mb-6 font-IBM_italic"
+       className="border border-gray-300 rounded-md p-3 mb-6 font-IBM_italic"
        secureTextEntry
        value={matchingPassword}
        onChangeText={setMatchingPassword}

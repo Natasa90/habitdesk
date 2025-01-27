@@ -1,7 +1,6 @@
 import { FC, useState, useContext } from "react";
 import {
  View,
- Text,
  TextInput,
  Button,
  Alert,
@@ -9,6 +8,7 @@ import {
  Modal,
  TouchableOpacity,
 } from "react-native";
+import TextWrapper from "@/components/TextWrapper";
 import { UserInfoContext } from "@/context/UserInfoContext";
 import { isValidHttpUrl } from "lib/constants";
 import { PorchType } from "@/Types/PorchTypes";
@@ -93,16 +93,16 @@ export const PorchUpdateForm: FC<PorchFormProps> = ({
      {responseUpdate ? (
       <ActivityIndicator size="large" color="#0000ff" />
      ) : (
-      <View>
+      <View >
        <TouchableOpacity
         onPress={() => setShowForm(false)}
         className="absolute right-2 z-10"
        >
         <Icon name="close" size={20} color="#555" />
        </TouchableOpacity>
-       <Text className="text-lg mb-10">Progress Update</Text>
+       <TextWrapper className="text-lg mb-10 ml-2">Progress Update</TextWrapper>
        <TextInput
-        className="bg-white p-3 rounded-md mb-8 text-base text-sm"
+        className="bg-white p-3 rounded-md mb-8 font-IBM_italic"
         placeholder="Share your update with the world..."
         placeholderTextColor="gray"
         value={text}
@@ -115,19 +115,18 @@ export const PorchUpdateForm: FC<PorchFormProps> = ({
          !isValidHttpUrl(source) && source.length > 0
           ? "bg-red-100"
           : "bg-white"
-        } p-3 rounded-md mb-8 text-base text-sm`}
+        } p-3 rounded-md mb-8 font-IBM_italic`}
         value={source}
         placeholder="Share your learning source"
         placeholderTextColor="gray"
         onChangeText={setSource}
         editable={!isUploading}
        />
-
-       <Button
-        title={isUploading ? "Uploading..." : "Update"}
-        onPress={handleSubmit}
-        disabled={isUploading}
-       />
+<View className="items-center">
+       <TouchableOpacity className="bg-customBlue p-2 rounded-xl shadow-md justify-center items-center mb-10 w-40" onPress={handleSubmit} disabled={isUploading}>
+        <TextWrapper className="text-white">{isUploading ? "Uploading..." : "Update"}</TextWrapper>
+       </TouchableOpacity>
+</View>
       </View>
      )}
     </View>

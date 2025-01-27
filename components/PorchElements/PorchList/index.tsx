@@ -66,10 +66,8 @@ export const  PorchList: FC<PorchListProps> = ({ porchs, setPorchs }) => {
  };
 
  return (
-  <View className="py-1 border-y-4 border-[#e5e7eb]">
-   <View className="mx-auto">
-    <View className="py-5">
-     <View className="ml-2">
+  <View className="pt-6 border-t-4 border-[#e5e7eb] ml-2">
+  
       <TextWrapper className="text-lg font-IBM_semibold">Daily Highlights</TextWrapper>
       <TextWrapper className="mt-1 font-IBM_light">
        Growth and Learning News
@@ -81,14 +79,13 @@ export const  PorchList: FC<PorchListProps> = ({ porchs, setPorchs }) => {
          <TextWrapper className="font-IBM_semibold">{learningDays}</TextWrapper> days!
         </TextWrapper>
         <TouchableOpacity onPress={handleFiltering} className="mt-3 w-48">
-         <TextWrapper className="bg-customBlue rounded-xl py-2.5 px-2 text-sm font-IBM_medium text-white self-start">
+         <TextWrapper className="bg-customBlue rounded-xl py-2.5 px-2.5 text-sm font-IBM_medium text-white self-start">
           {buttonTitle}
          </TextWrapper>
         </TouchableOpacity>
        </>
       )}
-     </View>
-     <View className="mt-6 space-y-3">
+     <View className="mt-6">
       {filteringUpdatesPerUser.map((porch, index) => (
        <PorchDailyUpdate
         key={porch.id || index}
@@ -97,8 +94,6 @@ export const  PorchList: FC<PorchListProps> = ({ porchs, setPorchs }) => {
        />
       ))}
      </View>
-    </View>
-   </View>
   </View>
  );
 };
