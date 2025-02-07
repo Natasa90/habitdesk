@@ -25,3 +25,7 @@ export interface HeaderWithIconProps {
     icon: string;
     title: string; 
 }
+
+export interface BackgroundWrapperProps {
+  children: React.ReactNode; 
+}

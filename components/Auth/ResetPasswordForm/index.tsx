@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { View, TextInput, TouchableOpacity, Alert } from "react-native";
-import TextWrapper from "@/components/TextWrapper";
+import TextWrapper from "@/components/Layout/TextWrapper";
 import { supabase } from "../../../lib/supabase";
 import { ResetPasswordProps } from "../../../Types/AuthTypes";
 import { AccountButton } from "@/components/AccountButton";
@@ -46,7 +46,7 @@ export const ResetPassword: FC<ResetPasswordProps> = ({ resetPassword }) => {
  };
 
  return (
-  <View className="items-center">
+  <View className="items-center p-9">
    <TextWrapper className="text-xl font-IBM_semibold mb-1">
     Reset Your Password
    </TextWrapper>

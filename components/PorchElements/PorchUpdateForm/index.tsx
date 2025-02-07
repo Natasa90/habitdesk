@@ -8,7 +8,7 @@ import {
  Modal,
  TouchableOpacity,
 } from "react-native";
-import TextWrapper from "@/components/TextWrapper";
+import TextWrapper from "@/components/Layout/TextWrapper";
 import { UserInfoContext } from "@/context/UserInfoContext";
 import { isValidHttpUrl } from "lib/constants";
 import { PorchType } from "@/Types/PorchTypes";
@@ -93,7 +93,7 @@ export const PorchUpdateForm: FC<PorchFormProps> = ({
      {responseUpdate ? (
       <ActivityIndicator size="large" color="#0000ff" />
      ) : (
-      <View >
+      <View>
        <TouchableOpacity
         onPress={() => setShowForm(false)}
         className="absolute right-2 z-10"
@@ -122,11 +122,17 @@ export const PorchUpdateForm: FC<PorchFormProps> = ({
         onChangeText={setSource}
         editable={!isUploading}
        />
-<View className="items-center">
-       <TouchableOpacity className="bg-customBlue p-2 rounded-xl shadow-md justify-center items-center mb-10 w-40" onPress={handleSubmit} disabled={isUploading}>
-        <TextWrapper className="text-white">{isUploading ? "Uploading..." : "Update"}</TextWrapper>
-       </TouchableOpacity>
-</View>
+       <View className="items-center">
+        <TouchableOpacity
+         className="bg-customBlue p-2 rounded-xl shadow-md justify-center items-center mb-10 w-40"
+         onPress={handleSubmit}
+         disabled={isUploading}
+        >
+         <TextWrapper className="text-white">
+          {isUploading ? "Uploading..." : "Update"}
+         </TextWrapper>
+        </TouchableOpacity>
+       </View>
       </View>
      )}
     </View>

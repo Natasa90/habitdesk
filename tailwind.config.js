@@ -11,10 +11,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        grayScreen: "rgb(239, 244, 249)",
         customBlue: "rgb(6, 140, 180)",
         footerBlue: "rgb(246, 250, 251)",
-        lionBlue: "rgb(11, 66, 107)"
+        lionBlue: "rgb(11, 66, 107)",
+        transparent: 'transparent'
       },
       fontFamily: {
         sans: ["IBMPlexSerif-Regular", "sans-serif"], 

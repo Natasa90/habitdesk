@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { View, ActivityIndicator, Alert } from "react-native";
-import TextWrapper from "@/components/TextWrapper";
+import TextWrapper from "@/components/Layout/TextWrapper";
 import quotesData from "../../../data/quotes.json";
 
 export const Quotes = () => {
@@ -35,7 +35,9 @@ export const Quotes = () => {
      </TextWrapper>
     </View>
    ) : (
-    <TextWrapper className="text-center text-red-500">Failed to load quote</TextWrapper>
+    <TextWrapper className="text-center text-red-500">
+     Failed to load quote
+    </TextWrapper>
    )}
   </View>
  );

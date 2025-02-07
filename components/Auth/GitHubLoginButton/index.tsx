@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { View } from "react-native";
-import TextWrapper from "@/components/TextWrapper";
+import TextWrapper from "@/components/Layout/TextWrapper";
 import { useAuthRequest, makeRedirectUri } from "expo-auth-session";
 import { AccountButton } from "@/components/AccountButton";
 import { supabase } from "@/lib/supabase";
@@ -92,10 +92,14 @@ export const GitHubButton = () => {
  return (
   <View>
    <AccountButton onPress={signInWithGitHub}>
-    <TextWrapper className="text-white font-IBM_semibold">Log In with GitHub</TextWrapper>
+    <TextWrapper className="text-white font-IBM_semibold">
+     Log In with GitHub
+    </TextWrapper>
    </AccountButton>
 
-   {signinError && <TextWrapper className="text-red-500">{signinError}</TextWrapper>}
+   {signinError && (
+    <TextWrapper className="text-red-500">{signinError}</TextWrapper>
+   )}
   </View>
  );
 };

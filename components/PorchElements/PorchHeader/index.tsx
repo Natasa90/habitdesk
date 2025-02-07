@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { View, Alert } from "react-native";
-import TextWrapper from "@/components/TextWrapper";
+import TextWrapper from "@/components/Layout/TextWrapper";
 import { PorchUserButtonGoals } from "../PorchUserButtonGoals";
 import { PorchUserButtonUpdates } from "../PorchUserButtonUpdates";
 import { Quotes } from "../Quotes";

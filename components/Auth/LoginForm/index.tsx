@@ -1,5 +1,5 @@
 import { useState, FC, useContext } from "react";
-import TextWrapper from "@/components/TextWrapper";
+import TextWrapper from "@/components/Layout/TextWrapper";
 import { View, TextInput, TouchableOpacity, Alert } from "react-native";
 import { supabase } from "@/lib/supabase";
 import { LoginProps } from "../../../Types/AuthTypes";
@@ -66,7 +66,7 @@ export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
 
  return (
   <View
-   className="p-6 bg-white rounded-xl shadow-md"
+   className="p-6 mx-8 bg-white rounded-xl shadow-md"
    style={{
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
@@ -82,7 +82,9 @@ export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
      color="gray"
      style={{ paddingLeft: 3 }}
     />
-    <TextWrapper className="text-base font-medium text-gray-900 pl-2">Email</TextWrapper>
+    <TextWrapper className="text-base font-medium text-gray-900 pl-2">
+     Email
+    </TextWrapper>
    </View>
    <TextInput
     placeholder="Email address"
@@ -100,7 +102,9 @@ export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
      color="gray"
      style={{ paddingLeft: 3 }}
     />
-    <TextWrapper className="text-base font-medium text-gray-900 pl-2">Password</TextWrapper>
+    <TextWrapper className="text-base font-medium text-gray-900 pl-2">
+     Password
+    </TextWrapper>
    </View>
    <TextInput
     placeholder="Password (min. 8 characters)"
@@ -112,7 +116,9 @@ export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
     } rounded-md text-gray-900`}
    />
    <TouchableOpacity onPress={resetPassword}>
-    <TextWrapper className="text-sm text-gray-500 pb-3">Forgot Password?</TextWrapper>
+    <TextWrapper className="text-sm text-gray-500 pb-3">
+     Forgot Password?
+    </TextWrapper>
    </TouchableOpacity>
    <AccountButton onPress={signInWithEmail}>
     <TextWrapper className="text-white font-IBM_semibold">Log In</TextWrapper>

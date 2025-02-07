@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { View, Pressable } from "react-native";
-import TextWrapper from "@/components/TextWrapper";
+import TextWrapper from "@/components/Layout/TextWrapper";
 import { CategoryTagsProps } from "../../Types/FreeResourcesTypes";
 import { MaterialIcons } from "@expo/vector-icons";
 
@@ -13,7 +13,9 @@ export const CategoryTags: FC<CategoryTagsProps> = ({
   <View className="mt-6">
    <View className="flex-row justify-center gap-2">
     <MaterialIcons name="category" size={24} color="#FF6347" />
-    <TextWrapper className="text-xl text-center color-gray-700">Categories</TextWrapper>
+    <TextWrapper className="text-xl text-center color-gray-700">
+     Categories
+    </TextWrapper>
    </View>
    <View className="flex-row flex-wrap gap-4 justify-center mt-1 mb-6">
     {categories.map((category) => {

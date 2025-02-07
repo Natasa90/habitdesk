@@ -3,7 +3,7 @@ import { View, Image } from "react-native";
 
 export const FormTitle: FC = () => {
  return (
-  <View className="mt-2">
+  <View className="mt-5 items-center">
    <Image
     source={require("../../../assets/images/habitdesk.png")} 
     className="w-[110px] h-[110px]"

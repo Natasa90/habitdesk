@@ -10,7 +10,7 @@ import {
 import { UserInfoContext } from "@/context/UserInfoContext";
 import { supabase } from "@/lib/supabase";
 import { UserCalendar } from "@/components/PorchElements/Calendar";
-import TextWrapper from "@/components/TextWrapper";
+import TextWrapper from "@/components/Layout/TextWrapper";
 
 export const UserWeeklyGoalsForm: FC = () => {
  const [showUpdateGoals, setShowUpdateGoals] = useState<boolean>(false);
@@ -208,10 +208,8 @@ export const UserWeeklyGoalsForm: FC = () => {
   <View>
    {/* Weekly Goal Section */}
    <View className="bg-white rounded-lg p-4 mb-4 shadow-md">
-    <View className="flex-row justify-between">
-     <TextWrapper>
-      Weekly Learning Goals
-     </TextWrapper>
+    <View className="flex-row justify-between mb-3">
+     <TextWrapper>Weekly Learning Goals</TextWrapper>
      <TouchableOpacity onPress={() => {}}>
       <TextWrapper className="font-IBM_light">Edit Goal ➡️</TextWrapper>
      </TouchableOpacity>
@@ -224,7 +222,9 @@ export const UserWeeklyGoalsForm: FC = () => {
      {weeklyLearningDays >= weeklyGoal ? (
       <TextWrapper className="text-green-500 text-sm">Nice! 🚀</TextWrapper>
      ) : weeklyLearningDays >= Math.floor(weeklyGoal / 2) ? (
-      <TextWrapper className="text-yellow-500 text-sm text-center">On Track</TextWrapper>
+      <TextWrapper className="text-yellow-500 text-sm text-center">
+       On Track
+      </TextWrapper>
      ) : (
       <TextWrapper className="text-red-500 text-sm">Off Track</TextWrapper>
      )}
@@ -241,8 +241,8 @@ export const UserWeeklyGoalsForm: FC = () => {
     <View className="border-t border-gray-200 my-2 flex-row justify-between pt-2">
      <TextWrapper>✅ Longest Streak</TextWrapper>
      <TextWrapper>{longestStreak}</TextWrapper>
+    </View>
    </View>
-</View>
 
    {/* Learning Chart Section */}
    <View className="bg-white rounded-lg p-4 mb-4 shadow-md">

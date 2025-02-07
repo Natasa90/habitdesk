@@ -1,14 +1,13 @@
 import { FC, useState, useEffect, useMemo, useContext } from "react";
 import { View, TouchableOpacity } from "react-native";
-import TextWrapper from "@/components/TextWrapper";
+import TextWrapper from "@/components/Layout/TextWrapper";
 import { PorchListProps } from "@/Types/PorchTypes";
 import { supabase } from "@/lib/supabase";
 import { UserInfoContext } from "@/context/UserInfoContext";
 import { PorchType } from "@/Types/PorchTypes";
 import { PorchDailyUpdate } from "../PorchDailyUpdate";
 
-export const  PorchList: FC<PorchListProps> = ({ porchs, setPorchs }) => {
-
+export const PorchList: FC<PorchListProps> = ({ porchs, setPorchs }) => {
  const { userInfo } = useContext(UserInfoContext);
  const [filtered, setFiltered] = useState<boolean>(false);
  const [dailyUpdates, setDailyUpdates] = useState<PorchType[]>(porchs);
@@ -67,33 +66,35 @@ export const  PorchList: FC<PorchListProps> = ({ porchs, setPorchs }) => {
 
  return (
   <View className="pt-6 border-t-4 border-[#e5e7eb] ml-2">
-  
-      <TextWrapper className="text-lg font-IBM_semibold">Daily Highlights</TextWrapper>
-      <TextWrapper className="mt-1 font-IBM_light">
-       Growth and Learning News
+   <TextWrapper className="text-lg font-IBM_semibold">
+    Daily Highlights
+   </TextWrapper>
+   <TextWrapper className="mt-1 font-IBM_light">
+    Growth and Learning News
+   </TextWrapper>
+   {userInfo?.email && (
+    <>
+     <TextWrapper className="mt-5 text-lg">
+      You've been dedicated to learning for{" "}
+      <TextWrapper className="font-IBM_semibold">{learningDays}</TextWrapper>{" "}
+      days!
+     </TextWrapper>
+     <TouchableOpacity onPress={handleFiltering} className="mt-3 w-48">
+      <TextWrapper className="bg-customBlue rounded-xl py-2.5 px-2.5 text-sm font-IBM_medium text-white self-start">
+       {buttonTitle}
       </TextWrapper>
-      {userInfo?.email && (
-       <>
-        <TextWrapper className="mt-5 text-lg">
-         You've been dedicated to learning for{" "}
-         <TextWrapper className="font-IBM_semibold">{learningDays}</TextWrapper> days!
-        </TextWrapper>
-        <TouchableOpacity onPress={handleFiltering} className="mt-3 w-48">
-         <TextWrapper className="bg-customBlue rounded-xl py-2.5 px-2.5 text-sm font-IBM_medium text-white self-start">
-          {buttonTitle}
-         </TextWrapper>
-        </TouchableOpacity>
-       </>
-      )}
-     <View className="mt-6">
-      {filteringUpdatesPerUser.map((porch, index) => (
-       <PorchDailyUpdate
-        key={porch.id || index}
-        porch={porch}
-        setPorchs={setPorchs}
-       />
-      ))}
-     </View>
+     </TouchableOpacity>
+    </>
+   )}
+   <View className="mt-6">
+    {filteringUpdatesPerUser.map((porch, index) => (
+     <PorchDailyUpdate
+      key={porch.id || index}
+      porch={porch}
+      setPorchs={setPorchs}
+     />
+    ))}
+   </View>
   </View>
  );
 };

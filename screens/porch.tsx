@@ -3,11 +3,9 @@ import {
  ScrollView,
  View,
  ActivityIndicator,
- ImageBackground,
- Button,
  TouchableOpacity,
 } from "react-native";
-import TextWrapper from "@/components/TextWrapper";
+import TextWrapper from "@/components/Layout/TextWrapper";
 import { supabase } from "@/lib/supabase";
 import { PorchHeader } from "../components/PorchElements/PorchHeader";
 import { PorchList } from "../components/PorchElements/PorchList";
@@ -49,40 +47,35 @@ export const PorchScreen = () => {
  };
 
  return (
-  <ImageBackground
-   source={require("../assets/images/home-bg.jpeg")}
-   style={{ flex: 1, alignItems: "center" }}
-  >
-   <ScrollView className="flex-1 p-9">
-    <PorchHeader />
-    {loading ? (
-     <View className="flex items-center justify-center mt-10">
-      <ActivityIndicator size="large" color="#3b82f6" />
-      <TextWrapper className="mt-4 text-gray-600">
-       Loading updates...
-      </TextWrapper>
-     </View>
-    ) : (
-     <PorchList porchs={porchs} setPorchs={setPorchs} />
-    )}
-    {hasMore && !loading && (
-     <View className="items-center">
-      <TouchableOpacity
-       className="bg-customBlue p-2 rounded-xl shadow-md justify-center items-center mb-10 w-40"
-       onPress={handleLoadMore}
-      >
-       <TextWrapper className="text-white">Load More Updates</TextWrapper>
-      </TouchableOpacity>
-     </View>
-    )}
-    {!hasMore && (
-     <View className="mt-10 border-gray-1">
-      <TextWrapper className="text-center text-gray-500">
-       You have seen it all!
-      </TextWrapper>
-     </View>
-    )}
-   </ScrollView>
-  </ImageBackground>
+  <ScrollView className="flex-1 p-9">
+   <PorchHeader />
+   {loading ? (
+    <View className="flex items-center justify-center mt-10">
+     <ActivityIndicator size="large" color="#3b82f6" />
+     <TextWrapper className="mt-4 text-gray-600">
+      Loading updates...
+     </TextWrapper>
+    </View>
+   ) : (
+    <PorchList porchs={porchs} setPorchs={setPorchs} />
+   )}
+   {hasMore && !loading && (
+    <View className="items-center">
+     <TouchableOpacity
+      className="bg-customBlue p-2 rounded-xl shadow-md justify-center items-center mb-10 w-40"
+      onPress={handleLoadMore}
+     >
+      <TextWrapper className="text-white">Load More Updates</TextWrapper>
+     </TouchableOpacity>
+    </View>
+   )}
+   {!hasMore && (
+    <View className="mt-10 border-gray-1">
+     <TextWrapper className="text-center text-gray-500">
+      You have seen it all!
+     </TextWrapper>
+    </View>
+   )}
+  </ScrollView>
  );
 };

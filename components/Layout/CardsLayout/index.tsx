@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { View, TouchableOpacity, Linking } from "react-native";
-import TextWrapper from "@/components/TextWrapper";
+import TextWrapper from "@/components/Layout/TextWrapper";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { CardLayoutProps } from "../../../Types/LayoutTypes";
 import { GradientText } from "../../GradientText";
@@ -17,9 +17,8 @@ export const CardLayout: FC<CardLayoutProps> = ({
  formattedDate,
  extraContent,
  isVoteDisabled,
- hasVoted
+ hasVoted,
 }) => {
-
  return (
   <View
    className="p-4 bg-white rounded-xl shadow-md mb-4"
@@ -66,21 +65,32 @@ export const CardLayout: FC<CardLayoutProps> = ({
    </View>
    <View className="p-2">
     <TextWrapper className="text-sm text-black pl-1 mb-2">
-     <TextWrapper className="font-IBM_semibold">Likes: </TextWrapper> {porch.likes.length}
+     <TextWrapper className="font-IBM_semibold">Likes: </TextWrapper>{" "}
+     {porch.likes.length}
     </TextWrapper>
-    <TouchableOpacity 
-      onPress={handleVote} 
-      disabled={isUpdating}
-      className="mt-1">
+    <TouchableOpacity
+     onPress={handleVote}
+     disabled={isUpdating}
+     className="mt-1"
+    >
      <View className="w-10 h-10 ml-1">
       {isUpdating ? (
-                  <View></View>
-                ) : hasVoted ? (
-                  <Icon name="heart" size={20} color="#F87171" className="text-red-400 w-5 h-5 transform scale-125 hover:scale-150 hover:rotate-12 transition-transform duration-300" />
-                ) : (
-                  <Icon name="check" size={20} className="text-blue-500 w-5 h-5 transform scale-125 hover:scale-150 hover:rotate-12 transition-transform duration-300" />
-                )}
-              </View>
+       <View></View>
+      ) : hasVoted ? (
+       <Icon
+        name="heart"
+        size={20}
+        color="#F87171"
+        className="text-red-400 w-5 h-5 transform scale-125 hover:scale-150 hover:rotate-12 transition-transform duration-300"
+       />
+      ) : (
+       <Icon
+        name="check"
+        size={20}
+        className="text-blue-500 w-5 h-5 transform scale-125 hover:scale-150 hover:rotate-12 transition-transform duration-300"
+       />
+      )}
+     </View>
     </TouchableOpacity>
     <TextWrapper className="pt-2 pl-0.5 text-sm">{formattedDate}</TextWrapper>
    </View>

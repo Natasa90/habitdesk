@@ -6,7 +6,7 @@ import {
  TouchableOpacity,
  ScrollView,
 } from "react-native";
-import TextWrapper from "@/components/TextWrapper";
+import TextWrapper from "@/components/Layout/TextWrapper";
 import { supabase } from "../../../lib/supabase";
 import { CreateAccountProps } from "../../../Types/AuthTypes";
 import { TermsAgreement } from "../TermsAgreement";
@@ -48,7 +48,7 @@ export const CreateAccount: FC<CreateAccountProps> = ({ signIn }) => {
  };
 
  return (
-  <View className="items-center">
+  <View className="items-center p-9">
    <View className="flex-row gap-2 mt-2">
     <FontAwesome name="user-plus" size={24} color="#000" />
     <TextWrapper className="text-xl font-IBM_semibold mb-1">

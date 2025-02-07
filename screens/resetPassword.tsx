@@ -1,6 +1,7 @@
-import { ImageBackground, View } from "react-native";
+import { View } from "react-native";
 import { ResetPassword } from "../components/Auth/ResetPasswordForm";
 import { useTypedNavigation } from "../lib/hooks/useTypedNavigation";
+import { ImageBackground } from "react-native";
 
 export const ResetPasswordScreen = () => {
  const navigation = useTypedNavigation();
@@ -10,13 +11,6 @@ export const ResetPasswordScreen = () => {
  };
 
  return (
-  <ImageBackground
-   source={require("../assets/images/home-bg.jpeg")}
-   style={{ flex: 1, alignItems: "center" }}
-  >
-   <View className="p-9">
-    <ResetPassword resetPassword={handleCancelReset} />
-   </View>
-  </ImageBackground>
+   <ResetPassword resetPassword={handleCancelReset} />
  );
 };

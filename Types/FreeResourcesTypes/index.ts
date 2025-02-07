@@ -42,10 +42,8 @@ export interface Fact {
 
 export interface FreeSourcesListProps {
   facts: Fact[];
-  setFacts: Dispatch<SetStateAction<Fact[]>>; 
 }
 
 export interface FreeSourceProps {
   fact: Fact;
-  setFacts: React.Dispatch<React.SetStateAction<Fact[]>>;
 }
