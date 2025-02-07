@@ -6,13 +6,13 @@ const useVote = (fact: any) => {
   const [isUpdating, setIsUpdating] = useState(false);
   const { userInfo } = useContext(UserInfoContext);
   const [hasVoted, setHasVoted] = useState<boolean>(false);
-  const [likes, setLikes] = useState(fact.likes); // Track likes state
+  const [likes, setLikes] = useState(fact.likes); 
 
   useEffect(() => {
     if (userInfo?.email) {
       setHasVoted(likes.includes(userInfo.email));
     }
-  }, [userInfo, likes]); // Re-run when userInfo or likes change
+  }, [userInfo, likes]); 
 
   const handleVote = async () => {
     if (!userInfo?.email) {
@@ -40,7 +40,7 @@ const useVote = (fact: any) => {
         console.error("Error updating likes:", error);
         alert("Failed to update likes. Please try again.");
       } else {
-        setLikes(updatedLikes); // Update likes state to trigger re-render
+        setLikes(updatedLikes); 
       }
     } catch (err) {
       console.error("Unexpected error:", err);

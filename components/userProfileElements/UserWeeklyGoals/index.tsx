@@ -246,7 +246,7 @@ export const UserWeeklyGoalsForm: FC = () => {
 
    {/* Learning Chart Section */}
    <View className="bg-white rounded-lg p-4 mb-4 shadow-md">
-    <TextWrapper>Learning Charts</TextWrapper>
+    <TextWrapper className="text-center pb-2">Learning Charts</TextWrapper>
     <UserCalendar learningDates={memoizedLearningDates} />
    </View>
   </View>

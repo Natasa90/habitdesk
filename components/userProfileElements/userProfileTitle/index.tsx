@@ -7,7 +7,7 @@ export const UserProfileTitle = () => {
  const { userInfo } = useContext(UserInfoContext);
 
  return (
-  <View className="mb-4 mt-8">
+  <View className="mb-4">
    <TextWrapper className="text-gray-500 text-center">
     Welcome, {userInfo?.email}
    </TextWrapper>
