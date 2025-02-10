@@ -1,16 +1,10 @@
 import { useState, FC } from "react";
-import {
- Alert,
- View,
- TextInput,
- TouchableOpacity,
- ScrollView,
-} from "react-native";
+import { Alert, View, TextInput, TouchableOpacity } from "react-native";
 import TextWrapper from "@/components/Layout/TextWrapper";
 import { supabase } from "../../../lib/supabase";
 import { CreateAccountProps } from "../../../Types/AuthTypes";
 import { TermsAgreement } from "../TermsAgreement";
-import { AccountButton } from "@/components/AccountButton";
+import { AccountButton } from "@/components/Buttons/AccountButton";
 import { FontAwesome } from "@expo/vector-icons";
 
 export const CreateAccount: FC<CreateAccountProps> = ({ signIn }) => {

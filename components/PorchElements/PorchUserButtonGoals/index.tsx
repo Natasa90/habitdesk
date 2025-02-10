@@ -1,11 +1,9 @@
-import { FC } from "react";
 import { View, TouchableOpacity } from "react-native";
 import TextWrapper from "@/components/Layout/TextWrapper";
-import { PorchUserButtonProps } from "../../../Types/PorchTypes";
 import Icon from "react-native-vector-icons/Ionicons";
 import { useTypedNavigation } from "@/lib/hooks/useTypedNavigation";
 
-export const PorchUserButtonGoals: FC<PorchUserButtonProps> = () => {
+export const PorchUserButtonGoals = () => {
  const navigation = useTypedNavigation();
  return (
   <View className="flex-row items-center mb-3">

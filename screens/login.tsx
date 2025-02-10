@@ -1,8 +1,5 @@
-import { View } from "react-native";
-import { LoginForm } from "../components/Auth/LoginForm";
-import { FormTitle } from "@/components/Auth/FormTitle";
+import { LoginForm, FormTitle } from "@/components/Auth";
 import { useTypedNavigation } from "../lib/hooks/useTypedNavigation";
-import { ImageBackground } from "react-native";
 
 export const LoginScreen = () => {
  const navigation = useTypedNavigation();

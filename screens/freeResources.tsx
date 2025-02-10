@@ -1,7 +1,6 @@
 import { FlatList, View, ActivityIndicator } from "react-native";
 import TextWrapper from "@/components/Layout/TextWrapper";
-import { FreeResHeader } from "@/components/FreeResElements/FreeSourcesHeader";
-import { LearningSource } from "@/components/FreeResElements/LearningSource";
+import { FreeResHeader, LearningSource } from "@/components/FreeResElements";
 import useFetchSources from "@/lib/hooks/useFetchSources";
 
 export const FreeResourcesScreen = () => {

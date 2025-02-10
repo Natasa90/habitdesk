@@ -2,10 +2,7 @@ import React, { FC, useState, useEffect, useMemo, useContext } from "react";
 import {
  View,
  Text,
- Button,
  TouchableOpacity,
- StyleSheet,
- Alert,
 } from "react-native";
 import { UserInfoContext } from "@/context/UserInfoContext";
 import { supabase } from "@/lib/supabase";

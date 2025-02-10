@@ -1,9 +1,11 @@
 import { ScrollView } from "react-native";
-import { FormTitle } from "@/components/Auth/FormTitle";
-import { UserProfileTitle } from "@/components/userProfileElements/userProfileTitle";
-import { UserProfileButtons } from "@/components/userProfileElements/userProfileButtons";
-import { UserWeeklyGoalsForm } from "@/components/userProfileElements/UserWeeklyGoals";
-import { ToDoList } from "@/components/userProfileElements/ToDoList";
+import { FormTitle } from "@/components/Auth";
+import {
+ UserProfileTitle,
+ UserWeeklyGoalsForm,
+ ToDoList,
+ UserProfileButtons,
+} from "@/components/userProfileElements";
 
 export const UserProfileScreen = () => {
  return (

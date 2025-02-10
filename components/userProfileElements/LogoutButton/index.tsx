@@ -4,7 +4,7 @@ import TextWrapper from "@/components/Layout/TextWrapper";
 import { supabase } from "../../../lib/supabase";
 import { useTypedNavigation } from "../../../lib/hooks/useTypedNavigation";
 import { UserInfoContext } from "@/context/UserInfoContext";
-import { AccountButton } from "@/components/AccountButton";
+import { AccountButton } from "@/components/Buttons/AccountButton";
 
 export const LogoutButton = () => {
  const navigation = useTypedNavigation();

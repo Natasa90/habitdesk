@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { View } from "react-native";
 import TextWrapper from "@/components/Layout/TextWrapper";
 import { useAuthRequest, makeRedirectUri } from "expo-auth-session";
-import { AccountButton } from "@/components/AccountButton";
+import { AccountButton } from "@/components/Buttons/AccountButton";
 import { supabase } from "@/lib/supabase";
 import { useTypedNavigation } from "@/lib/hooks/useTypedNavigation";
 

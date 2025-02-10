@@ -1,7 +1,5 @@
-import { View } from "react-native";
-import { ResetPassword } from "../components/Auth/ResetPasswordForm";
+import { ResetPassword } from "@/components/Auth";
 import { useTypedNavigation } from "../lib/hooks/useTypedNavigation";
-import { ImageBackground } from "react-native";
 
 export const ResetPasswordScreen = () => {
  const navigation = useTypedNavigation();

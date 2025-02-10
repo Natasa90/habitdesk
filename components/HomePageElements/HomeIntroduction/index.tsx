@@ -4,7 +4,7 @@ import { Team } from "../../index";
 import { useTypedNavigation } from "@/lib/hooks/useTypedNavigation";
 import { HomeButton } from "../HomeButton";
 
-export const HomeIntroduction = () => {
+const HomeIntroduction = () => {
  const navigation = useTypedNavigation();
 
  return (
@@ -33,3 +33,5 @@ export const HomeIntroduction = () => {
   </View>
  );
 };
+
+export default HomeIntroduction

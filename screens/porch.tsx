@@ -7,8 +7,7 @@ import {
 } from "react-native";
 import TextWrapper from "@/components/Layout/TextWrapper";
 import { supabase } from "@/lib/supabase";
-import { PorchHeader } from "../components/PorchElements/PorchHeader";
-import { PorchList } from "../components/PorchElements/PorchList";
+import { PorchHeader, PorchList } from "@/components/PorchElements";
 import { PorchType } from "@/Types/PorchTypes";
 
 export const PorchScreen = () => {

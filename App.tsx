@@ -3,17 +3,19 @@ import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { SplashScreen } from "./screens/splashScreen";
-import { HomeScreen } from "./screens/home";
-import { UserProfileScreen } from "./screens/userProfile";
-import { PorchScreen } from "./screens/porch";
-import { FreeResourcesScreen } from "./screens/freeResources";
-import { LoginScreen } from "./screens/login";
-import { CreateAccountScreen } from "./screens/createAccount";
-import { ResetPasswordScreen } from "./screens/resetPassword";
+import {
+  SplashScreen,
+  HomeScreen,
+  LoginScreen,
+  UserProfileScreen,
+  PorchScreen,
+  FreeResourcesScreen,
+  CreateAccountScreen,
+  ResetPasswordScreen,
+} from "./screens";
 import { UserInfoContext } from "./context/UserInfoContext";
 import { UserContextProps } from "./Types/User";
-import { Footer } from "./components/Footer";
+import Footer from "./components/Footer";
 import { useFonts } from "./lib/hooks/useFonts";
 import { BackgroundWrapper } from "./components/Layout/BackgroundWrapper";
 

@@ -2,7 +2,6 @@ import { FC, useState, useContext } from "react";
 import {
  View,
  TextInput,
- Button,
  Alert,
  ActivityIndicator,
  Modal,

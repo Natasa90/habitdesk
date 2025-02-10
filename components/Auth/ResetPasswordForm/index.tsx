@@ -3,7 +3,7 @@ import { View, TextInput, TouchableOpacity, Alert } from "react-native";
 import TextWrapper from "@/components/Layout/TextWrapper";
 import { supabase } from "../../../lib/supabase";
 import { ResetPasswordProps } from "../../../Types/AuthTypes";
-import { AccountButton } from "@/components/AccountButton";
+import { AccountButton } from "@/components/Buttons/AccountButton";
 import { useTypedNavigation } from "@/lib/hooks/useTypedNavigation";
 import { FontAwesome } from "@expo/vector-icons";
 

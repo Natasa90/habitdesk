@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { View, ActivityIndicator, Alert } from "react-native";
+import { View, ActivityIndicator } from "react-native";
 import TextWrapper from "@/components/Layout/TextWrapper";
 import quotesData from "../../../data/quotes.json";
 

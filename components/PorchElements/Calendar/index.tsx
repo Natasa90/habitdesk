@@ -2,7 +2,6 @@ import { FC, useState } from "react";
 import { PorchCalendarProps } from "@/Types/PorchTypes";
 import { View } from "react-native";
 import { Calendar } from "react-native-calendars";
-import { Picker } from "@react-native-picker/picker";
 
 export const UserCalendar: FC<PorchCalendarProps> = ({ learningDates }) => {
  const [selectedMonth, setSelectedMonth] = useState<number>(

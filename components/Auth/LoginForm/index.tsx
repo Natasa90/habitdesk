@@ -5,8 +5,7 @@ import { supabase } from "@/lib/supabase";
 import { LoginProps } from "../../../Types/AuthTypes";
 import { useTypedNavigation } from "../../../lib/hooks/useTypedNavigation";
 import { UserInfoContext } from "@/context/UserInfoContext";
-import { AccountButton } from "@/components/AccountButton";
-import { GitHubButton } from "../GitHubLoginButton";
+import { AccountButton, GitHubButton } from "@/components/Buttons";
 import { FontAwesome } from "@expo/vector-icons";
 
 export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {

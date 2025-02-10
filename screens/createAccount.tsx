@@ -1,5 +1,4 @@
-import { View } from "react-native";
-import { CreateAccount } from "../components/Auth/CreateAccountForm";
+import { CreateAccount } from "@/components/Auth";
 import { useTypedNavigation } from "../lib/hooks/useTypedNavigation";
 
 export const CreateAccountScreen = () => {

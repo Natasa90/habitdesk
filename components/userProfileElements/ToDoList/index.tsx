@@ -1,16 +1,12 @@
 import { useState } from "react";
-import { View, TextInput, TouchableOpacity, FlatList } from "react-native";
+import { View, TextInput, TouchableOpacity } from "react-native";
 import TextWrapper from "@/components/Layout/TextWrapper";
+import Icon from "react-native-vector-icons/Ionicons";
 
 export const ToDoList = () => {
  const [toDo, setToDo] = useState<string[]>([]);
  const [input, setInput] = useState<string>("");
  const [error, setError] = useState<string>("");
-
- const usersInput = (e: any) => {
-  const savedTask = e.target.value;
-  setInput(savedTask);
- };
 
  const addTask = () => {
   if (input.trim()) {
@@ -28,9 +24,12 @@ export const ToDoList = () => {
 
  return (
   <View className="items-center bg-gray-100 p-5 mb-5">
-   <TextWrapper className="text-3xl font-IBM_italic mb-6">
-    To Do List
-   </TextWrapper>
+   <View className="flex-row gap-2">
+    <Icon name="list-circle" size={30} color="gray" />
+    <TextWrapper className="text-3xl font-IBM_italic mb-6">
+     To Do List
+    </TextWrapper>
+   </View>
    <View className="flex-row space-x-4 w-full max-w-md">
     <TextInput
      placeholder="New task..."
@@ -57,8 +56,11 @@ export const ToDoList = () => {
       </TouchableOpacity>
      </View>
     ))}
-{error && (
-<TextWrapper className="text-center text-orange-300">Please write a Task to add.</TextWrapper>)}
+    {error && (
+     <TextWrapper className="text-center text-orange-300">
+      Please write a Task to add.
+     </TextWrapper>
+    )}
    </View>
   </View>
  );

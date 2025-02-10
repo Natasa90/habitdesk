@@ -1,8 +1,7 @@
 import { FC, useState } from "react";
 import { FlatList, View } from "react-native";
 import TextWrapper from "@/components/Layout/TextWrapper";
-import { FreeSourcesList } from "../FreeSourcesList";
-import { FreeResCats } from "../CategoryFilter";
+import { FreeSourcesList, FreeResCats } from "../index"
 import { LearningSourcesProps } from "@/Types/FreeResourcesTypes";
 
 export const LearningSource: FC<LearningSourcesProps> = ({ sources }) => {
