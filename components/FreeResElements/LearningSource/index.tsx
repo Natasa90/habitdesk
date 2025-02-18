@@ -1,7 +1,8 @@
 import { FC, useState } from "react";
 import { FlatList, View } from "react-native";
 import TextWrapper from "@/components/Layout/TextWrapper";
-import { FreeSourcesList, FreeResCats } from "../index"
+import { FreeSourcesList } from "../FreeSourcesList";
+import { FreeResCats } from "../CategoryFilter";
 import { LearningSourcesProps } from "@/Types/FreeResourcesTypes";
 
 export const LearningSource: FC<LearningSourcesProps> = ({ sources }) => {
@@ -23,9 +24,15 @@ export const LearningSource: FC<LearningSourcesProps> = ({ sources }) => {
     keyExtractor={(item) => item.id.toString()}
     renderItem={({ item }) => <FreeSourcesList facts={[item]} />}
     ListFooterComponent={
-     <TextWrapper className="pb-2 text-lg font-medium text-center">
-      There are {filteredFacts.length} sources. Add your own source!
-     </TextWrapper>
+     filteredFacts.length === 1 ? (
+      <TextWrapper className="pb-2 text-lg font-medium text-center">
+       There is {filteredFacts.length} source. Add your own source!
+      </TextWrapper>
+     ) : (
+      <TextWrapper className="pb-2 text-lg font-medium text-center">
+       There are {filteredFacts.length} sources. Add your own source!
+      </TextWrapper>
+     )
     }
     className="pb-8"
    />

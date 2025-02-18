@@ -14,7 +14,7 @@ import { PorchType } from "@/Types/PorchTypes";
 import { PorchFormProps } from "@/Types/PorchTypes";
 import Icon from "react-native-vector-icons/Ionicons";
 import { BlurView } from "expo-blur";
-import { supabase } from "@/lib/supabase";
+import supabase from "@/lib/supabase";
 
 export const PorchUpdateForm: FC<PorchFormProps> = ({
  setPorchs,

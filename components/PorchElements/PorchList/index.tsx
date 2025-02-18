@@ -2,7 +2,7 @@ import { FC, useState, useEffect, useMemo, useContext } from "react";
 import { View, TouchableOpacity } from "react-native";
 import TextWrapper from "@/components/Layout/TextWrapper";
 import { PorchListProps } from "@/Types/PorchTypes";
-import { supabase } from "@/lib/supabase";
+import supabase from "@/lib/supabase";
 import { UserInfoContext } from "@/context/UserInfoContext";
 import { PorchType } from "@/Types/PorchTypes";
 import { PorchDailyUpdate } from "../PorchDailyUpdate";

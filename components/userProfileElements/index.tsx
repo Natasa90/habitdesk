@@ -1,13 +1,5 @@
-import { LogoutButton } from "./LogoutButton";
 import { ToDoList } from "./ToDoList";
-import { UserProfileButtons } from "./userProfileButtons";
-import { UserProfileTitle } from "./userProfileTitle";
-import { UserWeeklyGoalsForm } from "./UserWeeklyGoals";
+import { UserProfileButtons } from "./UserProfileButtons";
+import { UserProfileTitle } from "./UserProfileTitle";
 
-export {
- LogoutButton,
- ToDoList,
- UserProfileButtons,
- UserProfileTitle,
- UserWeeklyGoalsForm,
-};
+export { ToDoList, UserProfileButtons, UserProfileTitle }

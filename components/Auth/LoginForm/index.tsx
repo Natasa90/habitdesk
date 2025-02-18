@@ -1,65 +1,33 @@
 import { useState, FC, useContext } from "react";
 import TextWrapper from "@/components/Layout/TextWrapper";
-import { View, TextInput, TouchableOpacity, Alert } from "react-native";
-import { supabase } from "@/lib/supabase";
+import { View, TextInput, TouchableOpacity } from "react-native";
 import { LoginProps } from "../../../Types/AuthTypes";
 import { useTypedNavigation } from "../../../lib/hooks/useTypedNavigation";
 import { UserInfoContext } from "@/context/UserInfoContext";
 import { AccountButton, GitHubButton } from "@/components/Buttons";
 import { FontAwesome } from "@expo/vector-icons";
+import { signInWithEmail } from "@/lib/helpers/authHelpers";
 
 export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
  const [email, setEmail] = useState<string>("");
  const [password, setPassword] = useState<string>("");
- const [isEmailValid, setIsEmailValid] = useState(true);
- const [isPasswordValid, setIsPasswordValid] = useState(true);
- const navigation = useTypedNavigation();
 
+ const navigation = useTypedNavigation();
  const { setUserInfo } = useContext(UserInfoContext);
 
  const handleEmailChange = (text: string) => {
   setEmail(text);
-  setIsEmailValid(true);
  };
 
  const handlePasswordChange = (text: string) => {
   setPassword(text);
-  setIsPasswordValid(true);
  };
 
- const signInWithEmail = async () => {
-  if (!email.trim()) {
-   setIsEmailValid(false);
-  }
+ const handleLogin = async () => {
+  const success = await signInWithEmail(email, password, setUserInfo);
 
-  if (password.length < 8) {
-   setIsPasswordValid(false);
-  }
-
-  try {
-   const { data, error } = await supabase.auth.signInWithPassword({
-    email,
-    password,
-   });
-
-   if (error) {
-    console.log("Login Error:", error.message);
-    Alert.alert("Login failed!", error.message);
-    setIsEmailValid(false);
-    setIsPasswordValid(false);
-   } else {
-    const user = data?.user;
-    const session = data?.session;
-
-    if (user) {
-     setUserInfo({ email: user.email });
-     navigation.navigate("UserProfile");
-    } else {
-     console.log("No user data found.");
-    }
-   }
-  } catch (error) {
-   console.log("Unexpected error:", error);
+  if (success) {
+   navigation.navigate("UserProfile");
   }
  };
 
@@ -90,9 +58,7 @@ export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
     keyboardType="email-address"
     value={email}
     onChangeText={handleEmailChange}
-    className={`px-3 py-3 border font-IBM_italic ${
-     isEmailValid ? "border-gray-300" : "border-red-500"
-    } rounded-md text-gray-900 mt-2 mb-5`}
+    className="px-3 py-3 border font-IBM_italic border-gray-300 rounded-md text-gray-900 mt-2 mb-5"
    />
    <View className="flex-row">
     <FontAwesome
@@ -110,16 +76,14 @@ export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
     secureTextEntry
     value={password}
     onChangeText={handlePasswordChange}
-    className={`px-3 py-3 mt-1 mb-5 border font-IBM_italic ${
-     isPasswordValid ? "border-gray-300" : "border-red-500"
-    } rounded-md text-gray-900`}
+    className="px-3 py-3 mt-1 mb-5 border font-IBM_italic border-gray-300 rounded-md text-gray-900"
    />
    <TouchableOpacity onPress={resetPassword}>
     <TextWrapper className="text-sm text-gray-500 pb-3">
      Forgot Password?
     </TextWrapper>
    </TouchableOpacity>
-   <AccountButton onPress={signInWithEmail}>
+   <AccountButton onPress={handleLogin}>
     <TextWrapper className="text-white font-IBM_semibold">Log In</TextWrapper>
    </AccountButton>
    <GitHubButton />

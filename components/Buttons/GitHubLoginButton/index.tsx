@@ -3,7 +3,7 @@ import { View } from "react-native";
 import TextWrapper from "@/components/Layout/TextWrapper";
 import { useAuthRequest, makeRedirectUri } from "expo-auth-session";
 import { AccountButton } from "@/components/Buttons/AccountButton";
-import { supabase } from "@/lib/supabase";
+import supabase from "@/lib/supabase";
 import { useTypedNavigation } from "@/lib/hooks/useTypedNavigation";
 
 export const GitHubButton = () => {
@@ -31,7 +31,6 @@ export const GitHubButton = () => {
   if (response?.type === "success") {
    console.log("GitHub OAuth success:", response);
 
-   // Now, pass the code to Supabase after successful OAuth
    const { code } = response.params;
 
    supabase.auth
@@ -42,14 +41,13 @@ export const GitHubButton = () => {
      },
     })
     .then(() => {
-     // Use getSession to retrieve the current session
      supabase.auth
       .getSession()
       .then(({ data: { session } }) => {
        if (session?.user) {
         console.log("User signed in with Supabase:", session.user);
-        setUserInfo(session.user); // Set the authenticated user info
-        navigation.navigate("UserProfile"); // Redirect to the user's profile
+        setUserInfo(session.user); 
+        navigation.navigate("UserProfile"); 
        }
       })
       .catch((error) => {
@@ -70,20 +68,20 @@ export const GitHubButton = () => {
    if (session?.user) {
     console.log("User logged in:", session.user);
     setUserInfo(session.user);
-    navigation.navigate("UserProfile"); // Redirect to the user's profile
+    navigation.navigate("UserProfile"); 
    } else if (event === "SIGNED_OUT") {
-    setUserInfo(null); // Clear user info when logged out
+    setUserInfo(null); 
    }
   });
 
   return () => {
-   subscription.unsubscribe(); // Clean up subscription
+   subscription.unsubscribe(); 
   };
  }, []);
 
  const signInWithGitHub = async () => {
   try {
-   await promptAsync(); // Trigger the OAuth flow when the user presses the button
+   await promptAsync(); 
   } catch (error) {
    console.error("Error during GitHub sign-in:", error);
   }

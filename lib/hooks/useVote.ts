@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { UserInfoContext } from "@/context/UserInfoContext";
-import { supabase } from "@/lib/supabase";
+import supabase from "../supabase";
 
 const useVote = (fact: any) => {
   const [isUpdating, setIsUpdating] = useState(false);

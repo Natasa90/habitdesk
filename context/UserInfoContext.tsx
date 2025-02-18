@@ -1,4 +1,3 @@
-// UserContext.tsx
 import { createContext } from "react";
 import { UserContextProps } from "../Types/User";
 

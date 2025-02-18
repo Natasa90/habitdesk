@@ -1,15 +1,15 @@
 import React, { FC, useState, useEffect, useMemo, useContext } from "react";
-import {
- View,
- Text,
- TouchableOpacity,
-} from "react-native";
-import { UserInfoContext } from "@/context/UserInfoContext";
-import { supabase } from "@/lib/supabase";
-import { UserCalendar } from "@/components/PorchElements/Calendar";
+import { View, Text, TouchableOpacity } from "react-native";
 import TextWrapper from "@/components/Layout/TextWrapper";
+import { UserInfoContext } from "@/context/UserInfoContext";
+import supabase from "@/lib/supabase";
+import { UserCalendar } from "@/components/PorchElements/Calendar";
+import { WeeklyGoalForm } from "../WeeklyGoalsForm";
+import { WeeklyGoalFormProps } from "@/Types/UserProfileTypes";
 
-export const UserWeeklyGoalsForm: FC = () => {
+export const UserWeeklyGoalsForm: FC<WeeklyGoalFormProps> = ({
+ setShowUserForm,
+}) => {
  const [showUpdateGoals, setShowUpdateGoals] = useState<boolean>(false);
  const [weeklyGoal, setWeeklyGoal] = useState<number>(1);
  const [currentStreak, setCurrentStreak] = useState<number>(0);
@@ -20,19 +20,24 @@ export const UserWeeklyGoalsForm: FC = () => {
  >([]);
  const { userInfo } = useContext(UserInfoContext);
 
- const fetchUserAndLearningData = async () => {
-  if (!userInfo?.email) {
-   console.warn("No user email available");
-   return;
+ useEffect(() => {
+  if (userInfo?.email) {
+   fetchUserAndLearningData();
   }
+ }, [userInfo?.email]);
+
+ const fetchUserAndLearningData = async () => {
   try {
-   // Fetch user activity data
    const { data: userActivityData, error: activityError } = await supabase
     .from("user_activity")
     .select("weekly_goal, longest_streak")
     .eq("user_email", userInfo?.email)
-    .single();
+    .maybeSingle();
 
+   if (!userActivityData) {
+    console.log("No data found for this user.");
+    return;
+   }
    if (activityError) {
     console.error("Error fetching user activity:", activityError);
     return;
@@ -96,7 +101,13 @@ export const UserWeeklyGoalsForm: FC = () => {
    )
   ).sort();
 
-  const sortedUniqueDates: Date[] = uniqueDates.map((date) => new Date(date));
+  const sortedUniqueDates: Date[] = [
+   ...new Set(
+    data.map((entry) => new Date(entry.created_at).toISOString().split("T")[0])
+   ),
+  ]
+   .map((date) => new Date(date))
+   .sort((a, b) => a.getTime() - b.getTime());
 
   sortedUniqueDates.forEach((currentDate: Date) => {
    if (!lastDate) {
@@ -172,13 +183,17 @@ export const UserWeeklyGoalsForm: FC = () => {
 
    const { data, error } = await supabase
     .from("user_activity")
-    .upsert(dataToUpsert, {
+    .upsert([dataToUpsert], {
      onConflict: "user_email",
      ignoreDuplicates: false,
     })
     .select();
 
-   if (error) throw error;
+   if (error) {
+    throw error;
+   }
+   setShowUserForm(false);
+
    console.log("Update response:", data);
   } catch (err) {
    console.error("Error updating user activity:", err);
@@ -193,21 +208,15 @@ export const UserWeeklyGoalsForm: FC = () => {
  const memoizedLearningDates = useMemo(() => learningDates, [learningDates]);
 
  if (showUpdateGoals) {
-  return (
-   <View>
-    <Text>Weekly Goal Form</Text>
-    {/* Add your goal form component here */}
-   </View>
-  );
+  return <WeeklyGoalForm setShowUserForm={setShowUserForm} />;
  }
 
  return (
   <View>
-   {/* Weekly Goal Section */}
    <View className="bg-white rounded-lg p-4 mb-4 shadow-md">
     <View className="flex-row justify-between mb-3">
      <TextWrapper>Weekly Learning Goals</TextWrapper>
-     <TouchableOpacity onPress={() => {}}>
+     <TouchableOpacity onPress={() => setShowUpdateGoals(true)}>
       <TextWrapper className="font-IBM_light">Edit Goal ➡️</TextWrapper>
      </TouchableOpacity>
     </View>
@@ -223,25 +232,20 @@ export const UserWeeklyGoalsForm: FC = () => {
        On Track
       </TextWrapper>
      ) : (
-      <TextWrapper className="text-red-500 text-sm">Off Track</TextWrapper>
+      <TextWrapper className="text-red-500 text-sm text-center">Off Track</TextWrapper>
      )}
     </View>
    </View>
-
-   {/* Streak Section */}
    <View className="bg-white rounded-lg p-4 mb-4 shadow-md">
     <TextWrapper>Current Streak</TextWrapper>
     <TextWrapper className="text-2xl font-bold pt-2">
-     {currentStreak}
-     <TextWrapper className="text-sm"> days</TextWrapper>
+     {currentStreak} <TextWrapper className="text-sm">days</TextWrapper>
     </TextWrapper>
     <View className="border-t border-gray-200 my-2 flex-row justify-between pt-2">
      <TextWrapper>✅ Longest Streak</TextWrapper>
      <TextWrapper>{longestStreak}</TextWrapper>
     </View>
    </View>
-
-   {/* Learning Chart Section */}
    <View className="bg-white rounded-lg p-4 mb-4 shadow-md">
     <TextWrapper className="text-center pb-2">Learning Charts</TextWrapper>
     <UserCalendar learningDates={memoizedLearningDates} />

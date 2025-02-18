@@ -1,3 +1,6 @@
+import { enableScreens } from "react-native-screens";
+enableScreens(); 
+
 import { View } from "react-native";
 import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
@@ -34,7 +37,7 @@ export default function App() {
       <Stack.Navigator
        initialRouteName="Splash"
        screenOptions={{
-        contentStyle: { backgroundColor: "transparent" },
+        contentStyle: { backgroundColor:"rgba(0,0,0,0.01)"},
         animation: "fade",
        }}
       >
@@ -43,7 +46,6 @@ export default function App() {
         component={SplashScreen}
         options={{
          headerShown: false,
-         contentStyle: { backgroundColor: "transparent" },
         }}
        />
        <Stack.Screen
@@ -51,7 +53,6 @@ export default function App() {
         component={HomeScreen}
         options={{
          headerShown: false,
-         contentStyle: { backgroundColor: "transparent" },
         }}
        />
        <Stack.Screen
@@ -62,14 +63,13 @@ export default function App() {
           backgroundColor: "#f8f8f8",
          },
          headerTitle: "",
-         contentStyle: { backgroundColor: "transparent" },
         }}
        />
        <Stack.Screen
         name="UserProfile"
         component={UserProfileScreen}
         options={{
-         headerShown: false, // This removes the header completely
+         headerShown: false, 
         }}
        />
        <Stack.Screen
@@ -80,7 +80,6 @@ export default function App() {
           backgroundColor: "#f8f8f8",
          },
          headerTitle: "",
-         contentStyle: { backgroundColor: "transparent" },
         }}
        />
        <Stack.Screen
@@ -91,7 +90,6 @@ export default function App() {
           backgroundColor: "#f8f8f8",
          },
          headerTitle: "",
-         contentStyle: { backgroundColor: "transparent" },
         }}
        />
        <Stack.Screen
@@ -102,7 +100,6 @@ export default function App() {
           backgroundColor: "#f8f8f8",
          },
          headerTitle: "",
-         contentStyle: { backgroundColor: "transparent" },
         }}
        />
        <Stack.Screen
@@ -113,7 +110,6 @@ export default function App() {
           backgroundColor: "#f8f8f8",
          },
          headerTitle: "",
-         contentStyle: { backgroundColor: "transparent" },
         }}
        />
       </Stack.Navigator>

@@ -1,12 +1,10 @@
 import { useState } from "react";
 import { View } from "react-native";
 import TextWrapper from "@/components/Layout/TextWrapper";
-import {
- PorchUserButtonGoals,
- PorchUserButtonUpdates,
- Quotes,
- PorchUpdateForm,
-} from "../index";
+import { PorchUserButtonGoals } from "../PorchUserButtonGoals";
+import { PorchUserButtonUpdates } from "../PorchUserButtonUpdates";
+import { Quotes } from "../Quotes";
+import { PorchUpdateForm } from "../PorchUpdateForm";
 
 export const PorchHeader = () => {
  const [showForm, setShowForm] = useState(false);

@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
-import { View, TextInput, TouchableOpacity, Alert } from "react-native";
+import { View, TextInput, TouchableOpacity } from "react-native";
 import TextWrapper from "@/components/Layout/TextWrapper";
-import { supabase } from "../../../lib/supabase";
+import { handlePasswordReset } from "@/lib/helpers/authHelpers";
 import { ResetPasswordProps } from "../../../Types/AuthTypes";
 import { AccountButton } from "@/components/Buttons/AccountButton";
 import { useTypedNavigation } from "@/lib/hooks/useTypedNavigation";
@@ -12,39 +12,6 @@ export const ResetPassword: FC<ResetPasswordProps> = ({ resetPassword }) => {
  const [isEmailValid, setIsEmailValid] = useState(true);
  const navigation = useTypedNavigation();
 
- const handlePasswordReset = async () => {
-  if (!email.trim()) {
-   setIsEmailValid(false);
-   Alert.alert("Please add an email.");
-   return;
-  }
-
-  try {
-   const { data, error } = await supabase.auth.resetPasswordForEmail(email);
-
-   if (error) {
-    Alert.alert(
-     "Account Not Found",
-     "No account found with this email address."
-    );
-   } else {
-    Alert.alert(
-     "Success",
-     `A password reset email has been sent to ${email}.`,
-     [
-      {
-       text: "OK",
-       onPress: () => navigation.navigate("Login"),
-      },
-     ]
-    );
-   }
-  } catch (error: any) {
-   Alert.alert("Error", "Something went wrong. Please try again later.");
-   console.log(`<ResetPassword Request>Error Msg: ${error.message}`);
-  }
- };
-
  return (
   <View className="items-center p-9">
    <TextWrapper className="text-xl font-IBM_semibold mb-1">
@@ -54,8 +21,6 @@ export const ResetPassword: FC<ResetPasswordProps> = ({ resetPassword }) => {
     Enter your email address below, and we'll send you a link to reset your
     password.
    </TextWrapper>
-
-   {/* Form Section */}
    <View
     className="px-4 py-6 bg-gray-50 rounded-xl shadow-md"
     style={{
@@ -67,7 +32,6 @@ export const ResetPassword: FC<ResetPasswordProps> = ({ resetPassword }) => {
     }}
    >
     <View className="space-y-5">
-     {/* Email Input */}
      <View>
       <View className="flex-row items-center">
        <FontAwesome
@@ -96,8 +60,6 @@ export const ResetPassword: FC<ResetPasswordProps> = ({ resetPassword }) => {
        />
       </View>
      </View>
-
-     {/* Cancel and Reset Password Buttons */}
      <View className="flex items-center justify-between">
       <TouchableOpacity onPress={() => resetPassword()}>
        <TextWrapper className="text-base font-medium text-orange-500">
@@ -106,7 +68,9 @@ export const ResetPassword: FC<ResetPasswordProps> = ({ resetPassword }) => {
       </TouchableOpacity>
      </View>
      <View>
-      <AccountButton onPress={handlePasswordReset}>
+      <AccountButton
+       onPress={() => handlePasswordReset(email, setIsEmailValid, navigation)}
+      >
        <TextWrapper className="text-white font-IBM_semibold">
         Reset Password
        </TextWrapper>

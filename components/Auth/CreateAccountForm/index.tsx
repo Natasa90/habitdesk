@@ -1,11 +1,11 @@
 import { useState, FC } from "react";
-import { Alert, View, TextInput, TouchableOpacity } from "react-native";
+import { View, TextInput, TouchableOpacity } from "react-native";
 import TextWrapper from "@/components/Layout/TextWrapper";
-import { supabase } from "../../../lib/supabase";
 import { CreateAccountProps } from "../../../Types/AuthTypes";
 import { TermsAgreement } from "../TermsAgreement";
 import { AccountButton } from "@/components/Buttons/AccountButton";
 import { FontAwesome } from "@expo/vector-icons";
+import { signUpWithEmail } from "@/lib/helpers/authHelpers";
 
 export const CreateAccount: FC<CreateAccountProps> = ({ signIn }) => {
  const [newUserEmail, setNewUserEmail] = useState<string>("");
@@ -14,32 +14,6 @@ export const CreateAccount: FC<CreateAccountProps> = ({ signIn }) => {
  const [emailConfirmationSent, setEmailConfirmationSent] =
   useState<boolean>(false);
  const [matchingPassword, setMatchingPassword] = useState<string>("");
-
- const signUpWithEmail = async () => {
-  try {
-   const { data, error } = await supabase.auth.signUp({
-    email: newUserEmail,
-    password: newUserPassword,
-   });
-   if (error) {
-    let customMessage;
-    if (error.message === "User already registered") {
-     customMessage = "There is already an account registered with this email.";
-    } else {
-     console.log("This is the Error:", error.message);
-     customMessage =
-      "The email or password given is not valid. Please try again. ";
-    }
-    setSignUpError(customMessage);
-   } else {
-    const user = JSON.stringify(data);
-    setEmailConfirmationSent(true);
-    Alert.alert("Demo signUp success! :)");
-   }
-  } catch (error) {
-   console.log("Error during signUp: ", error);
-  }
- };
 
  return (
   <View className="items-center p-9">
@@ -102,7 +76,7 @@ export const CreateAccount: FC<CreateAccountProps> = ({ signIn }) => {
        onChangeText={setMatchingPassword}
       />
       <TermsAgreement />
-      <AccountButton onPress={signUpWithEmail}>
+      <AccountButton onPress={() => signUpWithEmail}>
        <TextWrapper className="text-white font-IBM_semibold">
         Create Account
        </TextWrapper>

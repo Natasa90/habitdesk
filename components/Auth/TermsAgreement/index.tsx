@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Linking } from "react-native";
+import { View, Text, Linking } from "react-native";
 import { Checkbox } from "react-native-paper";
 
 export const TermsAgreement = () => {

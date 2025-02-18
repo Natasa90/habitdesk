@@ -1,7 +1,7 @@
 import { useTypedNavigation } from "@/lib/hooks/useTypedNavigation";
 import { TouchableOpacity, View } from "react-native";
 import TextWrapper from "@/components/Layout/TextWrapper";
-import { LogoutButton } from "../LogoutButton";
+import { LogoutButton } from "../../Buttons/LogoutButton";
 import { Ionicons } from "@expo/vector-icons";
 
 export const UserProfileButtons = () => {

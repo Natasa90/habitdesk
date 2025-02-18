@@ -1,7 +1,7 @@
 import { FC, useState, useContext, useEffect } from "react";
 import { CardLayout } from "@/components/Layout/CardsLayout";
 import { PorchDailyUpdateProps } from "@/Types/PorchTypes";
-import { supabase } from "@/lib/supabase";
+import supabase from "@/lib/supabase";
 import { UserInfoContext } from "@/context/UserInfoContext";
 
 export const PorchDailyUpdate: FC<PorchDailyUpdateProps> = ({

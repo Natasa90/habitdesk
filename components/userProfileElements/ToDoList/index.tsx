@@ -23,7 +23,7 @@ export const ToDoList = () => {
  };
 
  return (
-  <View className="items-center bg-gray-100 p-5 mb-5">
+  <View className="items-center bg-white rounded-xl p-5 mb-5">
    <View className="flex-row gap-2">
     <Icon name="list-circle" size={30} color="gray" />
     <TextWrapper className="text-3xl font-IBM_italic mb-6">

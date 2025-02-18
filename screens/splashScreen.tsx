@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useContext } from "react";
 import { View, Image, Animated, StatusBar } from "react-native";
 import { useTypedNavigation } from "@/lib/hooks/useTypedNavigation";
 import { UserInfoContext } from "@/context/UserInfoContext";
-import { supabase } from "@/lib/supabase";
+import supabase from "@/lib/supabase";
 
 export const SplashScreen = () => {
  const navigation = useTypedNavigation();
@@ -13,11 +13,8 @@ export const SplashScreen = () => {
   const fetchSessionAndUser = async () => {
    try {
     const { data, error } = await supabase.auth.getSession();
-    if (error || !data.session) {
-     console.error(
-      "Error fetching session:",
-      error?.message || "No session found"
-     );
+    if (!data.session) {
+     console.log("No active session found. Redirecting to Home.");
      setUserInfo(null);
      navigation.replace("Home");
      return;
@@ -42,7 +39,6 @@ export const SplashScreen = () => {
     navigation.replace("Home");
    }
   };
-
   const startAnimation = () => {
    Animated.sequence([
     Animated.timing(logoBounce, {
@@ -64,20 +60,21 @@ export const SplashScreen = () => {
  }, [logoBounce, navigation, setUserInfo]);
 
  return (
-  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-    <StatusBar barStyle="light-content" />
-    
-    <Animated.View
-      style={{
-        justifyContent: 'center',
-        alignItems: 'center',
-        transform: [{ translateY: logoBounce }],
-      }}
-    >
-      <Image
-        source={require("../assets/images/slavoio-logo.png")}
-        style={{ width: 192, height: 192 }}
-      />
-    </Animated.View>
+  <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+   <StatusBar barStyle="light-content" />
+
+   <Animated.View
+    style={{
+     justifyContent: "center",
+     alignItems: "center",
+     transform: [{ translateY: logoBounce }],
+    }}
+   >
+    <Image
+     source={require("../assets/images/slavoio-logo.png")}
+     style={{ width: 192, height: 192 }}
+    />
+   </Animated.View>
   </View>
-); }
+ );
+};
