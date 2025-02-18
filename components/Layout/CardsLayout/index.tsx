@@ -21,7 +21,7 @@ export const CardLayout: FC<CardLayoutProps> = ({
 }) => {
  return (
   <View
-   className="p-4 bg-white rounded-xl shadow-md mb-4"
+   className="p-4 bg-white rounded-xl shadow-xl mb-4"
    style={{
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },

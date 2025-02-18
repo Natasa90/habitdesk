@@ -1,20 +1,16 @@
-import { enableScreens } from "react-native-screens";
-enableScreens(); 
-
-import { View } from "react-native";
 import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {
-  SplashScreen,
-  HomeScreen,
-  LoginScreen,
-  UserProfileScreen,
-  PorchScreen,
-  FreeResourcesScreen,
-  CreateAccountScreen,
-  ResetPasswordScreen,
+ SplashScreen,
+ HomeScreen,
+ LoginScreen,
+ UserProfileScreen,
+ PorchScreen,
+ FreeResourcesScreen,
+ CreateAccountScreen,
+ ResetPasswordScreen,
 } from "./screens";
 import { UserInfoContext } from "./context/UserInfoContext";
 import { UserContextProps } from "./Types/User";
@@ -32,91 +28,89 @@ export default function App() {
  return (
   <UserInfoContext.Provider value={{ userInfo, setUserInfo }}>
    <BackgroundWrapper>
-    <View style={{ flex: 1, backgroundColor: "transparent" }}>
-     <NavigationContainer>
-      <Stack.Navigator
-       initialRouteName="Splash"
-       screenOptions={{
-        contentStyle: { backgroundColor:"rgba(0,0,0,0.01)"},
-        animation: "fade",
+    <NavigationContainer>
+     <Stack.Navigator
+      initialRouteName="Splash"
+      screenOptions={{
+       animation: "none",
+       contentStyle: { backgroundColor: "transparent" },
+      }}
+     >
+      <Stack.Screen
+       name="Splash"
+       component={SplashScreen}
+       options={{
+        headerShown: false,
        }}
-      >
-       <Stack.Screen
-        name="Splash"
-        component={SplashScreen}
-        options={{
-         headerShown: false,
-        }}
-       />
-       <Stack.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{
-         headerShown: false,
-        }}
-       />
-       <Stack.Screen
-        name="Login"
-        component={LoginScreen}
-        options={{
-         headerStyle: {
-          backgroundColor: "#f8f8f8",
-         },
-         headerTitle: "",
-        }}
-       />
-       <Stack.Screen
-        name="UserProfile"
-        component={UserProfileScreen}
-        options={{
-         headerShown: false, 
-        }}
-       />
-       <Stack.Screen
-        name="Porch"
-        component={PorchScreen}
-        options={{
-         headerStyle: {
-          backgroundColor: "#f8f8f8",
-         },
-         headerTitle: "",
-        }}
-       />
-       <Stack.Screen
-        name="FreeResources"
-        component={FreeResourcesScreen}
-        options={{
-         headerStyle: {
-          backgroundColor: "#f8f8f8",
-         },
-         headerTitle: "",
-        }}
-       />
-       <Stack.Screen
-        name="CreateAccount"
-        component={CreateAccountScreen}
-        options={{
-         headerStyle: {
-          backgroundColor: "#f8f8f8",
-         },
-         headerTitle: "",
-        }}
-       />
-       <Stack.Screen
-        name="ResetPassword"
-        component={ResetPasswordScreen}
-        options={{
-         headerStyle: {
-          backgroundColor: "#f8f8f8",
-         },
-         headerTitle: "",
-        }}
-       />
-      </Stack.Navigator>
-      <StatusBar style="dark" />
-      <Footer />
-     </NavigationContainer>
-    </View>
+      />
+      <Stack.Screen
+       name="Home"
+       component={HomeScreen}
+       options={{
+        headerShown: false,
+       }}
+      />
+      <Stack.Screen
+       name="Login"
+       component={LoginScreen}
+       options={{
+        headerStyle: {
+         backgroundColor: "#f8f8f8",
+        },
+        headerTitle: "",
+       }}
+      />
+      <Stack.Screen
+       name="UserProfile"
+       component={UserProfileScreen}
+       options={{
+        headerShown: false,
+       }}
+      />
+      <Stack.Screen
+       name="Porch"
+       component={PorchScreen}
+       options={{
+        headerStyle: {
+         backgroundColor: "#f8f8f8",
+        },
+        headerTitle: "",
+       }}
+      />
+      <Stack.Screen
+       name="FreeResources"
+       component={FreeResourcesScreen}
+       options={{
+        headerStyle: {
+         backgroundColor: "#f8f8f8",
+        },
+        headerTitle: "",
+       }}
+      />
+      <Stack.Screen
+       name="CreateAccount"
+       component={CreateAccountScreen}
+       options={{
+        headerStyle: {
+         backgroundColor: "#f8f8f8",
+        },
+        headerTitle: "",
+       }}
+      />
+      <Stack.Screen
+       name="ResetPassword"
+       component={ResetPasswordScreen}
+       options={{
+        headerStyle: {
+         backgroundColor: "#f8f8f8",
+        },
+        headerTitle: "",
+       }}
+      />
+     </Stack.Navigator>
+     <StatusBar style="dark" />
+     <Footer />
+    </NavigationContainer>
    </BackgroundWrapper>
   </UserInfoContext.Provider>
  );

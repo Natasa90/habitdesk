@@ -22,7 +22,7 @@ export const ResetPassword: FC<ResetPasswordProps> = ({ resetPassword }) => {
     password.
    </TextWrapper>
    <View
-    className="px-4 py-6 bg-gray-50 rounded-xl shadow-md"
+    className="px-4 py-6 bg-gray-50 rounded-xl shadow-xl"
     style={{
      shadowColor: "#000",
      shadowOffset: { width: 0, height: 2 },

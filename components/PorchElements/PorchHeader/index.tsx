@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View } from "react-native";
+import { View, Image } from "react-native";
 import TextWrapper from "@/components/Layout/TextWrapper";
 import { PorchUserButtonGoals } from "../PorchUserButtonGoals";
 import { PorchUserButtonUpdates } from "../PorchUserButtonUpdates";
@@ -15,13 +15,17 @@ export const PorchHeader = () => {
 
  return (
   <View>
-   <View className="items-center mb-4">
-    <TextWrapper className="text-3xl font-IBM_semibold">Porch</TextWrapper>
-    <TextWrapper className="text-lg font-IBM_mediumc color-blue-700">
+   <View className="items-center">
+    <TextWrapper className="text-3xl font-IBM_semibold text-gray-700">Porch</TextWrapper>
+    <TextWrapper className="text-lg font-IBM_lightItalic color-blue-700">
      - Your Growth Dashboard -
     </TextWrapper>
+ <Image
+    source={require("../../../assets/images/progress_team_transparent.png")}
+    style={{ width: 250, height: 300 }}
+   />
    </View>
-   <View className="gap-2 mt-4">
+   <View>
     <PorchUserButtonGoals />
 
     <PorchUserButtonUpdates setShowForm={handleButtonClick} />

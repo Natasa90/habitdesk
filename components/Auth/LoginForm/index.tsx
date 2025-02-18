@@ -33,7 +33,7 @@ export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
 
  return (
   <View
-   className="p-6 mx-8 bg-white rounded-xl shadow-md"
+   className="p-6 mx-8 bg-white rounded-xl shadow-xl"
    style={{
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },

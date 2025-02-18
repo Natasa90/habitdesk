@@ -123,7 +123,7 @@ export const PorchUpdateForm: FC<PorchFormProps> = ({
        />
        <View className="items-center">
         <TouchableOpacity
-         className="bg-customBlue p-2 rounded-xl shadow-md justify-center items-center mb-10 w-40"
+         className="bg-customBlue p-2 rounded-xl shadow-xl justify-center items-center mb-10 w-40"
          onPress={handleSubmit}
          disabled={isUploading}
         >

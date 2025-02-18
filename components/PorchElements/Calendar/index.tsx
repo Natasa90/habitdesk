@@ -43,7 +43,7 @@ export const UserCalendar: FC<PorchCalendarProps> = ({ learningDates }) => {
  };
 
  return (
-    <View className="bg-gray-50 rounded-lg shadow-lg">
+    <View className="bg-gray-50 rounded-lg">
       <Calendar
         monthFormat={"MMMM yyyy"}
         onMonthChange={(month) => {
@@ -57,7 +57,7 @@ export const UserCalendar: FC<PorchCalendarProps> = ({ learningDates }) => {
           arrowColor: "#3498db",
           textMonthFontWeight: "bold",
         }}
-        className="rounded-lg shadow-md"
+        className="rounded-lg shadow-xl"
       />
     </View>
   );

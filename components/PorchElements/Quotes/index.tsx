@@ -22,7 +22,7 @@ export const Quotes = () => {
  const currentQuote = quotesData[currentIndex];
 
  return (
-  <View className="mt-6 mb-10">
+  <View className="mt-6 mb-6">
    {loadingState === "loading" ? (
     <ActivityIndicator size="large" color="#0000ff" />
    ) : loadingState === "loaded" && currentQuote ? (

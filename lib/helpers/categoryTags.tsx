@@ -10,7 +10,7 @@ export const CategoryTags: FC<CategoryTagsProps> = ({
  isActive,
 }) => {
  return (
-  <View className="mt-6">
+  <View className="mt-4">
    <View className="flex-row justify-center gap-2">
     <MaterialIcons name="category" size={24} color="#FF6347" />
     <TextWrapper className="text-xl text-center color-gray-700">

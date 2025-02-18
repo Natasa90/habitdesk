@@ -9,12 +9,12 @@ import {
 import { UserWeeklyGoalsForm } from "@/components/userProfileElements/WeeklyGoals";
 
 export const UserProfileScreen = () => {
- const [showForm, setShowForm] = useState(false);
+
  return (
-  <ScrollView className="flex-1 mt-10 px-9">
+  <ScrollView className="flex-1 mt-8 px-7">
    <FormTitle />
    <UserProfileTitle />
-   <UserWeeklyGoalsForm setShowUserForm={setShowForm} />
+   <UserWeeklyGoalsForm setShowUserForm={() => {}} />
    <ToDoList />
    <UserProfileButtons />
   </ScrollView>

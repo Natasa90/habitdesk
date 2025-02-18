@@ -213,7 +213,7 @@ export const UserWeeklyGoalsForm: FC<WeeklyGoalFormProps> = ({
 
  return (
   <View>
-   <View className="bg-white rounded-lg p-4 mb-4 shadow-md">
+   <View className="bg-white rounded-lg p-4 mb-4 shadow-xl">
     <View className="flex-row justify-between mb-3">
      <TextWrapper>Weekly Learning Goals</TextWrapper>
      <TouchableOpacity onPress={() => setShowUpdateGoals(true)}>
@@ -236,7 +236,7 @@ export const UserWeeklyGoalsForm: FC<WeeklyGoalFormProps> = ({
      )}
     </View>
    </View>
-   <View className="bg-white rounded-lg p-4 mb-4 shadow-md">
+   <View className="bg-white rounded-lg p-4 mb-4 shadow-xl">
     <TextWrapper>Current Streak</TextWrapper>
     <TextWrapper className="text-2xl font-bold pt-2">
      {currentStreak} <TextWrapper className="text-sm">days</TextWrapper>
@@ -246,7 +246,7 @@ export const UserWeeklyGoalsForm: FC<WeeklyGoalFormProps> = ({
      <TextWrapper>{longestStreak}</TextWrapper>
     </View>
    </View>
-   <View className="bg-white rounded-lg p-4 mb-4 shadow-md">
+   <View className="bg-white rounded-lg p-4 mb-4 shadow-xl">
     <TextWrapper className="text-center pb-2">Learning Charts</TextWrapper>
     <UserCalendar learningDates={memoizedLearningDates} />
    </View>

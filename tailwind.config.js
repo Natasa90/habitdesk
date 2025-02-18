@@ -17,7 +17,8 @@ module.exports = {
         customBlue: "rgb(6, 140, 180)",
         footerBlue: "rgb(246, 250, 251)",
         lionBlue: "rgb(11, 66, 107)",
-        transparent: 'transparent'
+        transparent: 'transparent',
+        listBlue: "rgb(232, 241, 255)"
       },
       fontFamily: {
         sans: ["IBMPlexSerif-Regular", "sans-serif"], 
@@ -35,7 +36,12 @@ module.exports = {
         IBM_semiboldItalic: ["IBMPlexSerif-SemiBoldItalic", "sans-serif"],
         IBM_thin: ["IBMPlexSerif-Thin", "sans-serif"],
         IBM_thinItalic: ["IBMPlexSerif-ThinItalic", "sans-serif"],
-},
+      },
+      boxShadow: {
+        'md': '0px 4px 8px rgba(0, 0, 0, 0.2)', // Increased size and opacity
+        'lg': '0px 6px 12px rgba(0, 0, 0, 0.3)', // Increased size and opacity
+        'xl': '0px 10px 20px rgba(0, 0, 0, 0.4)', // Increased size and opacity
+      },
     },
   },
   plugins: ["nativewind/plugin"],

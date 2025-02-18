@@ -27,7 +27,7 @@ export const CreateAccount: FC<CreateAccountProps> = ({ signIn }) => {
     Create a free Celebration account in 2 minutes.
    </TextWrapper>
    <View
-    className="p-6 bg-gray-50 rounded-xl shadow-md"
+    className="p-6 bg-gray-50 rounded-xl shadow-xl"
     style={{
      shadowColor: "#000",
      shadowOffset: { width: 0, height: 2 },

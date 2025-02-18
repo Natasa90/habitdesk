@@ -3,6 +3,7 @@ import { View, TouchableOpacity } from "react-native";
 import TextWrapper from "@/components/Layout/TextWrapper";
 import Icon from "react-native-vector-icons/Ionicons";
 import { PorchUserButtonProps } from "../../../Types/PorchTypes";
+import * as Animatable from 'react-native-animatable';
 
 export const PorchUserButtonUpdates: FC<PorchUserButtonProps> = ({
  setShowForm,
@@ -21,12 +22,12 @@ export const PorchUserButtonUpdates: FC<PorchUserButtonProps> = ({
    <View className="pl-2.5 pb-2 pt-2">
     <Icon name="arrow-back" size={18} color="#4A4A4A" />
    </View>
-   <TextWrapper className="pl-2.5 pb-2 pt-1.5">
+  <Animatable.Text animation="zoomIn" duration={1500} className="pl-2.5 pb-2 pt-1.5">
     Post your{" "}
     <TextWrapper className="font-IBM_italic text-blue-700">
      progress!
     </TextWrapper>
-   </TextWrapper>
+   </Animatable.Text>
   </View>
  );
 };
