@@ -1,26 +1,17 @@
 import { FC } from "react";
 import { ImageBackground, View, StyleSheet } from "react-native";
 import { BackgroundWrapperProps } from "@/Types/LayoutTypes";
+import { styles } from "../globalStyles";
 
 export const BackgroundWrapper: FC<BackgroundWrapperProps> = ({ children }) => {
   return (
     <ImageBackground
       source={require("../../../assets/images/home-bg.jpeg")}
-      style={styles.background}
+      style={styles.bgWrapper}
       resizeMode="cover"
     >
-      <View style={styles.container}>{children}</View>
+      <View style={styles.bgWrapperChildren}>{children}</View>
     </ImageBackground>
   );
 };
 
-const styles = StyleSheet.create({
-  background: {
-    flex: 1,
-    width: "100%",
-    height: "100%", 
-  },
-  container: {
-    flex: 1,
-  },
-});

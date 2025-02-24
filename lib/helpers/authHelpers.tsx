@@ -1,7 +1,6 @@
 import { Alert } from "react-native";
 import supabase from "../supabase";
 import { NavigationProp } from "@react-navigation/native";
-import { UserInfoContext } from "@/context/UserInfoContext";
 
 export const handlePasswordReset = async (
   email: string,

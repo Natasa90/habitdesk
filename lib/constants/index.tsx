@@ -27,3 +27,8 @@ export function isValidHttpUrl(urlInput: string) {
 
  return !!urlPattern.test(urlInput);
 }
+
+export function isValidEmail(email: string): boolean {
+ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+

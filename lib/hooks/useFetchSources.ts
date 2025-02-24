@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import supabase from "../supabase";
 
-const useFetchSources = () => {
+export const useFetchSources = () => {
   const [sources, setSources] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -30,4 +30,3 @@ const useFetchSources = () => {
   return { sources, loading, error };
 };
 
-export default useFetchSources;

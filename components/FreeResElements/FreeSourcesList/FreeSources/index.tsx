@@ -1,20 +1,17 @@
 import { FC, useState } from "react";
 import { CardLayout } from "@/components/Layout/CardsLayout";
 import { FreeSourceProps } from "@/Types/FreeResourcesTypes";
-import useVote from "@/lib/hooks/useVote";
+import { useVote } from "@/lib/hooks";
 
 export const FreeSource: FC<FreeSourceProps> = ({ fact }) => {
-  const { isUpdating, hasVoted, handleVote, likes } = useVote(fact);
+  const { isUpdating, hasVoted, handleVote, likes } = useVote(fact, "sources", "id");
   const [showMore, setShowMore] = useState<boolean>(false);
   const displayComment = showMore ? fact.text : fact.text.slice(0, 90);
 
   return (
     <CardLayout
       title={fact.category || "Unknown Category"}
-      porch={{
-        source: fact.source,
-        likes: likes,
-      }}
+       porch={{ ...fact, likes }}
       displayComment={displayComment}
       commentText={fact.text}
       showMore={showMore}

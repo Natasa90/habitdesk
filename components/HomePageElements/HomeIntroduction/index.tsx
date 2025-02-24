@@ -2,7 +2,7 @@ import { View } from "react-native";
 import TextWrapper from "@/components/Layout/TextWrapper";
 import { Team } from "../../index";
 import { useTypedNavigation } from "@/lib/hooks/useTypedNavigation";
-import { HomeButton } from "../HomeButton";
+import { HomeButton } from "@/components/Buttons";
 
 const HomeIntroduction = () => {
  const navigation = useTypedNavigation();

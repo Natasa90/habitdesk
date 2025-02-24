@@ -6,6 +6,7 @@ import { ResetPasswordProps } from "../../../Types/AuthTypes";
 import { AccountButton } from "@/components/Buttons/AccountButton";
 import { useTypedNavigation } from "@/lib/hooks/useTypedNavigation";
 import { FontAwesome } from "@expo/vector-icons";
+import { isValidEmail } from "@/lib/constants";
 
 export const ResetPassword: FC<ResetPasswordProps> = ({ resetPassword }) => {
  const [email, setEmail] = useState("");
@@ -50,7 +51,7 @@ export const ResetPassword: FC<ResetPasswordProps> = ({ resetPassword }) => {
         value={email}
         onChangeText={(text) => {
          setEmail(text);
-         setIsEmailValid(!!text.trim());
+         setIsEmailValid(isValidEmail(text));
         }}
         className="w-full py-4 pl-3 text-black placeholder-gray-500 bg-white border rounded-md font-IBM_italic"
         style={{
