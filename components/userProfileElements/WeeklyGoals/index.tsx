@@ -1,4 +1,4 @@
-import { UserWeeklyGoalsForm } from "./UserWeeklyGoals";
-import { WeeklyGoalForm } from "./WeeklyGoalsForm";
+import { UserWeeklyGoals } from "./UserWeeklyGoals";
+import { GoalsForm } from "./GoalsForm";
 
-export { UserWeeklyGoalsForm, WeeklyGoalForm }; 
+export { UserWeeklyGoals, GoalsForm };

@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { View, TextInput, TouchableOpacity } from "react-native";
 import TextWrapper from "@/components/Layout/TextWrapper";
-import { handlePasswordReset } from "@/lib/helpers/authHelpers";
+import { handlePasswordReset } from "@/lib/helpers";
 import { ResetPasswordProps } from "../../../Types/AuthTypes";
 import { AccountButton } from "@/components/Buttons/AccountButton";
 import { useTypedNavigation } from "@/lib/hooks/useTypedNavigation";
