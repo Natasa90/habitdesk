@@ -6,7 +6,7 @@ import { useTypedNavigation } from "../../../lib/hooks/useTypedNavigation";
 import { UserInfoContext } from "@/context/UserInfoContext";
 import { AccountButton, GitHubButton } from "@/components/Buttons";
 import { FontAwesome } from "@expo/vector-icons";
-import { signInWithEmail } from "@/lib/helpers/authHelpers";
+import { signInWithEmail } from "@/lib/helpers";
 
 export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
  const [email, setEmail] = useState<string>("");

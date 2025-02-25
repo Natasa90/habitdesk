@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import { ScrollView } from "react-native";
 import { FormTitle } from "@/components/Auth";
 import {
@@ -6,7 +6,7 @@ import {
  ToDoList,
  UserProfileButtons,
 } from "@/components/userProfileElements";
-import { UserWeeklyGoalsForm } from "@/components/userProfileElements/WeeklyGoals";
+import { UserWeeklyGoals } from "@/components/userProfileElements/WeeklyGoals";
 
 export const UserProfileScreen = () => {
 
@@ -14,7 +14,7 @@ export const UserProfileScreen = () => {
   <ScrollView className="flex-1 mt-8 px-7">
    <FormTitle />
    <UserProfileTitle />
-   <UserWeeklyGoalsForm setShowUserForm={() => {}} />
+   <UserWeeklyGoals />
    <ToDoList />
    <UserProfileButtons />
   </ScrollView>

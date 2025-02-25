@@ -5,7 +5,7 @@ import { CreateAccountProps } from "../../../Types/AuthTypes";
 import { TermsAgreement } from "../TermsAgreement";
 import { AccountButton } from "@/components/Buttons/AccountButton";
 import { FontAwesome } from "@expo/vector-icons";
-import { signUpWithEmail } from "@/lib/helpers/authHelpers";
+import { signUpWithEmail } from "@/lib/helpers";
 
 export const CreateAccount: FC<CreateAccountProps> = ({ signIn }) => {
  const [newUserEmail, setNewUserEmail] = useState<string>("");

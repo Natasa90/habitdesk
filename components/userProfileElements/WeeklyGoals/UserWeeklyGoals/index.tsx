@@ -1,30 +1,30 @@
-import { FC, useState, useMemo } from "react";
-import { View, TouchableOpacity } from "react-native";
+import { useState, useMemo } from "react";
+import { View, TouchableOpacity, Modal } from "react-native";
+import { BlurView } from "expo-blur"; // Importing BlurView
 import TextWrapper from "@/components/Layout/TextWrapper";
 import { UserCalendar } from "@/components/PorchElements/Calendar";
-import { WeeklyGoalForm } from "../WeeklyGoalsForm";
-import { WeeklyGoalFormProps } from "@/Types/UserProfileTypes";
+import { GoalsForm } from "../GoalsForm";
 import { useUserLearningData } from "@/lib/hooks";
 
-export const UserWeeklyGoalsForm: FC<WeeklyGoalFormProps> = ({
- setShowUserForm,
-}) => {
-  const [showUpdateGoals, setShowUpdateGoals] = useState<boolean>(false);
-  const { weeklyGoal, currentStreak, longestStreak, weeklyLearningDays, learningDates } =
-    useUserLearningData();
+export const UserWeeklyGoals = () => {
+ const [showGoalsForm, setShowGoalsForm] = useState<boolean>(false);
+ const {
+  weeklyGoal: initialWeeklyGoal,
+  currentStreak,
+  longestStreak,
+  weeklyLearningDays,
+  learningDates,
+ } = useUserLearningData();
 
-  const memoizedLearningDates = useMemo(() => learningDates, [learningDates]);
-
-  if (showUpdateGoals) {
-    return <WeeklyGoalForm setShowUserForm={setShowUserForm} />;
-  }
+ const [weeklyGoal, setWeeklyGoal] = useState(initialWeeklyGoal);
+ const memoizedLearningDates = useMemo(() => learningDates, [learningDates]);
 
  return (
   <View>
    <View className="bg-white rounded-lg p-4 mb-4 shadow-xl">
     <View className="flex-row justify-between mb-3">
      <TextWrapper>Weekly Learning Goals</TextWrapper>
-     <TouchableOpacity onPress={() => setShowUpdateGoals(true)}>
+     <TouchableOpacity onPress={() => setShowGoalsForm(true)}>
       <TextWrapper className="font-IBM_light">Edit Goal ➡️</TextWrapper>
      </TouchableOpacity>
     </View>
@@ -57,9 +57,9 @@ export const UserWeeklyGoalsForm: FC<WeeklyGoalFormProps> = ({
     <TextWrapper className="text-2xl font-bold pt-2 ">
      {currentStreak}
      {currentStreak === 1 ? (
-        <TextWrapper className="text-sm">{` ${" "}day`}</TextWrapper>
+      <TextWrapper className="text-sm">{` ${" "}day`}</TextWrapper>
      ) : (
-         <TextWrapper className="text-sm">{` ${" "}days`}</TextWrapper>
+      <TextWrapper className="text-sm">{` ${" "}days`}</TextWrapper>
      )}
     </TextWrapper>
     <View className="border-t border-gray-200 my-2 flex-row justify-between pt-2">
@@ -71,6 +71,26 @@ export const UserWeeklyGoalsForm: FC<WeeklyGoalFormProps> = ({
     <TextWrapper className="text-center pb-2">Learning Charts</TextWrapper>
     <UserCalendar learningDates={memoizedLearningDates} />
    </View>
+   <Modal
+    visible={showGoalsForm}
+    transparent
+    animationType="fade"
+    onRequestClose={() => setShowGoalsForm(false)}
+   >
+    <View className="flex-1 justify-center items-center">
+     <BlurView
+      intensity={80}
+      tint="light"
+      style={{ position: "absolute", width: "100%", height: "100%" }}
+     />
+     <View className="bg-gray-300 rounded-lg p-4 shadow-xl w-10/12 max-w-xs min-h-[280px]">
+      <GoalsForm
+       onClose={() => setShowGoalsForm(false)}
+       updateGoal={setWeeklyGoal}
+      />
+     </View>
+    </View>
+   </Modal>
   </View>
  );
 };

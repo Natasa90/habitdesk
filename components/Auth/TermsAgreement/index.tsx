@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { View, Text, Linking } from "react-native";
 import { Checkbox } from "react-native-paper";
 
 export const TermsAgreement = () => {
+
+ const [checked, setChecked] = useState(false);
  const openUrl = (url: string) => {
   Linking.openURL(url).catch((err) =>
    console.error("Failed to open URL:", err)
@@ -10,7 +13,11 @@ export const TermsAgreement = () => {
 
  return (
   <View className="flex-row">
-   <Checkbox status="checked" color="green" disabled />
+   <Checkbox
+    status={checked ? "checked" : "unchecked"}
+    onPress={() => setChecked(!checked)} 
+    color="green"
+   />
    <Text className="text-xs text-gray-600 ml-2">
     I agree to Postcraft’s{" "}
     <Text
