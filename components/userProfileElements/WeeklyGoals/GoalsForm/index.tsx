@@ -1,4 +1,4 @@
-import { FC, useState, useContext, useEffect } from "react";
+import { FC, useState, useContext } from "react";
 import { View, TouchableOpacity, ActivityIndicator } from "react-native";
 import { DropDownPicker } from "../DropDownPicker";
 import { GoalsFormProps } from "@/Types/UserProfileTypes";
