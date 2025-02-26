@@ -65,22 +65,22 @@ export const PorchList: FC<PorchListProps> = ({ porchs, setPorchs }) => {
  };
 
  return (
-  <View className="pt-6 border-t-4 border-[#e5e7eb] ml-2">
-   <TextWrapper className="text-lg font-IBM_semibold">
+  <View className="pt-6 border-t-4 border-[#e5e7eb]">
+   <TextWrapper className="text-lg font-IBM_semibold ml-2">
     Daily Highlights
    </TextWrapper>
-   <TextWrapper className="mt-1 font-IBM_light">
+   <TextWrapper className="mt-1 font-IBM_light ml-2">
     Growth and Learning News
    </TextWrapper>
    {userInfo?.email && (
     <>
-     <TextWrapper className="mt-5 text-lg">
+     <TextWrapper className="mt-5 text-lg ml-2">
       You've been dedicated to learning for{" "}
       <TextWrapper className="font-IBM_semibold">{learningDays}</TextWrapper>{" "}
       days!
      </TextWrapper>
-     <TouchableOpacity onPress={handleFiltering} className="mt-3 w-48">
-      <TextWrapper className="bg-customBlue rounded-xl py-2.5 px-2.5 text-sm font-IBM_medium text-white self-start">
+     <TouchableOpacity onPress={handleFiltering} className="mt-3">
+      <TextWrapper className="bg-customBlue rounded-xl ml-2 font-IBM_medium text-white self-start p-3">
        {buttonTitle}
       </TextWrapper>
      </TouchableOpacity>

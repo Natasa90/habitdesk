@@ -11,7 +11,7 @@ export const UserProfileButtons = () => {
   <View className="gap-6">
    <TouchableOpacity
     onPress={() => navigation.navigate("Porch")}
-    className="bg-gray-300 p-6 rounded-xl shadow-md flex-row justify-center items-center"
+    className="bg-gray-300 p-6 rounded-xl flex-row justify-center items-center"
    >
     <TextWrapper className="text-lg text-gray-900">
      Go to Porch Screen
@@ -25,7 +25,7 @@ export const UserProfileButtons = () => {
    </TouchableOpacity>
    <TouchableOpacity
     onPress={() => navigation.navigate("FreeResources")}
-    className="bg-gray-300 p-6 rounded-xl shadow-md flex-row justify-center items-center mb-6"
+    className="bg-gray-300 p-6 rounded-xl flex-row justify-center items-center mb-6"
    >
     <TextWrapper className="text-lg text-gray-900">
      Go to Free Resources

@@ -26,7 +26,7 @@ export const ToDoList = () => {
  };
 
  return (
-  <View className="items-center bg-white rounded-xl shadow-xl p-5 mb-5">
+  <View className="items-center bg-white rounded-xl shadow-md p-5 mb-5">
    <TextWrapper className="text-2xl font-IBM_light pb-2 tracking-widest text-center">
     {getCurrentDay()}'s Tasks
    </TextWrapper>
@@ -52,7 +52,7 @@ export const ToDoList = () => {
     {toDo.map((item, index) => (
      <View
       key={index}
-      className="flex-row items-center justify-between p-3 mb-2 bg-listBlue rounded-lg shadow-xl"
+      className="flex-row items-center justify-between p-3 mb-2 bg-listBlue rounded-lg shadow-sm"
      >
       <TextWrapper className="text-gray-800">{item}</TextWrapper>
       <TouchableOpacity onPress={() => deleteTask(index)}>

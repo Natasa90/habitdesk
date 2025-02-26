@@ -47,7 +47,7 @@ export const PorchScreen = () => {
  };
 
  return (
-  <ScrollView className="flex-1 p-7">
+  <ScrollView className="flex-1 p-5">
    <PorchHeader />
    {loading ? (
     <View className="flex items-center justify-center mt-10">
@@ -62,7 +62,7 @@ export const PorchScreen = () => {
    {hasMore && !loading && (
     <View className="items-center">
      <TouchableOpacity
-      className="bg-customBlue p-2 rounded-xl shadow-xl justify-center items-center mb-10 w-40"
+      className="bg-customBlue p-2 rounded-xl shadow-md justify-center items-center mb-10 w-40"
       onPress={handleLoadMore}
      >
       <TextWrapper className="text-white">Load More Updates</TextWrapper>

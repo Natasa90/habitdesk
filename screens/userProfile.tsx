@@ -11,7 +11,7 @@ UserWeeklyGoals
 export const UserProfileScreen = () => {
 
  return (
-  <ScrollView className="flex-1 mt-8 px-7">
+  <ScrollView className="flex-1 mt-8 px-5">
    <FormTitle />
    <UserProfileTitle />
    <UserWeeklyGoals />

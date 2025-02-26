@@ -21,7 +21,7 @@ export const UserWeeklyGoals = () => {
 
  return (
   <View>
-   <View className="bg-white rounded-lg p-4 mb-4 shadow-xl">
+   <View className="bg-white rounded-lg p-4 mb-4 shadow-lg">
     <View className="flex-row justify-between mb-3">
      <TextWrapper>Weekly Learning Goals</TextWrapper>
      <TouchableOpacity onPress={() => setShowGoalsForm(true)}>
@@ -52,7 +52,7 @@ export const UserWeeklyGoals = () => {
      )}
     </View>
    </View>
-   <View className="bg-white rounded-lg p-4 mb-4 shadow-xl">
+   <View className="bg-white rounded-lg p-4 mb-4 shadow-lg">
     <TextWrapper>Current Streak</TextWrapper>
     <TextWrapper className="text-2xl font-bold pt-2 ">
      {currentStreak}
@@ -67,7 +67,7 @@ export const UserWeeklyGoals = () => {
      <TextWrapper>{longestStreak}</TextWrapper>
     </View>
    </View>
-   <View className="bg-white rounded-lg p-4 mb-4 shadow-xl">
+   <View className="bg-white rounded-lg p-4 mb-4 shadow-lg">
     <TextWrapper className="text-center pb-2">Learning Charts</TextWrapper>
     <UserCalendar learningDates={memoizedLearningDates} />
    </View>
@@ -79,7 +79,7 @@ export const UserWeeklyGoals = () => {
    >
     <View className="flex-1 justify-center items-center">
      <BlurView
-      intensity={80}
+      intensity={20}
       tint="light"
       style={{ position: "absolute", width: "100%", height: "100%" }}
      />
