@@ -1,6 +1,6 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { View, TouchableOpacity, Modal } from "react-native";
-import { BlurView } from "expo-blur"; 
+import { BlurView } from "expo-blur";
 import { TextWrapper } from "@/components/Layout";
 import { UserCalendar } from "@/components/PorchElements/Calendar";
 import { GoalsForm } from "../GoalsForm";
@@ -18,6 +18,10 @@ export const UserWeeklyGoals = () => {
 
  const [weeklyGoal, setWeeklyGoal] = useState(initialWeeklyGoal);
  const memoizedLearningDates = useMemo(() => learningDates, [learningDates]);
+
+ useEffect(() => {
+  setWeeklyGoal(initialWeeklyGoal);
+ }, [initialWeeklyGoal]);
 
  return (
   <View>

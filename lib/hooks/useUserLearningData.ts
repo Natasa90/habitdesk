@@ -31,13 +31,13 @@ export const useUserLearningData = () => {
         .maybeSingle();
 
       if (activityError) {
-        console.error("Error fetching user activity:", activityError);
         return;
       }
 
       if (userActivityData) {
         setWeeklyGoal(userActivityData.weekly_goal ?? 1);
         setLongestStreak(userActivityData.longest_streak ?? 0);
+
       }
 
       const { data: learningData, error: learningError } = await supabase
