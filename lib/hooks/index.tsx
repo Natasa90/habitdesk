@@ -17,9 +17,9 @@ export {
  usePorchSubmit,
  useTypedNavigation,
  useVote,
-usePorchs,
-usePorchForm,
-useUserLearningData,
-useWeeklyGoal,
-useFilteredDailyUpdates
+ usePorchs,
+ usePorchForm,
+ useUserLearningData,
+ useWeeklyGoal,
+ useFilteredDailyUpdates,
 };

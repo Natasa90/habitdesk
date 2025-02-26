@@ -83,8 +83,8 @@ export const UserWeeklyGoals = () => {
    >
     <View className="flex-1 justify-center items-center">
      <BlurView
-      intensity={20}
-      tint="light"
+      intensity={80}
+      tint="dark"
       style={{ position: "absolute", width: "100%", height: "100%" }}
      />
      <View className="bg-gray-300 rounded-lg p-4 shadow-xl w-10/12 max-w-xs min-h-[280px]">

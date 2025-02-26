@@ -8,7 +8,7 @@ export const DropDownPicker: FC<DropDownPickerProps> = ({ selectedValue, onValue
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
-    <View className="p-2 w-40">
+    <View className="p-2 w-60">
       <TouchableOpacity 
         onPress={() => setModalVisible(true)} 
         className="bg-blue-500 p-3 rounded-full w-full items-center"
@@ -19,8 +19,8 @@ export const DropDownPicker: FC<DropDownPickerProps> = ({ selectedValue, onValue
       </TouchableOpacity>
       <Modal visible={modalVisible} transparent animationType="fade">
         <View className="flex-1 justify-center items-center">
-          <BlurView intensity={20} tint="light" style={{ position: "absolute", width: "100%", height: "100%" }} />
-          <View className="bg-white p-4 rounded-lg w-64 shadow-lg">
+          <BlurView intensity={30} tint="dark" style={{ position: "absolute", width: "100%", height: "100%" }} />
+          <View className="border bg-white p-6 rounded-lg w-64 shadow-lg">
             <TextWrapper className="text-lg font-semibold text-center mb-4">Select Days</TextWrapper>
             <FlatList
               data={options}
