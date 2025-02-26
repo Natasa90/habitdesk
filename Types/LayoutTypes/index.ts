@@ -19,6 +19,7 @@ export interface CardLayoutProps {
     onPress: () => void;
     children: any; 
     className?: string;
+    disabled? : boolean; 
   };
 
 export interface HeaderWithIconProps {

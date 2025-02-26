@@ -55,7 +55,7 @@ export const ResetPassword: FC<ResetPasswordProps> = ({ resetPassword }) => {
         }}
         className="w-full py-4 pl-3 text-black placeholder-gray-500 bg-white border rounded-md font-IBM_italic"
         style={{
-         borderColor: isEmailValid ? "gray" : "red",
+         borderColor: "gray",
          borderWidth: 1,
         }}
        />

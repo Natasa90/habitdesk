@@ -24,47 +24,42 @@ export const GoalsForm: FC<GoalsFormProps> = ({ onClose, updateGoal }) => {
  }
 
  return (
-  <View className="border-2 border-gray-400 bg-white rounded-lg min-h-[280px] p-4 relative">
+  <View className="border-2 border-gray-400 bg-white rounded-lg p-4">
    <TouchableOpacity onPress={onClose} className="absolute top-3 right-3">
     <Icon name="x" size={20} color="gray" />
    </TouchableOpacity>
-   <View className="mt-8">
-    <TextWrapper className="text-xl font-IBM_boldItalic text-customBlue mb-5 text-center">
-     Your Weekly Goal
-    </TextWrapper>
-    <View className="border-b border-gray-300 mb-4" />
-    <TextWrapper className="font-IBM_semibold text-center">
-     Set up New Goal:
-    </TextWrapper>
-    <View className="py-3 items-center">
-     <DropDownPicker
-      selectedValue={selectedGoal}
-      onValueChange={setSelectedGoal}
-      options={Array.from(
-       { length: getRemainingDaysInWeek() },
-       (_, i) => i + 1
-      )}
-     />
-     {selectedGoal === 1 ? (
-      <TextWrapper className="text-gray-500 text-center">
-       day learned per week
-      </TextWrapper>
-     ) : (
-      <TextWrapper className="text-gray-500 text-center">
-       days learned per week
-      </TextWrapper>
-     )}
-    </View>
-    <View className="flex-row justify-center mt-6">
-     <TouchableOpacity
-      onPress={handleCommit}
-      className="bg-blue-500 py-2 px-5 rounded-full mt-2"
-     >
-      <TextWrapper className="text-white text-center p-1">
-       I'm Committed
-      </TextWrapper>
-     </TouchableOpacity>
-    </View>
+   <TextWrapper className="mt-8 text-xl font-IBM_boldItalic text-customBlue mb-5 text-center">
+    Your Weekly Goal
+   </TextWrapper>
+   <View className="border-b border-gray-300 mb-4" />
+   <TextWrapper className="font-IBM_semibold text-center pt-4">
+    Set up New Goal:
+   </TextWrapper>
+   <View className="py-3 items-center">
+    <DropDownPicker
+     selectedValue={selectedGoal}
+     onValueChange={setSelectedGoal}
+     options={Array.from({ length: getRemainingDaysInWeek() }, (_, i) => i + 1)}
+    />
+    {selectedGoal === 1 ? (
+     <TextWrapper className="text-gray-500 text-center">
+      day learned per week
+     </TextWrapper>
+    ) : (
+     <TextWrapper className="text-gray-500 text-center">
+      days learned per week
+     </TextWrapper>
+    )}
+   </View>
+   <View className="flex-row justify-center mt-6">
+    <TouchableOpacity
+     onPress={handleCommit}
+   className="bg-customBlue p-2 rounded-xl shadow-xl justify-center items-center w-40"
+    >
+     <TextWrapper className="text-white text-center p-1">
+      I'm Committed
+     </TextWrapper>
+    </TouchableOpacity>
    </View>
   </View>
  );

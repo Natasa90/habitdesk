@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { View, Linking } from "react-native";
 import { TextWrapper } from "@/components/Layout";
 import { Checkbox } from "react-native-paper";
+import { TermsAgreementProps } from "@/Types/AuthTypes";
 
-export const TermsAgreement = () => {
+export const TermsAgreement: FC<TermsAgreementProps> = ({ checked, setChecked }) => {
 
- const [checked, setChecked] = useState(false);
  const openUrl = (url: string) => {
   Linking.openURL(url).catch((err) =>
    console.error("Failed to open URL:", err)

@@ -17,3 +17,8 @@ export interface FormTitleProps {
   title: string
   logo: ImageSourcePropType; 
 };
+
+export interface TermsAgreementProps {
+ checked: boolean;
+ setChecked: (value: boolean) => void;
+}

@@ -14,6 +14,7 @@ export const CreateAccount: FC<CreateAccountProps> = ({ signIn }) => {
  const [emailConfirmationSent, setEmailConfirmationSent] =
   useState<boolean>(false);
  const [matchingPassword, setMatchingPassword] = useState<string>("");
+ const [termsChecked, setTermsChecked] = useState<boolean>(false);
 
  return (
   <View className="items-center p-9">
@@ -75,8 +76,19 @@ export const CreateAccount: FC<CreateAccountProps> = ({ signIn }) => {
        value={matchingPassword}
        onChangeText={setMatchingPassword}
       />
-      <TermsAgreement />
-      <AccountButton onPress={() => signUpWithEmail}>
+      <TermsAgreement checked={termsChecked} setChecked={setTermsChecked} />
+      <AccountButton
+       onPress={() =>
+        signUpWithEmail(
+         newUserEmail,
+         newUserPassword,
+         matchingPassword,
+         setSignUpError,
+         setEmailConfirmationSent
+        )
+       }
+       disabled={!termsChecked}
+      >
        <TextWrapper className="text-white font-IBM_semibold">
         Create Account
        </TextWrapper>

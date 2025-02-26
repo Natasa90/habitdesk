@@ -38,9 +38,30 @@ export const handlePasswordReset = async (
 export const signUpWithEmail = async (
   email: string,
   password: string,
+  confirmPassword: string,
   setSignUpError: (message: string) => void,
   setEmailConfirmationSent: (status: boolean) => void
 ) => {
+  if (!email.trim()) {
+    Alert.alert("Error", "Email is required!");
+    return;
+  }
+  
+  if (!password.trim()) {
+    Alert.alert("Error", "Password is required!");
+    return;
+  }
+  
+  if (password.length < 8) {
+    Alert.alert("Error", "Password must be at least 8 characters long.");
+    return;
+  }
+
+  if (password !== confirmPassword) {
+    Alert.alert("Error", "Passwords do not match.");
+    return;
+  }
+
   try {
     const { data, error } = await supabase.auth.signUp({ email, password });
 
@@ -53,10 +74,11 @@ export const signUpWithEmail = async (
       setSignUpError(customMessage);
     } else {
       setEmailConfirmationSent(true);
-      Alert.alert("SignUp success!");
+      Alert.alert("Success", "Signup successful! Check your email to verify your account.");
     }
   } catch (error) {
     console.log("Error during sign-up: ", error);
+    Alert.alert("Error", "An unexpected error occurred. Please try again.");
   }
 };
 
