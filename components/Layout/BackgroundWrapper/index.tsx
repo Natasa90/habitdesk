@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { ImageBackground, View, StyleSheet } from "react-native";
+import { ImageBackground, View } from "react-native";
 import { BackgroundWrapperProps } from "@/Types/LayoutTypes";
 import { styles } from "../globalStyles";
 

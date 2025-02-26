@@ -1,5 +1,5 @@
 import { CreateAccount } from "@/components/Auth";
-import { useTypedNavigation } from "../lib/hooks/useTypedNavigation";
+import { useTypedNavigation } from "@/lib/hooks";
 
 export const CreateAccountScreen = () => {
  const navigation = useTypedNavigation();

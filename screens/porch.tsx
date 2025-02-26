@@ -5,7 +5,7 @@ import {
  ActivityIndicator,
  TouchableOpacity,
 } from "react-native";
-import TextWrapper from "@/components/Layout/TextWrapper";
+import { TextWrapper } from "@/components/Layout";
 import supabase from "@/lib/supabase";
 import { PorchHeader, PorchList } from "@/components/PorchElements";
 import { PorchType } from "@/Types/PorchTypes";

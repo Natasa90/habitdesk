@@ -1,12 +1,12 @@
-
 import { ScrollView } from "react-native";
 import { FormTitle } from "@/components/Auth";
 import {
  UserProfileTitle,
  ToDoList,
  UserProfileButtons,
+UserWeeklyGoals
 } from "@/components/userProfileElements";
-import { UserWeeklyGoals } from "@/components/userProfileElements/WeeklyGoals";
+
 
 export const UserProfileScreen = () => {
 

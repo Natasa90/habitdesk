@@ -1,5 +1,5 @@
 import { View, Image } from "react-native";
-import TextWrapper from "@/components/Layout/TextWrapper";
+import { TextWrapper } from "@/components/Layout";
 
 export const FreeResHeader = () => {
  return (

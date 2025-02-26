@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { View, TextInput, TouchableOpacity, Image } from "react-native";
-import TextWrapper from "@/components/Layout/TextWrapper";
+import { TextWrapper } from "@/components/Layout";
 
 export const ToDoList = () => {
  const [toDo, setToDo] = useState<string[]>([]);

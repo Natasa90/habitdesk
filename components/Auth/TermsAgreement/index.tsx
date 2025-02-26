@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { View, Text, Linking } from "react-native";
+import { View, Linking } from "react-native";
+import { TextWrapper } from "@/components/Layout";
 import { Checkbox } from "react-native-paper";
 
 export const TermsAgreement = () => {
@@ -18,22 +19,22 @@ export const TermsAgreement = () => {
     onPress={() => setChecked(!checked)} 
     color="green"
    />
-   <Text className="text-xs text-gray-600 ml-2">
+   <TextWrapper className="text-xs text-gray-600 ml-2">
     I agree to Postcraft’s{" "}
-    <Text
+    <TextWrapper
      className="text-xs text-blue-600"
      onPress={() => openUrl("https://your-terms-url.com")}
     >
      Terms of Service
-    </Text>
+    </TextWrapper>
     {"\n"}and{" "}
-    <Text
+    <TextWrapper
      className="text-xs text-blue-600"
      onPress={() => openUrl("https://your-privacy-policy-url.com")}
     >
      Privacy Policy
-    </Text>
-   </Text>
+    </TextWrapper>
+   </TextWrapper>
   </View>
  );
 };

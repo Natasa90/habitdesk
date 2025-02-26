@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { View, TouchableOpacity, Modal, FlatList } from "react-native";
-import { BlurView } from "expo-blur"; // Using expo-blur
-import TextWrapper from "@/components/Layout/TextWrapper";
+import { BlurView } from "expo-blur"; 
+import { TextWrapper } from "@/components/Layout";
 import { DropDownPickerProps } from "@/Types/UserProfileTypes";
 
 export const DropDownPicker: FC<DropDownPickerProps> = ({ selectedValue, onValueChange, options }) => {

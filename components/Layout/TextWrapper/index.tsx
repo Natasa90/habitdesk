@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Text, TextProps } from "react-native";
 
-const TextWrapper: FC<TextProps> = ({ children, style, ...props }) => {
+export const TextWrapper: FC<TextProps> = ({ children, style, ...props }) => {
   return (
     <Text {...props} style={[{ fontFamily: "IBMPlexSerif-Regular" }, style]}>
       {children}
@@ -9,4 +9,3 @@ const TextWrapper: FC<TextProps> = ({ children, style, ...props }) => {
   );
 };
 
-export default TextWrapper;

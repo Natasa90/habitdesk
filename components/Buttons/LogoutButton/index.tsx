@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { Alert, View, ActivityIndicator } from "react-native";
-import TextWrapper from "@/components/Layout/TextWrapper";
+import { TextWrapper } from "@/components/Layout";
 import supabase from "@/lib/supabase";
 import { useTypedNavigation } from "../../../lib/hooks/useTypedNavigation";
 import { UserInfoContext } from "@/context/UserInfoContext";

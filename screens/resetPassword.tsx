@@ -1,5 +1,5 @@
 import { ResetPassword } from "@/components/Auth";
-import { useTypedNavigation } from "../lib/hooks/useTypedNavigation";
+import { useTypedNavigation } from "@/lib/hooks";
 
 export const ResetPasswordScreen = () => {
  const navigation = useTypedNavigation();

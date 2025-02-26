@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { View, ActivityIndicator } from "react-native";
-import TextWrapper from "@/components/Layout/TextWrapper";
+import { TextWrapper } from "@/components/Layout";
 import quotesData from "../../../data/quotes.json";
 
 export const Quotes = () => {

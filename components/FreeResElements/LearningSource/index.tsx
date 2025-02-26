@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { FlatList, View } from "react-native";
-import TextWrapper from "@/components/Layout/TextWrapper";
+import { TextWrapper } from "@/components/Layout";
 import { FreeSourcesList } from "../FreeSourcesList";
 import { FreeResCats } from "../CategoryFilter";
 import { LearningSourcesProps } from "@/Types/FreeResourcesTypes";

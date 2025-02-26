@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { View, Pressable } from "react-native";
-import TextWrapper from "@/components/Layout/TextWrapper";
+import { TextWrapper } from "@/components/Layout";
 import { CategoryTagsProps } from "../../Types/FreeResourcesTypes";
 import { MaterialIcons } from "@expo/vector-icons";
 

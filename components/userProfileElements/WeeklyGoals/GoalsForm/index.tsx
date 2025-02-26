@@ -5,7 +5,7 @@ import { GoalsFormProps } from "@/Types/UserProfileTypes";
 import { UserInfoContext } from "@/context/UserInfoContext";
 import { useWeeklyGoal } from "@/lib/hooks";
 import { getRemainingDaysInWeek } from "@/lib/helpers";
-import TextWrapper from "@/components/Layout/TextWrapper";
+import { TextWrapper } from "@/components/Layout";
 import Icon from "react-native-vector-icons/Feather";
 
 export const GoalsForm: FC<GoalsFormProps> = ({ onClose, updateGoal }) => {

@@ -1,5 +1,5 @@
 import { FlatList, View, ActivityIndicator } from "react-native";
-import TextWrapper from "@/components/Layout/TextWrapper";
+import { TextWrapper } from "@/components/Layout";
 import { FreeResHeader, LearningSource } from "@/components/FreeResElements";
 import { useFetchSources } from "@/lib/hooks";
 

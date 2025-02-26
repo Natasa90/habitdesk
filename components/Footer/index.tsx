@@ -1,4 +1,5 @@
-import { View, Text, Image } from "react-native";
+import { View, Image } from "react-native";
+import { TextWrapper } from "@/components/Layout";
 
 const Footer = () => {
  return (
@@ -9,11 +10,11 @@ const Footer = () => {
     resizeMode="contain"
    />
    <View className="w-[1px] h-10 bg-gray-300" />
-   <Text className="text-gray-400 text-xs text-left">
+   <TextWrapper className="text-gray-400 text-xs text-left">
     © 2024. All rights reserved.{"\n"}
     Designed by{" "}
-    <Text className="font-semibold text-gray-500">Prototype.NEXT</Text>
-   </Text>
+    <TextWrapper className="font-semibold text-gray-500">Prototype.NEXT</TextWrapper>
+   </TextWrapper>
   </View>
  );
 };

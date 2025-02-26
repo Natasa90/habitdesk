@@ -1,6 +1,6 @@
 import { useTypedNavigation } from "@/lib/hooks/useTypedNavigation";
 import { TouchableOpacity, View } from "react-native";
-import TextWrapper from "@/components/Layout/TextWrapper";
+import { TextWrapper } from "@/components/Layout";
 import { LogoutButton } from "../../Buttons/LogoutButton";
 import { Ionicons } from "@expo/vector-icons";
 

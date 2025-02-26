@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import TextWrapper from "@/components/Layout/TextWrapper";
+import { TextWrapper } from "@/components/Layout";
 import { useContext } from "react";
 import { UserInfoContext } from "@/context/UserInfoContext";
 

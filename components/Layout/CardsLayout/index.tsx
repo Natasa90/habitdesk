@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { View, TouchableOpacity, Linking } from "react-native";
-import TextWrapper from "@/components/Layout/TextWrapper";
+import { TextWrapper } from "@/components/Layout";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { CardLayoutProps } from "../../../Types/LayoutTypes";
 import { GradientText } from "../../GradientText";

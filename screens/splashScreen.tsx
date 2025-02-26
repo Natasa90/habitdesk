@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useContext } from "react";
 import { View, Image, Animated, StatusBar } from "react-native";
-import { useTypedNavigation } from "@/lib/hooks/useTypedNavigation";
+import { useTypedNavigation } from "@/lib/hooks";
 import { UserInfoContext } from "@/context/UserInfoContext";
 import supabase from "@/lib/supabase";
 

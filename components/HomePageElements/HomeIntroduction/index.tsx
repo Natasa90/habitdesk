@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import TextWrapper from "@/components/Layout/TextWrapper";
+import { TextWrapper } from "@/components/Layout";
 import { Team } from "../../index";
 import { useTypedNavigation } from "@/lib/hooks/useTypedNavigation";
 import { HomeButton } from "@/components/Buttons";

@@ -1,6 +1,6 @@
 import { useState, FC } from "react";
 import { View, TextInput, TouchableOpacity } from "react-native";
-import TextWrapper from "@/components/Layout/TextWrapper";
+import { TextWrapper } from "@/components/Layout";
 import { CreateAccountProps } from "../../../Types/AuthTypes";
 import { TermsAgreement } from "../TermsAgreement";
 import { AccountButton } from "@/components/Buttons/AccountButton";

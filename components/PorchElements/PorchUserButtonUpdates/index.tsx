@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { View, TouchableOpacity } from "react-native";
-import TextWrapper from "@/components/Layout/TextWrapper";
+import { TextWrapper } from "@/components/Layout";
 import Icon from "react-native-vector-icons/Ionicons";
 import { PorchUserButtonProps } from "../../../Types/PorchTypes";
 import * as Animatable from 'react-native-animatable';

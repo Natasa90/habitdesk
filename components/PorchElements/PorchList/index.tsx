@@ -1,6 +1,6 @@
 import { FC, useState, useEffect, useMemo, useContext } from "react";
 import { View, TouchableOpacity } from "react-native";
-import TextWrapper from "@/components/Layout/TextWrapper";
+import { TextWrapper } from "@/components/Layout";
 import { PorchListProps } from "@/Types/PorchTypes";
 import supabase from "@/lib/supabase";
 import { UserInfoContext } from "@/context/UserInfoContext";

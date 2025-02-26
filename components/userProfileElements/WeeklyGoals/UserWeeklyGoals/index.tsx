@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import { View, TouchableOpacity, Modal } from "react-native";
-import { BlurView } from "expo-blur"; // Importing BlurView
-import TextWrapper from "@/components/Layout/TextWrapper";
+import { BlurView } from "expo-blur"; 
+import { TextWrapper } from "@/components/Layout";
 import { UserCalendar } from "@/components/PorchElements/Calendar";
 import { GoalsForm } from "../GoalsForm";
 import { useUserLearningData } from "@/lib/hooks";

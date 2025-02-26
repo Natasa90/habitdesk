@@ -1,5 +1,5 @@
 import { useState, FC, useContext } from "react";
-import TextWrapper from "@/components/Layout/TextWrapper";
+import { TextWrapper } from "@/components/Layout";
 import { View, TextInput, TouchableOpacity } from "react-native";
 import { LoginProps } from "../../../Types/AuthTypes";
 import { useTypedNavigation } from "../../../lib/hooks/useTypedNavigation";

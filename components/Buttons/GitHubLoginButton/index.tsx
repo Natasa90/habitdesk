@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { View } from "react-native";
-import TextWrapper from "@/components/Layout/TextWrapper";
+import { TextWrapper } from "@/components/Layout";
 import { useAuthRequest, makeRedirectUri } from "expo-auth-session";
 import { AccountButton } from "@/components/Buttons/AccountButton";
 import supabase from "@/lib/supabase";

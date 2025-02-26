@@ -1,5 +1,5 @@
 import { LoginForm, FormTitle } from "@/components/Auth";
-import { useTypedNavigation } from "../lib/hooks/useTypedNavigation";
+import { useTypedNavigation } from "@/lib/hooks";
 
 export const LoginScreen = () => {
  const navigation = useTypedNavigation();

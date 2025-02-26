@@ -3,7 +3,7 @@ import { View, TextInput, Modal, TouchableOpacity, ActivityIndicator} from "reac
 import { PorchFormProps } from "@/Types/PorchTypes";
 import Icon from "react-native-vector-icons/Ionicons";
 import { BlurView } from "expo-blur";
-import TextWrapper from "@/components/Layout/TextWrapper";
+import { TextWrapper } from "@/components/Layout";
 import { usePorchSubmit, usePorchForm } from "@/lib/hooks";
 import { isValidHttpUrl } from "lib/constants";
 

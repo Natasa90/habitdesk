@@ -1,5 +1,5 @@
 import { View, TouchableOpacity } from "react-native";
-import TextWrapper from "@/components/Layout/TextWrapper";
+import { TextWrapper } from "@/components/Layout";
 import Icon from "react-native-vector-icons/Ionicons";
 import { useTypedNavigation } from "@/lib/hooks/useTypedNavigation";
 import * as Animatable from 'react-native-animatable';
