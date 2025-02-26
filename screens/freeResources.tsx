@@ -35,7 +35,7 @@ export const FreeResourcesScreen = () => {
      <LearningSource sources={sources} />
     </>
    }
-   className="p-7"
+   className="p-5"
   />
  );
 };
