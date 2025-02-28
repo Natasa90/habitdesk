@@ -3,6 +3,7 @@ import { TouchableOpacity, View } from "react-native";
 import { TextWrapper } from "@/components/Layout";
 import { LogoutButton } from "../../Buttons/LogoutButton";
 import { Ionicons } from "@expo/vector-icons";
+import { styles } from "@/components/Layout";
 
 export const UserProfileButtons = () => {
  const navigation = useTypedNavigation();
@@ -20,7 +21,7 @@ export const UserProfileButtons = () => {
      name="arrow-forward"
      size={18}
      color="black"
-     style={{ marginLeft: 5, marginTop: 3 }}
+     style={styles.arrowStyle}
     />
    </TouchableOpacity>
    <TouchableOpacity
@@ -34,7 +35,7 @@ export const UserProfileButtons = () => {
      name="arrow-forward"
      size={18}
      color="black"
-     style={{ marginLeft: 5, marginTop: 3 }}
+     style={styles.arrowStyle}
     />
    </TouchableOpacity>
    <LogoutButton />

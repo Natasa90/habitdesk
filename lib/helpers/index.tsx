@@ -3,6 +3,7 @@ import { signUpWithEmail } from "./authHelpers";
 import { signInWithEmail } from "./authHelpers";
 import { CategoryTags } from "./getCategoryTags";
 import { getRemainingDaysInWeek } from "./getRemainingDaysOfWeek";
+import { useGitHubAuth } from "./authHelpers";
 
 export {
  handlePasswordReset,
@@ -10,4 +11,5 @@ export {
  signUpWithEmail,
  CategoryTags,
  getRemainingDaysInWeek,
+useGitHubAuth
 };

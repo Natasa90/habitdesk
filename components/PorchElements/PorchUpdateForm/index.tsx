@@ -12,6 +12,7 @@ import { BlurView } from "expo-blur";
 import { TextWrapper } from "@/components/Layout";
 import { usePorchSubmit, usePorchForm } from "@/lib/hooks";
 import { isValidHttpUrl } from "lib/constants";
+import { styles } from "@/components/Layout";
 
 export const PorchUpdateForm: FC<PorchFormProps> = ({
  setPorchs,
@@ -33,19 +34,12 @@ export const PorchUpdateForm: FC<PorchFormProps> = ({
   >
    <View className="flex-1 items-center justify-center bg-opacity-70">
     <BlurView
-     style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0 }}
+     style={styles.updateModalBLur}
      intensity={80}
      tint="dark"
     />
     <View
-     className="bg-gray-200 p-4 rounded-xl w-4/5 "
-     style={{
-      shadowColor: "#000",
-      shadowOffset: { width: 0, height: 4 },
-      shadowOpacity: 0.25,
-      shadowRadius: 10,
-      elevation: 20,
-     }}
+     className="bg-gray-200 p-4 rounded-xl w-4/5 shadow-lg"
     >
      {responseUpdate ? (
       <ActivityIndicator size="large" color="#0000ff" />

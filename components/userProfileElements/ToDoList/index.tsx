@@ -32,7 +32,7 @@ export const ToDoList = () => {
    </TextWrapper>
    <Image
     source={require("../../../assets/images/tasks.png")}
-    style={{ width: 230, height: 192 }}
+    className="w-[230px] h-[192px]"
    />
    <View className="flex-row space-x-4 w-full max-w-md mt-6">
     <TextInput

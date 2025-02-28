@@ -7,7 +7,7 @@ export const HomeButton = ({ onPress, children }: ButtonProps) => {
   <TouchableOpacity
    onPress={onPress}
    activeOpacity={0.75}
-   style={{ alignItems: "center", marginVertical: 10 }}
+   className="flex items-center my-2.5"
   >
    <Svg height="60" width="300">
     <Defs>

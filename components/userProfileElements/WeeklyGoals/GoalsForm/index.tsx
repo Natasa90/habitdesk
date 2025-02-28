@@ -35,7 +35,7 @@ export const GoalsForm: FC<GoalsFormProps> = ({ onClose, updateGoal }) => {
    <TextWrapper className="font-IBM_semibold text-center pt-4">
     Set up New Goal:
    </TextWrapper>
-   <View className="py-3 items-center">
+   <View className="pb-6 items-center">
     <DropDownPicker
      selectedValue={selectedGoal}
      onValueChange={setSelectedGoal}
@@ -54,7 +54,7 @@ export const GoalsForm: FC<GoalsFormProps> = ({ onClose, updateGoal }) => {
    <View className="flex-row justify-center mt-6">
     <TouchableOpacity
      onPress={handleCommit}
-   className="bg-customBlue p-2 rounded-xl shadow-xl justify-center items-center w-40"
+   className="bg-customBlue p-2 rounded-xl justify-center items-center w-40"
     >
      <TextWrapper className="text-white text-center p-1">
       I'm Committed

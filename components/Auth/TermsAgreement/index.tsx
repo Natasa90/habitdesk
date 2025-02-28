@@ -1,11 +1,14 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { View, Linking } from "react-native";
 import { TextWrapper } from "@/components/Layout";
 import { Checkbox } from "react-native-paper";
 import { TermsAgreementProps } from "@/Types/AuthTypes";
+import { CustomCheckbox } from "../CustomCheckbox";
 
-export const TermsAgreement: FC<TermsAgreementProps> = ({ checked, setChecked }) => {
-
+export const TermsAgreement: FC<TermsAgreementProps> = ({
+ checked,
+ setChecked,
+}) => {
  const openUrl = (url: string) => {
   Linking.openURL(url).catch((err) =>
    console.error("Failed to open URL:", err)
@@ -14,11 +17,7 @@ export const TermsAgreement: FC<TermsAgreementProps> = ({ checked, setChecked })
 
  return (
   <View className="flex-row">
-   <Checkbox
-    status={checked ? "checked" : "unchecked"}
-    onPress={() => setChecked(!checked)} 
-    color="green"
-   />
+   <CustomCheckbox checked={checked} onToggle={() => setChecked(!checked)} />
    <TextWrapper className="text-xs text-gray-600 ml-2">
     I agree to Postcraft’s{" "}
     <TextWrapper

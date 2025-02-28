@@ -3,6 +3,7 @@ import { View, TouchableOpacity, Modal, FlatList } from "react-native";
 import { BlurView } from "expo-blur";
 import { TextWrapper } from "@/components/Layout";
 import { DropDownPickerProps } from "@/Types/UserProfileTypes";
+import { styles } from "@/components/Layout";
 
 export const DropDownPicker: FC<DropDownPickerProps> = ({
  selectedValue,
@@ -15,7 +16,7 @@ export const DropDownPicker: FC<DropDownPickerProps> = ({
   <View className="p-4 w-60">
    <TouchableOpacity
     onPress={() => setModalVisible(true)}
-    className="bg-customBlue p-2 rounded-xl shadow-xl justify-center items-center"
+    className="bg-customBlue p-2 rounded-xl justify-center items-center"
    >
     <TextWrapper className="text-white text-xl font-bold">
      {selectedValue || "Select a goal"}
@@ -26,7 +27,7 @@ export const DropDownPicker: FC<DropDownPickerProps> = ({
      <BlurView
       intensity={30}
       tint="dark"
-      style={{ position: "absolute", width: "100%", height: "100%" }}
+      style={styles.updateGoalFormsBlur}
      />
      <View className="border bg-white p-6 rounded-lg w-64 shadow-lg">
       <TextWrapper className="text-lg font-semibold text-center mb-4">
