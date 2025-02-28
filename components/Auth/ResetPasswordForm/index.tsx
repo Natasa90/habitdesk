@@ -7,6 +7,7 @@ import { AccountButton } from "@/components/Buttons/AccountButton";
 import { useTypedNavigation } from "@/lib/hooks/useTypedNavigation";
 import { FontAwesome } from "@expo/vector-icons";
 import { isValidEmail } from "@/lib/constants";
+import { styles } from "@/components/Layout";
 
 export const ResetPassword: FC<ResetPasswordProps> = ({ resetPassword }) => {
  const [email, setEmail] = useState("");
@@ -24,13 +25,7 @@ export const ResetPassword: FC<ResetPasswordProps> = ({ resetPassword }) => {
    </TextWrapper>
    <View
     className="px-4 py-6 bg-gray-50 rounded-xl shadow-xl"
-    style={{
-     shadowColor: "#000",
-     shadowOffset: { width: 0, height: 2 },
-     shadowOpacity: 0.25,
-     shadowRadius: 3.5,
-     elevation: 5,
-    }}
+    style={styles.authFormsShadow}
    >
     <View className="space-y-5">
      <View>
@@ -53,11 +48,7 @@ export const ResetPassword: FC<ResetPasswordProps> = ({ resetPassword }) => {
          setEmail(text);
          setIsEmailValid(isValidEmail(text));
         }}
-        className="w-full py-4 pl-3 text-black placeholder-gray-500 bg-white border rounded-md font-IBM_italic"
-        style={{
-         borderColor: "gray",
-         borderWidth: 1,
-        }}
+        className="border border-gray-500 w-full py-4 pl-3 text-black bg-white rounded-md font-IBM_italic"
        />
       </View>
      </View>

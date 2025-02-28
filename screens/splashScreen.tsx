@@ -3,6 +3,7 @@ import { View, Image, Animated, StatusBar } from "react-native";
 import { useTypedNavigation } from "@/lib/hooks";
 import { UserInfoContext } from "@/context/UserInfoContext";
 import supabase from "@/lib/supabase";
+import { styles } from "@/components/Layout";
 
 export const SplashScreen = () => {
  const navigation = useTypedNavigation();
@@ -60,13 +61,11 @@ export const SplashScreen = () => {
  }, [logoBounce, navigation, setUserInfo]);
 
  return (
-  <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+  <View style={styles.splashScreenView}>
    <StatusBar barStyle="light-content" />
-
    <Animated.View
+    className="justify-center items-center"
     style={{
-     justifyContent: "center",
-     alignItems: "center",
      transform: [{ translateY: logoBounce }],
     }}
    >

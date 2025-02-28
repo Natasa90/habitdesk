@@ -7,6 +7,7 @@ import { UserInfoContext } from "@/context/UserInfoContext";
 import { AccountButton, GitHubButton } from "@/components/Buttons";
 import { FontAwesome } from "@expo/vector-icons";
 import { signInWithEmail } from "@/lib/helpers";
+import { styles } from "@/components/Layout";
 
 export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
  const [email, setEmail] = useState<string>("");
@@ -34,13 +35,7 @@ export const LoginForm: FC<LoginProps> = ({ signUp, resetPassword }) => {
  return (
   <View
    className="p-6 mx-8 bg-white rounded-xl shadow-xl"
-   style={{
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.5,
-    elevation: 5,
-   }}
+   style={styles.authFormsShadow}
   >
    <View className="flex-row">
     <FontAwesome

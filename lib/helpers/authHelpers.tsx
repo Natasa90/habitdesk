@@ -1,6 +1,7 @@
 import { Alert } from "react-native";
 import supabase from "../supabase";
 import { NavigationProp } from "@react-navigation/native";
+import { makeRedirectUri, useAuthRequest } from "expo-auth-session";
 
 export const handlePasswordReset = async (
   email: string,
@@ -123,4 +124,51 @@ export const signInWithEmail = async (
     Alert.alert("Unexpected error occurred. Please try again.");
   }
   return false;
+};
+
+///////////////////////// GItHUB LOGIN //////////////////////////////////////
+
+const discovery = {
+  authorizationEndpoint: "https://github.com/login/oauth/authorize",
+  tokenEndpoint: "https://github.com/login/oauth/access_token",
+  revocationEndpoint: "https://github.com/settings/applications",
+};
+
+export const useGitHubAuth = () => {
+  const redirectUri = makeRedirectUri({ scheme: "habitdesk", path: "user" });
+
+  const [request, response, promptAsync] = useAuthRequest(
+    {
+      clientId: "Ov23liZneoLCjKb7GG2q",
+      scopes: ["user"],
+      redirectUri,
+    },
+    discovery
+  );
+
+  const handleGitHubSignIn = async (onSuccess: (user: any) => void, onError: (error: string) => void) => {
+    if (response?.type === "success") {
+      try {
+        console.log("GitHub OAuth success:", response);
+
+        await supabase.auth.signInWithOAuth({
+          provider: "github",
+          options: {
+            redirectTo: redirectUri,
+          },
+        });
+
+        const { data: { session } } = await supabase.auth.getSession();
+        if (session?.user) {
+          console.log("User signed in with Supabase:", session.user);
+          onSuccess(session.user);
+        }
+      } catch (error: any) {
+        console.error("Supabase OAuth error:", error);
+        onError(error.message);
+      }
+    }
+  };
+
+  return { request, response, promptAsync, handleGitHubSignIn };
 };

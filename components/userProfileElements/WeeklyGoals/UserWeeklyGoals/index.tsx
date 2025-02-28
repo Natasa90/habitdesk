@@ -5,6 +5,7 @@ import { TextWrapper } from "@/components/Layout";
 import { UserCalendar } from "@/components/PorchElements/Calendar";
 import { GoalsForm } from "../GoalsForm";
 import { useUserLearningData } from "@/lib/hooks";
+import { styles } from "@/components/Layout";
 
 export const UserWeeklyGoals = () => {
  const [showGoalsForm, setShowGoalsForm] = useState<boolean>(false);
@@ -85,7 +86,7 @@ export const UserWeeklyGoals = () => {
      <BlurView
       intensity={80}
       tint="dark"
-      style={{ position: "absolute", width: "100%", height: "100%" }}
+      style={styles.updateGoalFormsBlur}
      />
      <View className="bg-gray-300 rounded-lg p-4 shadow-xl w-10/12 max-w-xs min-h-[280px]">
       <GoalsForm

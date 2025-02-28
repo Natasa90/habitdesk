@@ -3,6 +3,7 @@ import { FormTitle } from "./FormTitle";
 import { LoginForm } from "./LoginForm";
 import { ResetPassword } from "./ResetPasswordForm";
 import { TermsAgreement } from "./TermsAgreement";
+import { CustomCheckbox } from "./CustomCheckbox";
 
 export {
  CreateAccount,
@@ -10,4 +11,5 @@ export {
  LoginForm,
  ResetPassword,
  TermsAgreement,
+ CustomCheckbox,
 };

@@ -4,6 +4,7 @@ import { TextWrapper } from "@/components/Layout";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { CardLayoutProps } from "../../../Types/LayoutTypes";
 import { GradientText } from "../../GradientText";
+import { styles } from "@/components/Layout";
 
 export const CardLayout: FC<CardLayoutProps> = ({
  title,
@@ -22,13 +23,7 @@ export const CardLayout: FC<CardLayoutProps> = ({
  return (
   <View
    className="p-4 bg-white rounded-xl shadow-xl mb-4"
-   style={{
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.5,
-    elevation: 5,
-   }}
+   style={styles.cardLayout}
   >
    <GradientText text={title} />
    <View className="border-4 border-gray-200 rounded-xl bg-gray-200">

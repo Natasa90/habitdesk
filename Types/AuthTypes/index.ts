@@ -22,3 +22,8 @@ export interface TermsAgreementProps {
  checked: boolean;
  setChecked: (value: boolean) => void;
 }
+
+export interface CustomCheckboxProps {
+  checked: boolean;
+  onToggle: () => void;
+}

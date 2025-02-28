@@ -6,6 +6,7 @@ import { TermsAgreement } from "../TermsAgreement";
 import { AccountButton } from "@/components/Buttons/AccountButton";
 import { FontAwesome } from "@expo/vector-icons";
 import { signUpWithEmail } from "@/lib/helpers";
+import { styles } from "@/components/Layout";
 
 export const CreateAccount: FC<CreateAccountProps> = ({ signIn }) => {
  const [newUserEmail, setNewUserEmail] = useState<string>("");
@@ -15,6 +16,8 @@ export const CreateAccount: FC<CreateAccountProps> = ({ signIn }) => {
   useState<boolean>(false);
  const [matchingPassword, setMatchingPassword] = useState<string>("");
  const [termsChecked, setTermsChecked] = useState<boolean>(false);
+
+ console.log("Terms checked:", termsChecked)
 
  return (
   <View className="items-center p-9">
@@ -29,13 +32,7 @@ export const CreateAccount: FC<CreateAccountProps> = ({ signIn }) => {
    </TextWrapper>
    <View
     className="p-6 bg-gray-50 rounded-xl shadow-xl"
-    style={{
-     shadowColor: "#000",
-     shadowOffset: { width: 0, height: 2 },
-     shadowOpacity: 0.25,
-     shadowRadius: 3.5,
-     elevation: 5,
-    }}
+    style={styles.authFormsShadow}
    >
     {emailConfirmationSent ? (
      <View className="flex-1 items-center justify-center bg-blue-600">

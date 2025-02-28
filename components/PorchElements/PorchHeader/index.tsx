@@ -16,14 +16,16 @@ export const PorchHeader = () => {
  return (
   <View>
    <View className="items-center">
-    <TextWrapper className="text-3xl font-IBM_semibold text-gray-700">Porch</TextWrapper>
-    <TextWrapper className="text-lg font-IBM_lightItalic color-blue-700">
+    <TextWrapper className="text-2xl font-IBM_semibold text-gray-700">
+     Porch
+    </TextWrapper>
+    <TextWrapper className="text-lg font-IBM_italic">
      - Your Growth Dashboard -
     </TextWrapper>
- <Image
-    source={require("../../../assets/images/progress_team_transparent.png")}
-    style={{ width: 250, height: 300 }}
-   />
+    <Image
+     source={require("../../../assets/images/progress_team_transparent.png")}
+     className="w-[250px] h-[300px]"
+    />
    </View>
    <View>
     <PorchUserButtonGoals />

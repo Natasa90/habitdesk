@@ -9,7 +9,7 @@ export const FreeResHeader = () => {
    </TextWrapper>
    <Image
     source={require("../../../assets/images/learning_tree.png")}
-    style={{ width: 250, height: 300 }}
+    className="w-[250px] h-[300px]"
    />
    <TextWrapper className="text-center font-IBM_lightItalic pb-3 pt-2 border-b-4 border-gray-200">
     Explore by category, access trusted links, and share your insights in the

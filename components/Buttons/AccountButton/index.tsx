@@ -2,13 +2,9 @@ import { TouchableOpacity, View } from "react-native";
 import Svg, { Defs, LinearGradient, Stop, Rect } from "react-native-svg";
 import { ButtonProps } from "@/Types/LayoutTypes";
 
-export const AccountButton = ({ onPress, children }: ButtonProps) => {
+export const AccountButton = ({ onPress, children, disabled }: ButtonProps) => {
  return (
-  <TouchableOpacity
-   onPress={onPress}
-   activeOpacity={0.75}
-   style={{ alignItems: "center", marginVertical: 10 }}
-  >
+  <TouchableOpacity onPress={onPress} className="flex items-center my-2.5" disabled={disabled}>
    <Svg height="40" width="280">
     <Defs>
      <LinearGradient id="gradient" x1="0" y1="0" x2="1" y2="1">
