@@ -2,7 +2,7 @@ import { useState, useMemo, useEffect } from "react";
 import { View, TouchableOpacity, Modal } from "react-native";
 import { BlurView } from "expo-blur";
 import { TextWrapper } from "@/components/Layout";
-import { UserCalendar } from "@/components/PorchElements/Calendar";
+import { UserCalendar } from "../Calendar"
 import { GoalsForm } from "../GoalsForm";
 import { useUserLearningData } from "@/lib/hooks";
 import { styles } from "@/components/Layout";
@@ -83,11 +83,7 @@ export const UserWeeklyGoals = () => {
     onRequestClose={() => setShowGoalsForm(false)}
    >
     <View className="flex-1 justify-center items-center">
-     <BlurView
-      intensity={80}
-      tint="dark"
-      style={styles.updateGoalFormsBlur}
-     />
+     <BlurView intensity={80} tint="dark" style={styles.updateGoalFormsBlur} />
      <View className="bg-gray-300 rounded-lg p-4 shadow-xl w-10/12 max-w-xs min-h-[280px]">
       <GoalsForm
        onClose={() => setShowGoalsForm(false)}
