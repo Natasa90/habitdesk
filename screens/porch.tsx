@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useContext } from "react";
 import {
  ScrollView,
  View,
@@ -6,49 +6,29 @@ import {
  TouchableOpacity,
 } from "react-native";
 import { TextWrapper } from "@/components/Layout";
-import supabase from "@/lib/supabase";
-import { PorchHeader, PorchList } from "@/components/PorchElements";
-import { PorchType } from "@/Types/PorchTypes";
-
+import {
+ PorchHeader,
+ PorchList,
+ PorchListHeader,
+} from "@/components/PorchElements";
+import { usePorchs, usePorchLearningDays } from "@/lib/hooks";
+import { UserInfoContext } from "@/context/UserInfoContext";
 
 export const PorchScreen = () => {
- const [porchs, setPorchs] = useState<PorchType[]>([]);
- const [loading, setLoading] = useState<boolean>(true);
- const [page, setPage] = useState<number>(1);
- const [hasMore, setHasMore] = useState<boolean>(true);
-
- const loadPorchs = async (currentPage: number) => {
-  try {
-   const { data: newPorchs, error } = await supabase
-    .from("porch")
-    .select("*")
-    .order("created_at", { ascending: false })
-    .range((currentPage - 1) * 10, currentPage * 10 - 1);
-   if (error) {
-    throw new Error(error.message);
-   }
-   setPorchs((prevPorchs) => [...prevPorchs, ...newPorchs]);
-   setHasMore(newPorchs.length === 10);
-  } catch (err) {
-   console.error("Failed to load porchs:", err);
-  } finally {
-   setLoading(false);
-  }
- };
-
- useEffect(() => {
-  loadPorchs(page);
- }, [page]);
-
- const handleLoadMore = () => {
-  if (!loading && hasMore) {
-   setPage((prevPage) => prevPage + 1);
-  }
- };
+ const { userInfo } = useContext(UserInfoContext);
+ const { porchs, setPorchs, loading, hasMore, loadMore, toggleFilter, isFiltering } =
+  usePorchs(userInfo?.email);
+ const learningDays = usePorchLearningDays(userInfo?.email);
 
  return (
   <ScrollView className="flex-1 p-5">
    <PorchHeader />
+   <PorchListHeader
+    learningDays={learningDays}
+    buttonTitle={isFiltering ? "All Daily Updates" : "Track your Daily Updates"}
+    handleFiltering={toggleFilter}
+   />
+
    {loading ? (
     <View className="flex items-center justify-center mt-10">
      <ActivityIndicator size="large" color="#3b82f6" />
@@ -59,20 +39,22 @@ export const PorchScreen = () => {
    ) : (
     <PorchList porchs={porchs} setPorchs={setPorchs} />
    )}
+
    {hasMore && !loading && (
     <View className="items-center">
      <TouchableOpacity
       className="bg-customBlue p-2 rounded-xl shadow-md justify-center items-center mb-10 w-40"
-      onPress={handleLoadMore}
+      onPress={loadMore}
      >
       <TextWrapper className="text-white">Load More Updates</TextWrapper>
      </TouchableOpacity>
     </View>
    )}
+
    {!hasMore && (
     <View className="mt-10 border-gray-1">
      <TextWrapper className="text-center text-gray-500">
-      You have seen it all!
+      {isFiltering ? "Showing only your updates" : "You have seen it all!"}
      </TextWrapper>
     </View>
    )}

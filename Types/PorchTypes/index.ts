@@ -37,3 +37,9 @@ export interface PorchFormProps {
 export interface PorchCalendarProps {
     learningDates: { date: string; count: number; }[];
 }
+
+export interface PorchListHeaderProps {
+  learningDays: number;
+  buttonTitle: string;
+  handleFiltering: () => void;
+}
