@@ -22,6 +22,6 @@ export const usePorchLearningDays = (email?: string) => {
 
     fetchLearningDays();
   }, [email]);
-
+  console.log(learningDays)
   return learningDays;
 };

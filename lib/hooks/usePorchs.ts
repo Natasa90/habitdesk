@@ -2,68 +2,65 @@ import { useState, useEffect } from "react";
 import supabase from "@/lib/supabase";
 import { PorchType } from "@/Types/PorchTypes";
 
-export const usePorchs = () => {
+export const usePorchs = (userEmail?: string) => {
   const [porchs, setPorchs] = useState<PorchType[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [page, setPage] = useState<number>(1);
   const [hasMore, setHasMore] = useState<boolean>(true);
+  const [isFiltering, setIsFiltering] = useState<boolean>(false);
 
-  const loadPorchs = async (currentPage: number) => {
-    console.log(`Loading porchs for page ${currentPage}`); // Debugging
-
+  const loadPorchs = async (currentPage: number, filterUser: boolean) => {
+    setLoading(true);
     try {
-      const { data: newPorchs, error } = await supabase
+      let query = supabase
         .from("porch")
         .select("*")
         .order("created_at", { ascending: false })
         .range((currentPage - 1) * 10, currentPage * 10 - 1);
 
+      if (filterUser && userEmail) {
+        console.log("Filtering by email:", userEmail);
+        query = query.eq("email", userEmail);
+      }
+
+      const { data: fetchedPorchs, error } = await query;
+
       if (error) throw new Error(error.message);
 
-      console.log("Fetched porchs:", newPorchs); // Debugging
+      console.log("Fetched porchs:", fetchedPorchs);
 
-      // Append new porchs to the existing porchs state
-      setPorchs((prev) => {
-        const updatedPorchs = [...newPorchs]; // Reset the porch list when refetching all
-        console.log("Updated porchs after reset:", updatedPorchs); // Debugging
-        return updatedPorchs;
-      });
+      if (currentPage === 1) {
+        setPorchs(fetchedPorchs); 
+      } else {
+        setPorchs((prev) => [...prev, ...fetchedPorchs]); 
+      }
 
-      // Set hasMore based on the number of fetched items
-      setHasMore(newPorchs.length === 10);
-      console.log("Has more porchs?", newPorchs.length === 10); // Debugging
+      setHasMore(fetchedPorchs.length === 10);
 
     } catch (err) {
       console.error("Failed to load porchs:", err);
     } finally {
       setLoading(false);
-      console.log("Loading state set to false"); // Debugging
     }
   };
 
-  // Effect to load porchs initially or when the page changes
   useEffect(() => {
-    console.log(`useEffect triggered, current page: ${page}`); // Debugging
-    loadPorchs(page);
-  }, [page]);
+    console.log("useEffect triggered. Page:", page, "Is Filtering:", isFiltering);
+    loadPorchs(page, isFiltering);
+  }, [page, isFiltering]);
 
-  // Function to load more porchs when scrolling or triggering load more
   const loadMore = () => {
-    console.log("loadMore triggered"); // Debugging
-    console.log("Loading:", loading, "Has More:", hasMore); // Debugging
-
+    console.log("Load More triggered");
     if (!loading && hasMore) {
-      console.log("Incrementing page..."); // Debugging
       setPage((prev) => prev + 1);
     }
   };
 
-  // Function to handle when you need to reset and refetch all porches (e.g., toggle filter)
-  const refetchAllPorchs = () => {
-    setPage(1); // Reset to page 1
-    setPorchs([]); // Clear existing porch data
-    loadPorchs(1); // Fetch all porches from page 1
+  const toggleFilter = () => {
+    console.log("Toggle filter");
+    setIsFiltering((prev) => !prev);
+    setPage(1);
   };
 
-  return { porchs, loading, hasMore, loadMore, setPorchs, refetchAllPorchs };
+  return { porchs, setPorchs, loading, hasMore, loadMore, toggleFilter, isFiltering };
 };
