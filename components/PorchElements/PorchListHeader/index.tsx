@@ -9,7 +9,7 @@ export const PorchListHeader: FC<PorchListHeaderProps> = ({
  handleFiltering,
 }) => {
  return (
-  <View className="pt-6 border-t-4 border-[#e5e7eb]">
+  <View className="pt-6 border-t-4 border-[#e5e7eb] mb-4">
    <TextWrapper className="text-lg font-IBM_semibold ml-2">
     Daily Highlights
    </TextWrapper>

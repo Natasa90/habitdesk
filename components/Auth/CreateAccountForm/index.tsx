@@ -17,8 +17,6 @@ export const CreateAccount: FC<CreateAccountProps> = ({ signIn }) => {
  const [matchingPassword, setMatchingPassword] = useState<string>("");
  const [termsChecked, setTermsChecked] = useState<boolean>(false);
 
- console.log("Terms checked:", termsChecked)
-
  return (
   <View className="items-center p-9">
    <View className="flex-row gap-2 mt-2">

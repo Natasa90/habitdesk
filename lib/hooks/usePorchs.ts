@@ -19,15 +19,12 @@ export const usePorchs = (userEmail?: string) => {
         .range((currentPage - 1) * 10, currentPage * 10 - 1);
 
       if (filterUser && userEmail) {
-        console.log("Filtering by email:", userEmail);
         query = query.eq("email", userEmail);
       }
 
       const { data: fetchedPorchs, error } = await query;
 
       if (error) throw new Error(error.message);
-
-      console.log("Fetched porchs:", fetchedPorchs);
 
       if (currentPage === 1) {
         setPorchs(fetchedPorchs); 
@@ -45,19 +42,16 @@ export const usePorchs = (userEmail?: string) => {
   };
 
   useEffect(() => {
-    console.log("useEffect triggered. Page:", page, "Is Filtering:", isFiltering);
     loadPorchs(page, isFiltering);
   }, [page, isFiltering]);
 
   const loadMore = () => {
-    console.log("Load More triggered");
     if (!loading && hasMore) {
       setPage((prev) => prev + 1);
     }
   };
 
   const toggleFilter = () => {
-    console.log("Toggle filter");
     setIsFiltering((prev) => !prev);
     setPage(1);
   };

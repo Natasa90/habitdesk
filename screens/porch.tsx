@@ -1,63 +1,80 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import {
- ScrollView,
+ FlatList,
  View,
  ActivityIndicator,
  TouchableOpacity,
 } from "react-native";
-import { TextWrapper } from "@/components/Layout";
 import {
+ PorchListHeader,
  PorchHeader,
  PorchList,
- PorchListHeader,
 } from "@/components/PorchElements";
 import { usePorchs, usePorchLearningDays } from "@/lib/hooks";
 import { UserInfoContext } from "@/context/UserInfoContext";
+import { TextWrapper } from "@/components/Layout";
 
 export const PorchScreen = () => {
  const { userInfo } = useContext(UserInfoContext);
- const { porchs, setPorchs, loading, hasMore, loadMore, toggleFilter, isFiltering } =
-  usePorchs(userInfo?.email);
+ const {
+  porchs,
+  setPorchs,
+  loading,
+  hasMore,
+  loadMore,
+  toggleFilter,
+  isFiltering,
+ } = usePorchs(userInfo?.email);
+
  const learningDays = usePorchLearningDays(userInfo?.email);
 
+ const renderItem = ({ item }: any) => (
+  <PorchList porchs={[item]} setPorchs={setPorchs} />
+ );
+
+ const renderFooter = () => {
+    if (!hasMore) {
+      return (
+        <View className="items-center justify-center mb-8">
+          <TextWrapper className="font-IBM_italic text-lg">You have seen it all!</TextWrapper>
+        </View>
+      );
+    }
+    return null;
+  };
+
+
  return (
-  <ScrollView className="flex-1 p-5">
-   <PorchHeader />
-   <PorchListHeader
-    learningDays={learningDays}
-    buttonTitle={isFiltering ? "All Daily Updates" : "Track your Daily Updates"}
-    handleFiltering={toggleFilter}
-   />
-
-   {loading ? (
-    <View className="flex items-center justify-center mt-10">
-     <ActivityIndicator size="large" color="#3b82f6" />
-     <TextWrapper className="mt-4 text-gray-600">
-      Loading updates...
-     </TextWrapper>
-    </View>
-   ) : (
-    <PorchList porchs={porchs} setPorchs={setPorchs} />
-   )}
-
-   {hasMore && !loading && (
-    <View className="items-center">
-     <TouchableOpacity
-      className="bg-customBlue p-2 rounded-xl shadow-md justify-center items-center mb-10 w-40"
-      onPress={loadMore}
-     >
-      <TextWrapper className="text-white">Load More Updates</TextWrapper>
-     </TouchableOpacity>
-    </View>
-   )}
-
-   {!hasMore && (
-    <View className="mt-10 border-gray-1">
-     <TextWrapper className="text-center text-gray-500">
-      {isFiltering ? "Showing only your updates" : "You have seen it all!"}
-     </TextWrapper>
-    </View>
-   )}
-  </ScrollView>
+  <FlatList
+   className="p-5"
+   data={porchs}
+   renderItem={renderItem}
+   keyExtractor={(item) => item.new_id}
+   ListHeaderComponent={
+    <>
+     <PorchHeader />
+     <PorchListHeader
+      learningDays={learningDays}
+      buttonTitle={isFiltering ? "All Daily Updates" : "Track Your Daily Updates"}
+      handleFiltering={toggleFilter}
+     />
+    </>
+   }
+   ListEmptyComponent={
+    !loading && porchs.length === 0 ? (
+     <View className="flex items-center justify-center mt-10">
+      <TextWrapper className="text-gray-600">No updates available</TextWrapper>
+     </View>
+    ) : null
+   }
+  ListFooterComponent={renderFooter}
+   onEndReached={() => {
+    if (!loading && hasMore) {
+     loadMore();
+    }
+   }}
+   onEndReachedThreshold={0.1}
+   showsVerticalScrollIndicator={false}
+  />
  );
 };
