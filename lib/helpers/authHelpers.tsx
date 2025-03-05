@@ -2,6 +2,7 @@ import { Alert } from "react-native";
 import supabase from "../supabase";
 import { NavigationProp } from "@react-navigation/native";
 import { makeRedirectUri, useAuthRequest } from "expo-auth-session";
+import * as AuthSession from 'expo-auth-session';
 
 export const handlePasswordReset = async (
   email: string,
@@ -128,47 +129,30 @@ export const signInWithEmail = async (
 
 ///////////////////////// GItHUB LOGIN //////////////////////////////////////
 
-const discovery = {
-  authorizationEndpoint: "https://github.com/login/oauth/authorize",
-  tokenEndpoint: "https://github.com/login/oauth/access_token",
-  revocationEndpoint: "https://github.com/settings/applications",
-};
 
-export const useGitHubAuth = () => {
-  const redirectUri = makeRedirectUri({ scheme: "habitdesk", path: "user" });
+export const signInWithGitHub = async () => {
+    console.log("GitHub login function called"); // Debugging
 
-  const [request, response, promptAsync] = useAuthRequest(
-    {
-      clientId: "Ov23liZneoLCjKb7GG2q",
-      scopes: ["user"],
-      redirectUri,
-    },
-    discovery
-  );
-
-  const handleGitHubSignIn = async (onSuccess: (user: any) => void, onError: (error: string) => void) => {
-    if (response?.type === "success") {
-      try {
-        console.log("GitHub OAuth success:", response);
-
-        await supabase.auth.signInWithOAuth({
-          provider: "github",
-          options: {
-            redirectTo: redirectUri,
-          },
+    try {
+        const redirectUri = AuthSession.makeRedirectUri({
+            scheme: 'habitdesk', 
         });
 
-        const { data: { session } } = await supabase.auth.getSession();
-        if (session?.user) {
-          console.log("User signed in with Supabase:", session.user);
-          onSuccess(session.user);
-        }
-      } catch (error: any) {
-        console.error("Supabase OAuth error:", error);
-        onError(error.message);
-      }
-    }
-  };
+        console.log('Redirect URI:', redirectUri); 
 
-  return { request, response, promptAsync, handleGitHubSignIn };
+        const { error } = await supabase.auth.signInWithOAuth({
+            provider: 'github',
+            options: {
+                redirectTo: redirectUri,
+            },
+        });
+
+        if (error) {
+            console.error('GitHub Login Error:', error.message);
+        } else {
+            console.log('GitHub Login initiated successfully');
+        }
+    } catch (error) {
+        console.error('Unexpected error:', error);
+    }
 };

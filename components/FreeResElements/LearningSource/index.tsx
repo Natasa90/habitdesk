@@ -30,7 +30,7 @@ export const LearningSource: FC<LearningSourcesProps> = ({ sources }) => {
       </TextWrapper>
      ) : (
       <TextWrapper className="pb-2 text-lg font-medium text-center">
-       There are {filteredFacts.length} sources. Add your own source!
+       There are {filteredFacts.length} sources for this topic. Stay tuned!
       </TextWrapper>
      )
     }
