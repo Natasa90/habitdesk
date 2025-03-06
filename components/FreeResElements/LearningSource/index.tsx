@@ -26,11 +26,11 @@ export const LearningSource: FC<LearningSourcesProps> = ({ sources }) => {
     ListFooterComponent={
      filteredFacts.length === 1 ? (
       <TextWrapper className="pb-2 text-lg font-medium text-center">
-       There is {filteredFacts.length} source. Add your own source!
+       There is {filteredFacts.length} source for this Category. 
       </TextWrapper>
      ) : (
       <TextWrapper className="pb-2 text-lg font-medium text-center">
-       There are {filteredFacts.length} sources for this topic. Stay tuned!
+       There are {filteredFacts.length} sources for this Category. Stay tuned!
       </TextWrapper>
      )
     }

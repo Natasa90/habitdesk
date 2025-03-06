@@ -9,7 +9,7 @@ export const FreeSourcesList: FC<FreeSourcesListProps> = ({ facts }) => {
    data={facts}
    keyExtractor={(item) => item.id.toString()}
    renderItem={({ item }) => <FreeSource fact={item} />}
-   className="border-t-4 border-[#e5e7eb] pt-8"
+   className="pt-4"
   />
  );
 };

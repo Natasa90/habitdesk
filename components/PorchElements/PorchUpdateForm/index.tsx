@@ -39,12 +39,12 @@ export const PorchUpdateForm: FC<PorchFormProps> = ({
      tint="dark"
     />
     <View
-     className="bg-gray-200 p-4 rounded-xl w-4/5 shadow-lg"
+     className="bg-gray-200 p-4 rounded-xl w-5/6 shadow-lg"
     >
      {responseUpdate ? (
       <ActivityIndicator size="large" color="#0000ff" />
      ) : (
-      <View className="border-2 border-gray-400 bg-white rounded-lg p-10 relative">
+      <View className="border-2 border-gray-400 bg-white rounded-lg p-8 relative">
        <TouchableOpacity
         onPress={() => setShowForm(false)}
         className="absolute right-3 top-3"
