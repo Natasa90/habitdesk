@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { View, Pressable } from "react-native";
 import { TextWrapper } from "@/components/Layout";
-import { CategoryTagsProps } from "../../Types/FreeResourcesTypes";
+import { CategoryTagsProps } from "@/Types/FreeResourcesTypes";
 import { MaterialIcons } from "@expo/vector-icons";
 
 export const CategoryTags: FC<CategoryTagsProps> = ({

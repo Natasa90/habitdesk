@@ -1,29 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { View, TextInput, TouchableOpacity, Image } from "react-native";
 import { TextWrapper } from "@/components/Layout";
+import { UserInfoContext } from "@/context/UserInfoContext";
+import supabase from "@/lib/supabase";
+import { useFetchTasks, useAddTask, useDeleteTask } from "@/lib/hooks";
 
 export const ToDoList = () => {
- const [toDo, setToDo] = useState<string[]>([]);
- const [input, setInput] = useState<string>("");
- const [error, setError] = useState<string>("");
+   const [toDo, setToDo] = useState<string[]>([]);
+  const [input, setInput] = useState<string>("");
+  const { toDo: fetchedToDo, error: fetchError } = useFetchTasks();
+  const { addTask, error: addError } = useAddTask(toDo, setToDo, setInput);
+  const { deleteTask } = useDeleteTask(toDo, setToDo);
 
- const addTask = () => {
-  if (input.trim()) {
-   setToDo([...toDo, input]);
-   setInput("");
-   setError("");
-  } else {
-   setError("Please Write A Task to Add.");
-  }
- };
+  // Set the fetched tasks to the state when the component first renders
+  useEffect(() => {
+    setToDo(fetchedToDo);
+  }, [fetchedToDo]);
 
- const deleteTask = (index: number) => {
-  setToDo(toDo.filter((_, i) => i !== index));
- };
-
- const getCurrentDay = () => {
-  return new Date().toLocaleDateString("en-US", { weekday: "long" });
- };
+  const getCurrentDay = () => {
+    return new Date().toLocaleDateString("en-US", { weekday: "long" });
+  };
 
  return (
   <View className="items-center bg-white rounded-xl shadow-md p-5 mb-5">
@@ -42,7 +38,7 @@ export const ToDoList = () => {
      className="flex-1 p-3 rounded-lg bg-gray-200 text-gray-800 font-IBM_italic"
     />
     <TouchableOpacity
-     onPress={addTask}
+     onPress={() => addTask(input)}
      className="p-3 bg-blue-500 rounded-lg flex justify-center items-center"
     >
      <TextWrapper className="text-white font-semibold">Add</TextWrapper>
@@ -55,16 +51,16 @@ export const ToDoList = () => {
       className="flex-row items-center justify-between p-3 mb-2 bg-listBlue rounded-lg shadow-sm"
      >
       <TextWrapper className="text-gray-800">{item}</TextWrapper>
-      <TouchableOpacity onPress={() => deleteTask(index)}>
+      <TouchableOpacity onPress={() => deleteTask(item)}>
        <TextWrapper className="text-red-500 font-semibold">x</TextWrapper>
       </TouchableOpacity>
      </View>
     ))}
-    {error && (
-     <TextWrapper className="text-center text-orange-300">
-      Please write a Task to add.
-     </TextWrapper>
-    )}
+    {(fetchError || addError) && (
+          <TextWrapper className="text-center text-orange-300">
+            {fetchError || addError}
+          </TextWrapper>
+        )}
    </View>
   </View>
  );
