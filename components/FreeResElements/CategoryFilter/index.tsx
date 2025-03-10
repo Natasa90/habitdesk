@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { CategoryTags } from "../../../lib/helpers/getCategoryTags";
+import { CategoryTags } from "../CategoryTags";
 import { FreeResCategories } from "../../../lib/constants";
 import { CategoryFilterProps } from "../../../Types/FreeResourcesTypes";
 

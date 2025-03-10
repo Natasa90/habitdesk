@@ -9,6 +9,9 @@ import { usePorchLearningDays } from "./usePorchLearningDays";
 import { usePorchs } from "./usePorchs";
 import { useFilteredPorchs } from "./userFIlteredPorchs";
 import { usePorchForm } from "./usePorchForm";
+import { useFetchTasks } from "./useFetchTasks";
+import { useDeleteTask } from "./useDeleteTask";
+import { useAddTask } from "./useAddTask";
 
 export {
  useFetchSources,
@@ -21,5 +24,8 @@ export {
  usePorchLearningDays,
  usePorchs,
  useFilteredPorchs,
-usePorchForm
+usePorchForm,
+useAddTask,
+useDeleteTask,
+useFetchTasks
 };

@@ -63,30 +63,36 @@ export const CardLayout: FC<CardLayoutProps> = ({
      <TextWrapper className="font-IBM_semibold">Likes: </TextWrapper>{" "}
      {porch.likes.length}
     </TextWrapper>
-    <TouchableOpacity
-     onPress={handleVote}
-     disabled={isUpdating}
-     className="mt-1"
-    >
-     <View className="w-10 h-10 ml-1">
-      {isUpdating ? (
-       <View></View>
-      ) : hasVoted ? (
+    <View className="w-10 h-10 ml-1 mt-2">
+     {isUpdating ? (
+      <View></View>
+     ) : hasVoted ? (
+      <TouchableOpacity
+       onPress={handleVote}
+       disabled={isUpdating}
+       className="w-5 h-5"
+      >
        <Icon
         name="heart"
         size={20}
         color="#F87171"
         className="text-red-400 w-5 h-5 transform scale-125 hover:scale-150 hover:rotate-12 transition-transform duration-300"
        />
-      ) : (
+      </TouchableOpacity>
+     ) : (
+      <TouchableOpacity
+       onPress={handleVote}
+       disabled={isUpdating}
+       className="w-5 h-5"
+      >
        <Icon
         name="check"
         size={20}
         className="text-blue-500 w-5 h-5 transform scale-125 hover:scale-150 hover:rotate-12 transition-transform duration-300"
        />
-      )}
-     </View>
-    </TouchableOpacity>
+      </TouchableOpacity>
+     )}
+    </View>
     <TextWrapper className="pt-2 pl-0.5 text-sm">{formattedDate}</TextWrapper>
    </View>
    {extraContent && <View className="py-2">{extraContent}</View>}
