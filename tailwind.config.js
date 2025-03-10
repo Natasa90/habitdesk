@@ -18,7 +18,8 @@ module.exports = {
         footerBlue: "rgb(246, 250, 251)",
         lionBlue: "rgb(11, 66, 107)",
         transparent: 'transparent',
-        listBlue: "rgb(232, 241, 255)"
+        listBlue: "rgb(232, 241, 255)",
+        weeklyGoalBlue: "#f5f4e8"
       },
       fontFamily: {
         sans: ["IBMPlexSerif-Regular", "sans-serif"], 
@@ -37,12 +38,12 @@ module.exports = {
         IBM_thin: ["IBMPlexSerif-Thin", "sans-serif"],
         IBM_thinItalic: ["IBMPlexSerif-ThinItalic", "sans-serif"],
       },
-      boxShadow: {
-        'md': '0px 4px 8px rgba(0, 0, 0, 0.2)', // Increased size and opacity
-        'lg': '0px 6px 12px rgba(0, 0, 0, 0.3)', // Increased size and opacity
-        'xl': '0px 10px 20px rgba(0, 0, 0, 0.4)', // Increased size and opacity
+    boxShadow: {
+        'md': '0px 0px 8px rgba(0, 0, 0, 0.2)', 
+        'lg': '0px 0px 12px rgba(0, 0, 0, 0.3)', 
+        'xl': '0px 0px 20px rgba(0, 0, 0, 0.4)', 
       },
     },
   },
   plugins: ["nativewind/plugin"],
-};
+};      

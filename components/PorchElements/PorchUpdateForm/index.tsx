@@ -39,26 +39,26 @@ export const PorchUpdateForm: FC<PorchFormProps> = ({
      tint="dark"
     />
     <View
-     className="bg-gray-200 p-4 rounded-xl w-4/5 shadow-lg"
+     className="bg-gray-200 p-4 rounded-xl w-5/6 shadow-lg"
     >
      {responseUpdate ? (
       <ActivityIndicator size="large" color="#0000ff" />
      ) : (
-      <View className="border-2 border-gray-400 bg-white rounded-lg min-h-[280px] p-4 relative">
+      <View className="border-2 border-gray-400 bg-white rounded-lg p-8 relative">
        <TouchableOpacity
         onPress={() => setShowForm(false)}
         className="absolute right-3 top-3"
        >
         <Icon name="x" size={20} color="gray" />
        </TouchableOpacity>
-       <TextWrapper className="mt-8 text-xl font-IBM_boldItalic text-customBlue mb-5 text-center">
+       <TextWrapper className="mt-6 text-xl font-IBM_boldItalic text-customBlue mb-5 text-center">
         Progress Update
        </TextWrapper>
        <View className="border-b border-gray-300" />
        <View className="bg-gray-200 p-3 rounded-xl my-8">
         <TextInput
          className="text-black font-IBM_italic"
-         placeholder="Share your update with the world..."
+         placeholder="Share your update..."
          placeholderTextColor="gray"
          value={text}
          onChangeText={setText}
