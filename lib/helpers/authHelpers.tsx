@@ -130,29 +130,33 @@ export const signInWithEmail = async (
 ///////////////////////// GItHUB LOGIN //////////////////////////////////////
 
 
+import { Linking } from "react-native";
+
 export const signInWithGitHub = async () => {
-    console.log("GitHub login function called"); // Debugging
+  try {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: "github",
+      options: {
+        redirectTo: "exp://192.168.8.108:8081", // Must match Supabase
+      },
+    });
 
-    try {
-        const redirectUri = AuthSession.makeRedirectUri({
-            scheme: 'habitdesk', 
-        });
+    console.log("Supabase response:", data);
 
-        console.log('Redirect URI:', redirectUri); 
-
-        const { error } = await supabase.auth.signInWithOAuth({
-            provider: 'github',
-            options: {
-                redirectTo: redirectUri,
-            },
-        });
-
-        if (error) {
-            console.error('GitHub Login Error:', error.message);
-        } else {
-            console.log('GitHub Login initiated successfully');
-        }
-    } catch (error) {
-        console.error('Unexpected error:', error);
+    if (error) {
+      console.error("GitHub Login Error:", error.message);
+      alert(`GitHub Login Error: ${error.message}`);
+      return;
     }
+
+    if (data?.url) {
+      console.log("Opening URL:", data.url);
+      await Linking.openURL(data.url);
+    } else {
+      console.log("No URL received from Supabase.");
+    }
+  } catch (error) {
+    console.error("Unexpected Error:", error);
+    alert(`Unexpected Error: ${error}`);
+  }
 };

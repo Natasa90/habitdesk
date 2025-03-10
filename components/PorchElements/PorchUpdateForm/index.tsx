@@ -51,7 +51,7 @@ export const PorchUpdateForm: FC<PorchFormProps> = ({
        >
         <Icon name="x" size={20} color="gray" />
        </TouchableOpacity>
-       <TextWrapper className="mt-8 text-xl font-IBM_boldItalic text-customBlue mb-5 text-center">
+       <TextWrapper className="mt-6 text-xl font-IBM_boldItalic text-customBlue mb-5 text-center">
         Progress Update
        </TextWrapper>
        <View className="border-b border-gray-300" />
