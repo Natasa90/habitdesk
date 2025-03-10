@@ -1,8 +1,6 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { View, TextInput, TouchableOpacity, Image } from "react-native";
 import { TextWrapper } from "@/components/Layout";
-import { UserInfoContext } from "@/context/UserInfoContext";
-import supabase from "@/lib/supabase";
 import { useFetchTasks, useAddTask, useDeleteTask } from "@/lib/hooks";
 
 export const ToDoList = () => {
@@ -12,7 +10,6 @@ export const ToDoList = () => {
   const { addTask, error: addError } = useAddTask(toDo, setToDo, setInput);
   const { deleteTask } = useDeleteTask(toDo, setToDo);
 
-  // Set the fetched tasks to the state when the component first renders
   useEffect(() => {
     setToDo(fetchedToDo);
   }, [fetchedToDo]);
