@@ -1,4 +1,4 @@
-import { FC, useState, useContext } from "react";
+import { FC, useState } from "react";
 import { CardLayout } from "@/components/Layout/CardsLayout";
 import { PorchDailyUpdateProps } from "@/Types/PorchTypes";
 import { useVote } from "@/lib/hooks";
