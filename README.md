@@ -52,7 +52,7 @@ SUPABASE_ANON_KEY=your_supabase_anon_key
 Start the Expo development server:
 
 ```
-yarn start
+yarn expo start
 ```
 
 ## Usage
