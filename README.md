@@ -1,8 +1,8 @@
-HabitDesk
+# HabitDesk
 
 HabitDesk is a React Native mobile app designed to help users track their learning habits - they can set goals, track progress, update their learning habits and access free Learining Sources and Blogs.
 
-Features
+## Features
 
 - Porch for goal tracking: Set weekly learning goals, track progress, update your daily learnings. 
 - Learning insights: View statistics on completed learning sessions.
@@ -11,20 +11,20 @@ Features
 - Free study resources: Access a curated list of free study materials.
 - Supabase authentication: Manage user accounts securely.
 
-Tech Stack 
+## Tech Stack 
 
 - React Native with Expo
 - Supabase for database and authentication
 - NativeWind (Tailwind for React Native) for styling
 
-Installation
+## Installation
 
  Prerequisites: 
 - Node.js and Yarn installed
 - Expo CLI installed globally (npm install -g expo-cli)
 - Supabase account for database access
 
-Steps
+### Steps
 
 Clone the repository:
 
@@ -55,14 +55,14 @@ Start the Expo development server:
 yarn start
 ```
 
-Usage
+## Usage
 
 - Run the app on a simulator or physical device using Expo Go.
 - Create an account or log in using an existing account.
 - Set learning goals and track progress through the Porch section.
 
 
-Contributing
+### Contributing
 
 Contributions are welcome! If you'd like to contribute:
 
@@ -72,7 +72,7 @@ Contributions are welcome! If you'd like to contribute:
 4. Push to the branch (git push origin feature-name).
 5. Open a pull request.
 
-License
+### License
 
 This project is licensed under the MIT License.
 
