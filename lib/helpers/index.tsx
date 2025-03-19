@@ -2,7 +2,7 @@ import { handlePasswordReset } from "./authHelpers";
 import { signUpWithEmail } from "./authHelpers";
 import { signInWithEmail } from "./authHelpers";
 import { getRemainingDaysInWeek } from "./getRemainingDaysOfWeek";
-import { useGitHubAuth } from "./authHelpers";
+import { signInWithGitHub } from "./authHelpers";
 import { fetchTasks, addTask, deleteTask } from "./tasksHelpers";
 
 export {
@@ -10,7 +10,7 @@ export {
  signInWithEmail,
  signUpWithEmail,
  getRemainingDaysInWeek,
- useGitHubAuth,
+ signInWithGitHub,
  fetchTasks,
  addTask,
  deleteTask,
