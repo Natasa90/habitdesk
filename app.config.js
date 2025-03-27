@@ -36,9 +36,6 @@ export default {
       easProjectId: process.env.EAS_PROJECT_ID,
       ascKeyName: process.env.ASC_KEY_NAME,
       ascKeyId: process.env.ASC_KEY_ID,
-      eas: {
-        projectId: process.env.EAS_PROJECT_ID,
-      },
     },
   },
 };
