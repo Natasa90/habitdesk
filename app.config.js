@@ -33,11 +33,10 @@ export default {
       supabaseUrl: process.env.SUPABASE_URL,
       supabaseKey: process.env.SUPABASE_KEY,
       ascAppId: process.env.ASC_APP_ID,
-      easProjectId: process.env.EAS_PROJECT_ID,
       ascKeyName: process.env.ASC_KEY_NAME,
       ascKeyId: process.env.ASC_KEY_ID,
       eas: {
-        projectId: process.env.EAS_PROJECT_ID,
+        projectId:"e2b1a9f5-a699-4631-b5c1-8c2049a10d0d",
       },
     },
   },
